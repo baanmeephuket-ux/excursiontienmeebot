@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mango Phuket</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+<header><div><small>MANGO PHUKET</small><h1>Что вам нужно?</h1></div><button id="lang">EN</button></header>
+<main id="home">
+<section class="hero"><b>Phuket<br>your way 🌴</b><span>Экскурсии, трансферы и сервисы в одном месте</span></section>
+<div class="grid">
+<button data-open="excursions" class="wide">🏝️ <strong>Экскурсии</strong><em>Морские, сухопутные, лодки и private</em>›</button>
+<button data-open="fasttrack">✈️ <strong>Fast Track</strong>›</button>
+<button data-open="transfer">🚕 <strong>Трансфер</strong>›</button>
+<button data-open="exchange">💱 <strong>Обмен валюты</strong>›</button>
+<button data-open="business">💼 <strong>Консультации по бизнесу</strong>›</button>
+<button data-open="orders">📋 <strong>Мои заказы</strong>›</button>
+<button data-open="manager" class="wide">👩‍💼 <strong>Связь с менеджером</strong><em>Задать вопрос или получить помощь</em>›</button>
+</div>
+</main>
+<section id="excursions" class="screen"><button data-home>‹ Назад</button><h2>Экскурсии</h2><p>Выберите формат отдыха</p>
+<div class="list">
+<button data-cat="sea">🌊 <span><b>Морские</b><small>Острова, море и снорклинг</small></span>›</button>
+<button data-cat="land">🏔️ <span><b>Сухопутные</b><small>Поездки по острову и за его пределы</small></span>›</button>
+<button data-cat="boats">🛥️ <span><b>Аренда лодок</b><small>Лодка под вашу компанию</small></span>›</button>
+<button data-cat="private">✨ <span><b>Приватные экскурсии</b><small>Маршрут под вас</small></span>›</button>
+</div></section>
+<section id="category" class="screen"><button data-back>‹ Назад</button><h2 id="catTitle"></h2><div class="empty">📸<b>Каталог готовим</b><span>Следующим этапом добавим реальные фото, описания, цены и бронирование.</span></div></section>
+<section id="placeholder" class="screen"><button data-home>‹ Назад</button><h2 id="placeholderTitle"></h2><div class="empty">🚧<b>Раздел создаём</b><span>Каркас готов. Наполнение подключим следующим этапом.</span></div></section>
+<script src="app.js"></script>
+</body></html>
