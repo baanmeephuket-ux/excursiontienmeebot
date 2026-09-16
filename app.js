@@ -62,7 +62,16 @@ document
         show("excursions");
         return;
       }
+      if (section === "business") {
+       document.getElementById("transferScreen").style.display = "none";
+       document.getElementById("placeholderTitle").textContent = "";
 
+       document.getElementById("placeholderDefault").style.display = "none";
+       document.getElementById("businessConsultation").style.display = "block";
+
+  show("placeholder");
+  return;
+}
 
       /* ТРАНСФЕР */
 
