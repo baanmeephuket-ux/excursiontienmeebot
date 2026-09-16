@@ -18,7 +18,7 @@ function show(id) {
   window.scrollTo(0, 0);
 }
 
-const otherTitles = {
+const titles = {
   fasttrack: "Fast Track",
   exchange: "Обмен валюты",
   business: "Консультации по бизнесу",
@@ -46,7 +46,7 @@ document.querySelectorAll("[data-open]").forEach(button => {
     document.getElementById("otherPlaceholder").style.display = "block";
 
     document.getElementById("placeholderTitle").textContent =
-      otherTitles[section] || section;
+      titles[section] || section;
 
     show("placeholder");
   };
@@ -60,7 +60,12 @@ document.querySelector("[data-back]").onclick = () => {
   show("excursions");
 };
 
-const categoryNames = {
+
+/* =========================
+   ЭКСКУРСИИ
+========================= */
+
+const names = {
   sea: "Морские",
   land: "Сухопутные",
   boats: "Аренда лодок",
@@ -69,12 +74,18 @@ const categoryNames = {
 
 document.querySelectorAll("[data-cat]").forEach(button => {
   button.onclick = () => {
+
     document.getElementById("catTitle").textContent =
-      categoryNames[button.dataset.cat];
+      names[button.dataset.cat];
 
     show("category");
   };
 });
+
+
+/* =========================
+   ЯЗЫК
+========================= */
 
 document.getElementById("lang").onclick = () => {
   alert("English version подключим после утверждения структуры.");
@@ -87,32 +98,46 @@ document.getElementById("lang").onclick = () => {
 
 let transferDirection = "Аэропорт → Отель";
 
-document.querySelectorAll(".transfer-direction").forEach(button => {
-  button.addEventListener("click", () => {
+document.querySelectorAll(".direction").forEach(button => {
+
+  button.onclick = () => {
 
     document
-      .querySelectorAll(".transfer-direction")
-      .forEach(item => item.classList.remove("active"));
+      .querySelectorAll(".direction")
+      .forEach(item => {
+        item.classList.remove("active");
+      });
 
     button.classList.add("active");
 
-    transferDirection = button.dataset.direction;
-  });
+    transferDirection =
+      button.dataset.direction;
+  };
+
 });
 
 
-const transferForm = document.getElementById("transferForm");
-const confirmation = document.getElementById("transferConfirmation");
+/* =========================
+   ФОРМА ТРАНСФЕРА
+========================= */
+
+const transferForm =
+  document.getElementById("transferForm");
+
+const confirmation =
+  document.getElementById("transferConfirmation");
 
 
 transferForm.addEventListener("submit", event => {
 
   event.preventDefault();
 
-  const form = new FormData(transferForm);
+  const form =
+    new FormData(transferForm);
 
   const telegramUser =
     tg?.initDataUnsafe?.user || {};
+
 
   const order = {
 
@@ -124,7 +149,8 @@ transferForm.addEventListener("submit", event => {
         .toString()
         .slice(-8),
 
-    status: "Новый заказ",
+    status:
+      "Новый заказ",
 
     direction:
       transferDirection,
@@ -172,10 +198,15 @@ transferForm.addEventListener("submit", event => {
   };
 
 
-  /* Сохраняем заказ */
+  /* =========================
+     СОХРАНЕНИЕ ЗАКАЗА
+  ========================= */
+
   const orders =
     JSON.parse(
-      localStorage.getItem("tienMeeOrders") || "[]"
+      localStorage.getItem(
+        "tienMeeOrders"
+      ) || "[]"
     );
 
   orders.unshift(order);
@@ -186,7 +217,10 @@ transferForm.addEventListener("submit", event => {
   );
 
 
-  /* Показываем подтверждение */
+  /* =========================
+     ПОДТВЕРЖДЕНИЕ
+  ========================= */
+
   confirmation.hidden = false;
 
   confirmation.innerHTML = `
@@ -241,7 +275,9 @@ transferForm.addEventListener("submit", event => {
     <br>
 
     Оплата:
-    <strong>водителю по факту</strong>
+    <strong>
+      водителю по факту
+    </strong>
 
     ${
       order.telegramUsername
@@ -253,7 +289,8 @@ transferForm.addEventListener("submit", event => {
 
     <span>
       Мы получили вашу заявку.
-      Менеджер свяжется с вами для подтверждения трансфера.
+      Менеджер свяжется с вами
+      для подтверждения трансфера.
     </span>
 
     <br><br>
@@ -270,6 +307,10 @@ transferForm.addEventListener("submit", event => {
   transferForm.hidden = true;
 
 
+  /* =========================
+     НОВЫЙ ЗАКАЗ
+  ========================= */
+
   document
     .getElementById("newTransfer")
     .onclick = () => {
@@ -281,7 +322,7 @@ transferForm.addEventListener("submit", event => {
       confirmation.hidden = true;
 
       document
-        .querySelectorAll(".transfer-direction")
+        .querySelectorAll(".direction")
         .forEach(button => {
 
           button.classList.toggle(
@@ -294,13 +335,20 @@ transferForm.addEventListener("submit", event => {
 
       transferDirection =
         "Аэропорт → Отель";
+
     };
 
+
+  /* =========================
+     TELEGRAM HAPTIC
+  ========================= */
 
   if (tg?.HapticFeedback) {
 
     tg.HapticFeedback
-      .notificationOccurred("success");
+      .notificationOccurred(
+        "success"
+      );
 
   }
 
