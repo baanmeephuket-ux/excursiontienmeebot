@@ -1,845 +1,531 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
+const tg = window.Telegram?.WebApp;
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-  >
-
-  <meta name="theme-color" content="#5F7658">
-
-  <title>Tien Mee Phuket</title>
-
-  <link rel="stylesheet" href="styles.css">
-
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-</head>
-
-<body>
-
-<div id="app">
+if (tg) {
+  tg.ready();
+  tg.expand();
+}
 
 
-  <!-- =========================
-       ГЛАВНЫЙ ЭКРАН
-  ========================== -->
+/* =========================
+   ОСНОВНЫЕ ЭКРАНЫ
+========================= */
 
-  <main id="home">
+const home = document.getElementById("home");
+const screens = document.querySelectorAll(".screen");
 
-    <section class="hero">
+function show(id) {
+  if (home) {
+    home.style.display = id === "home" ? "block" : "none";
+  }
 
-      <h1 class="hero-title">
-        your way
-      </h1>
+  screens.forEach(screen => {
+    screen.classList.toggle(
+      "active",
+      screen.id === id
+    );
+  });
 
-      <p>
-        Отдыхайте, путешествуйте<br>
-        и решайте всё в одном месте
-      </p>
-
-    </section>
-
-
-    <div class="section-header">
-
-      <h2>
-        Сервисы Tien Mee
-      </h2>
-
-      <span>
-        Выберите нужное
-      </span>
-
-    </div>
+  window.scrollTo(0, 0);
+}
 
 
-    <section class="services">
+/* =========================
+   НАЗВАНИЯ РАЗДЕЛОВ
+========================= */
+
+const titles = {
+  fasttrack: "Fast Track",
+  exchange: "Обмен валюты",
+  business: "Консультации по бизнесу",
+  orders: "Мои заказы",
+  manager: "Связь с менеджером"
+};
 
 
-      <!-- ЭКСКУРСИИ -->
+/* =========================
+   КНОПКИ ГЛАВНОГО ЭКРАНА
+========================= */
 
-      <button
-        class="service-card full"
-        data-open="excursions"
-        type="button"
-      >
+document
+  .querySelectorAll("[data-open]")
+  .forEach(button => {
 
-        <div class="service-icon">
-          🌴
-        </div>
+    button.addEventListener("click", () => {
 
-        <div class="service-content">
+      const section =
+        button.dataset.open;
 
-          <h3>
-            Экскурсии
-          </h3>
+
+      /* ЭКСКУРСИИ */
+
+      if (section === "excursions") {
+        show("excursions");
+        return;
+      }
+
+
+      /* ТРАНСФЕР */
+
+      if (section === "transfer") {
+
+        const transferScreen =
+          document.getElementById(
+            "transferScreen"
+          );
+
+        const otherPlaceholder =
+          document.getElementById(
+            "otherPlaceholder"
+          );
+
+        if (transferScreen) {
+          transferScreen.style.display =
+            "block";
+        }
+
+        if (otherPlaceholder) {
+          otherPlaceholder.style.display =
+            "none";
+        }
+
+        show("placeholder");
+
+        return;
+      }
+
+
+      /* ОСТАЛЬНЫЕ РАЗДЕЛЫ */
+
+      const transferScreen =
+        document.getElementById(
+          "transferScreen"
+        );
+
+      const otherPlaceholder =
+        document.getElementById(
+          "otherPlaceholder"
+        );
+
+      if (transferScreen) {
+        transferScreen.style.display =
+          "none";
+      }
+
+      if (otherPlaceholder) {
+        otherPlaceholder.style.display =
+          "block";
+      }
+
+      const placeholderTitle =
+        document.getElementById(
+          "placeholderTitle"
+        );
+
+      if (placeholderTitle) {
+        placeholderTitle.textContent =
+          titles[section] || section;
+      }
+
+      show("placeholder");
+
+    });
+
+  });
+
+
+/* =========================
+   КНОПКИ НАЗАД НА ГЛАВНУЮ
+========================= */
+
+document
+  .querySelectorAll("[data-home]")
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => show("home")
+    );
+
+  });
+
+
+/* =========================
+   НАЗАД ИЗ КАТЕГОРИИ
+========================= */
+
+const backButton =
+  document.querySelector("[data-back]");
+
+if (backButton) {
+
+  backButton.addEventListener(
+    "click",
+    () => show("excursions")
+  );
+
+}
+
+
+/* =========================
+   ЭКСКУРСИИ
+========================= */
+
+const names = {
+  sea: "Морские",
+  land: "Сухопутные",
+  boats: "Аренда лодок",
+  private: "Приватные экскурсии"
+};
+
+document
+  .querySelectorAll("[data-cat]")
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        const catTitle =
+          document.getElementById(
+            "catTitle"
+          );
+
+        if (catTitle) {
+          catTitle.textContent =
+            names[button.dataset.cat] ||
+            "Экскурсии";
+        }
+
+        show("category");
+
+      }
+    );
+
+  });
+
+
+/* =========================
+   ЯЗЫК
+   НЕ ЛОМАЕМ ПРИ ОТСУТСТВИИ КНОПКИ
+========================= */
+
+const langButton =
+  document.getElementById("lang");
+
+if (langButton) {
+
+  langButton.addEventListener(
+    "click",
+    () => {
+      alert(
+        "English version подключим после утверждения структуры."
+      );
+    }
+  );
+
+}
+
+
+/* =========================
+   ТРАНСФЕР
+========================= */
+
+let transferDirection =
+  "Аэропорт → Отель";
+
+
+document
+  .querySelectorAll(".direction")
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        document
+          .querySelectorAll(".direction")
+          .forEach(item => {
+            item.classList.remove("active");
+          });
+
+        button.classList.add("active");
+
+        transferDirection =
+          button.dataset.direction;
+
+      }
+    );
+
+  });
+
+
+/* =========================
+   ФОРМА ТРАНСФЕРА
+========================= */
+
+const transferForm =
+  document.getElementById(
+    "transferForm"
+  );
+
+const confirmation =
+  document.getElementById(
+    "transferConfirmation"
+  );
+
+
+if (transferForm) {
+
+  transferForm.addEventListener(
+    "submit",
+    event => {
+
+      event.preventDefault();
+
+
+      const form =
+        new FormData(transferForm);
+
+
+      const telegramUser =
+        tg?.initDataUnsafe?.user || {};
+
+
+      const order = {
+
+        type: "transfer",
+
+        id:
+          "TR-" +
+          Date.now()
+            .toString()
+            .slice(-8),
+
+        status:
+          "Новый заказ",
+
+        direction:
+          transferDirection,
+
+        date:
+          form.get("date"),
+
+        flightNumber:
+          form.get("flightNumber"),
+
+        arrivalTime:
+          form.get("arrivalTime"),
+
+        people:
+          Number(
+            form.get("people")
+          ),
+
+        suitcases:
+          Number(
+            form.get("suitcases")
+          ),
+
+        hotel:
+          form.get("hotel"),
+
+        phone:
+          form.get("phone"),
+
+        payment:
+          "Оплата водителю по факту",
+
+        telegramUsername:
+          telegramUser.username
+            ? "@" +
+              telegramUser.username
+            : "",
+
+        telegramName:
+          [
+            telegramUser.first_name,
+            telegramUser.last_name
+          ]
+            .filter(Boolean)
+            .join(" "),
+
+        telegramId:
+          telegramUser.id || ""
+
+      };
+
+
+      /* СОХРАНЯЕМ ЗАКАЗ */
+
+      const orders =
+        JSON.parse(
+          localStorage.getItem(
+            "tienMeeOrders"
+          ) || "[]"
+        );
+
+      orders.unshift(order);
+
+      localStorage.setItem(
+        "tienMeeOrders",
+        JSON.stringify(orders)
+      );
+
+
+      /* ПОКАЗЫВАЕМ ПОДТВЕРЖДЕНИЕ */
+
+      if (confirmation) {
+
+        confirmation.hidden = false;
+
+        confirmation.innerHTML = `
+
+          <h2>✅ Заказ создан</h2>
 
           <p>
-            Морские · сухопутные · private
+            Номер заказа:
+            <strong>${order.id}</strong>
           </p>
-
-        </div>
-
-        <div class="service-arrow">
-          ›
-        </div>
-
-      </button>
-
-
-      <!-- FAST TRACK -->
-
-      <button
-        class="service-card"
-        data-open="fasttrack"
-        type="button"
-      >
-
-        <div class="service-icon">
-          ✈️
-        </div>
-
-        <div class="service-content">
-
-          <h3>
-            Fast Track
-          </h3>
 
           <p>
-            Быстро пройти аэропорт
+            Направление:
+            <strong>${order.direction}</strong>
           </p>
-
-        </div>
-
-        <div class="service-arrow">
-          ›
-        </div>
-
-      </button>
-
-
-      <!-- ТРАНСФЕР -->
-
-      <button
-        class="service-card"
-        data-open="transfer"
-        type="button"
-      >
-
-        <div class="service-icon">
-          🚕
-        </div>
-
-        <div class="service-content">
-
-          <h3>
-            Трансфер
-          </h3>
 
           <p>
-            Аэропорт ↔ отель
+            Дата:
+            <strong>${order.date}</strong>
           </p>
-
-        </div>
-
-        <div class="service-arrow">
-          ›
-        </div>
-
-      </button>
-
-
-      <!-- ОБМЕН -->
-
-      <button
-        class="service-card"
-        data-open="exchange"
-        type="button"
-      >
-
-        <div class="service-icon">
-          💱
-        </div>
-
-        <div class="service-content">
-
-          <h3>
-            Обмен валюты
-          </h3>
 
           <p>
-            Удобно и безопасно
+            Рейс:
+            <strong>${order.flightNumber}</strong>
           </p>
-
-        </div>
-
-        <div class="service-arrow">
-          ›
-        </div>
-
-      </button>
-
-
-      <!-- ЗАКАЗЫ -->
-
-      <button
-        class="service-card"
-        data-open="orders"
-        type="button"
-      >
-
-        <div class="service-icon">
-          📋
-        </div>
-
-        <div class="service-content">
-
-          <h3>
-            Мои заказы
-          </h3>
 
           <p>
-            Ваши бронирования
+            Время прилёта:
+            <strong>${order.arrivalTime}</strong>
           </p>
-
-        </div>
-
-        <div class="service-arrow">
-          ›
-        </div>
-
-      </button>
-
-
-      <!-- БИЗНЕС -->
-
-      <button
-        class="service-card full"
-        data-open="business"
-        type="button"
-      >
-
-        <div class="service-icon">
-          💼
-        </div>
-
-        <div class="service-content">
-
-          <h3>
-            Консультации по бизнесу
-          </h3>
 
           <p>
-            Бизнес в Таиланде и на Пхукете
+            Пассажиры:
+            <strong>${order.people}</strong>
           </p>
-
-        </div>
-
-        <div class="service-arrow">
-          ›
-        </div>
-
-      </button>
-
-
-      <!-- МЕНЕДЖЕР -->
-
-      <button
-        class="service-card full manager"
-        data-open="manager"
-        type="button"
-      >
-
-        <div class="service-icon">
-          👩🏻‍💼
-        </div>
-
-        <div class="service-content">
-
-          <h3>
-            Алина — ваш менеджер
-          </h3>
 
           <p>
-            Помогу с вопросами и заказами
+            Чемоданы:
+            <strong>${order.suitcases}</strong>
           </p>
-
-        </div>
-
-        <div class="service-arrow">
-          ›
-        </div>
-
-      </button>
-
-    </section>
-
-
-    <footer class="footer">
-
-      <span>
-        Made with 🌴 in Phuket
-      </span>
-
-    </footer>
-
-  </main>
-
-
-
-  <!-- =========================
-       ЭКСКУРСИИ
-  ========================== -->
-
-  <section
-    id="excursions"
-    class="screen"
-  >
-
-    <div class="page">
-
-      <div class="page-header">
-
-        <button
-          class="back-button"
-          data-home
-          type="button"
-        >
-          ‹
-        </button>
-
-        <h1 class="page-title">
-          Экскурсии
-        </h1>
-
-      </div>
-
-
-      <div class="category-grid">
-
-
-        <button
-          class="category-card"
-          data-cat="sea"
-          type="button"
-        >
-
-          <span class="emoji">
-            🏝️
-          </span>
-
-          <strong>
-            Морские
-          </strong>
-
-        </button>
-
-
-        <button
-          class="category-card"
-          data-cat="land"
-          type="button"
-        >
-
-          <span class="emoji">
-            🌿
-          </span>
-
-          <strong>
-            Сухопутные
-          </strong>
-
-        </button>
-
-
-        <button
-          class="category-card"
-          data-cat="boats"
-          type="button"
-        >
-
-          <span class="emoji">
-            🛥️
-          </span>
-
-          <strong>
-            Аренда лодок
-          </strong>
-
-        </button>
-
-
-        <button
-          class="category-card"
-          data-cat="private"
-          type="button"
-        >
-
-          <span class="emoji">
-            ✨
-          </span>
-
-          <strong>
-            Приватные
-          </strong>
-
-        </button>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =========================
-       КАТЕГОРИЯ ЭКСКУРСИЙ
-  ========================== -->
-
-  <section
-    id="category"
-    class="screen"
-  >
-
-    <div class="page">
-
-      <div class="page-header">
-
-        <button
-          class="back-button"
-          data-back
-          type="button"
-        >
-          ‹
-        </button>
-
-        <h1
-          id="catTitle"
-          class="page-title"
-        >
-          Морские
-        </h1>
-
-      </div>
-
-
-      <div class="excursion-list">
-
-
-        <article class="excursion-card">
-
-          <div
-            class="excursion-photo"
-            style="
-              background:
-              linear-gradient(
-                135deg,
-                #9fbba1,
-                #dfe9d9
-              );
-            "
-          ></div>
-
-          <div class="excursion-body">
-
-            <h3>
-              Пхи-Пхи
-            </h3>
-
-            <p>
-              Один из самых красивых островных маршрутов
-              вокруг Пхукета.
-            </p>
-
-            <div class="excursion-meta">
-
-              <span class="meta-item">
-                🕐 1 день
-              </span>
-
-              <span class="meta-item">
-                🚤 Катер
-              </span>
-
-            </div>
-
-            <button
-              class="primary-button"
-              type="button"
-            >
-              Выбрать
-            </button>
-
-          </div>
-
-        </article>
-
-
-        <article class="excursion-card">
-
-          <div
-            class="excursion-photo"
-            style="
-              background:
-              linear-gradient(
-                135deg,
-                #b9c9ae,
-                #eef0df
-              );
-            "
-          ></div>
-
-          <div class="excursion-body">
-
-            <h3>
-              Симиланы
-            </h3>
-
-            <p>
-              Белый песок, бирюзовая вода
-              и острова национального парка.
-            </p>
-
-            <div class="excursion-meta">
-
-              <span class="meta-item">
-                🕐 1 день
-              </span>
-
-              <span class="meta-item">
-                🚤 Катер
-              </span>
-
-            </div>
-
-            <button
-              class="primary-button"
-              type="button"
-            >
-              Выбрать
-            </button>
-
-          </div>
-
-        </article>
-
-
-        <article class="excursion-card">
-
-          <div
-            class="excursion-photo"
-            style="
-              background:
-              linear-gradient(
-                135deg,
-                #8fb7a8,
-                #e3eadb
-              );
-            "
-          ></div>
-
-          <div class="excursion-body">
-
-            <h3>
-              Coral Island
-            </h3>
-
-            <p>
-              Тёплое море, пляж и спокойный
-              островной отдых.
-            </p>
-
-            <div class="excursion-meta">
-
-              <span class="meta-item">
-                🕐 1 день
-              </span>
-
-              <span class="meta-item">
-                🏝️ Остров
-              </span>
-
-            </div>
-
-            <button
-              class="primary-button"
-              type="button"
-            >
-              Выбрать
-            </button>
-
-          </div>
-
-        </article>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =========================
-       ОБЩИЕ ЭКРАНЫ
-  ========================== -->
-
-  <section
-    id="placeholder"
-    class="screen"
-  >
-
-    <div class="placeholder">
-
-      <button
-        class="back-button"
-        data-home
-        type="button"
-      >
-        ‹
-      </button>
-
-      <div
-        id="otherPlaceholder"
-        class="placeholder-card"
-        style="margin-top:20px;"
-      >
-
-        <h1 id="placeholderTitle">
-          Раздел
-        </h1>
-
-        <p>
-          Этот раздел скоро будет доступен.
-        </p>
-
-      </div>
-
-
-      <!-- =====================
-           ТРАНСФЕР
-      ====================== -->
-
-      <div
-        id="transferScreen"
-        class="transfer-screen"
-        style="display:none;"
-      >
-
-        <div class="transfer-header">
-
-          <h1>
-            Трансфер
-          </h1>
 
           <p>
-            Встреча в аэропорту или поездка
-            из отеля в аэропорт
+            Отель:
+            <strong>${order.hotel}</strong>
           </p>
 
-        </div>
+          <p>
+            Телефон:
+            <strong>${order.phone}</strong>
+          </p>
 
-
-        <div class="direction-switch">
-
-          <button
-            class="direction active"
-            data-direction="Аэропорт → Отель"
-            type="button"
-          >
-            ✈️ Аэропорт → Отель
-          </button>
-
-          <button
-            class="direction"
-            data-direction="Отель → Аэропорт"
-            type="button"
-          >
-            🏨 Отель → Аэропорт
-          </button>
-
-        </div>
-
-
-        <form
-          id="transferForm"
-          class="transfer-form"
-        >
-
-
-          <div class="form-group">
-
-            <label for="date">
-              Дата
-            </label>
-
-            <input
-              id="date"
-              name="date"
-              type="date"
-              required
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="flightNumber">
-              Номер рейса
-            </label>
-
-            <input
-              id="flightNumber"
-              name="flightNumber"
-              type="text"
-              placeholder="Например, SU 274"
-              autocomplete="off"
-              required
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="arrivalTime">
-              Время прилёта
-            </label>
-
-            <input
-              id="arrivalTime"
-              name="arrivalTime"
-              type="time"
-              required
-            >
-
-          </div>
-
-
-          <div class="form-row">
-
-
-            <div class="form-group">
-
-              <label for="people">
-                Пассажиры
-              </label>
-
-              <input
-                id="people"
-                name="people"
-                type="number"
-                min="1"
-                value="1"
-                required
-              >
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label for="suitcases">
-                Чемоданы
-              </label>
-
-              <input
-                id="suitcases"
-                name="suitcases"
-                type="number"
-                min="0"
-                value="1"
-                required
-              >
-
-            </div>
-
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="hotel">
-              Название отеля
-            </label>
-
-            <input
-              id="hotel"
-              name="hotel"
-              type="text"
-              placeholder="Введите название отеля"
-              autocomplete="organization"
-              required
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="phone">
-              Номер телефона
-            </label>
-
-            <input
-              id="phone"
-              name="phone"
-              type="tel"
-              placeholder="+66 ..."
-              autocomplete="tel"
-              required
-            >
-
-          </div>
-
-
-          <div class="payment-note">
-
+          <p>
+            Оплата:
             <strong>
-              💳 Оплата
+              водителю по факту
             </strong>
+          </p>
 
-            Оплата водителю по факту.
-            Стоимость трансфера сообщит менеджер
-            после подтверждения заявки.
+          ${
+            order.telegramUsername
+              ? `
+                <p>
+                  Telegram:
+                  <strong>
+                    ${order.telegramUsername}
+                  </strong>
+                </p>
+              `
+              : ""
+          }
 
-          </div>
+          <p>
+            Мы получили вашу заявку.
+            Менеджер свяжется с вами
+            для подтверждения трансфера.
+          </p>
 
+          <br>
 
           <button
+            type="button"
             class="primary-button"
-            type="submit"
+            id="newTransfer"
           >
-            Заказать трансфер
+            Создать ещё один заказ
           </button>
 
+        `;
 
-        </form>
-
-
-        <div
-          id="transferConfirmation"
-          class="transfer-confirmation"
-          hidden
-        ></div>
-
-      </div>
-
-    </div>
-
-  </section>
+      }
 
 
+      transferForm.hidden = true;
 
-</div>
+
+      /* НОВЫЙ ЗАКАЗ */
+
+      const newTransfer =
+        document.getElementById(
+          "newTransfer"
+        );
+
+      if (newTransfer) {
+
+        newTransfer.addEventListener(
+          "click",
+          () => {
+
+            transferForm.reset();
+
+            transferForm.hidden = false;
+
+            if (confirmation) {
+              confirmation.hidden = true;
+              confirmation.innerHTML = "";
+            }
+
+            document
+              .querySelectorAll(".direction")
+              .forEach(button => {
+
+                button.classList.toggle(
+                  "active",
+                  button.dataset.direction ===
+                    "Аэропорт → Отель"
+                );
+
+              });
+
+            transferDirection =
+              "Аэропорт → Отель";
+
+          }
+        );
+
+      }
 
 
-<script src="app.js"></script>
+      /* HAPTIC */
 
-</body>
-</html>
+      if (tg?.HapticFeedback) {
+
+        tg.HapticFeedback
+          .notificationOccurred(
+            "success"
+          );
+
+      }
+
+    }
+  );
+
+}
