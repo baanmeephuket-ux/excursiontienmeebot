@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#5F7658">
+<title>Tien Mee Phuket</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+
+<body>
+<div class="app">
+
+  <header class="topbar">
+    <div>
+      <small>TIEN MEE PHUKET</small>
+      <h1>Ваш Пхукет начинается здесь</h1>
+    </div>
+    <button id="lang" class="lang" type="button">EN</button>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-palm palm-left">🌴</div>
+      <div class="hero-palm palm-right">🌴</div>
+
+      <div class="hero-content">
+        <span>PHUKET • THAILAND</span>
+        <h2>Tien Mee<br><i>your way</i></h2>
+        <p>Отдыхайте, путешествуйте<br>и решайте всё в одном месте</p>
+      </div>
+    </section>
+
+    <div class="section-title">
+      <strong>Сервисы Tien Mee</strong>
+      <span>Выберите нужное</span>
+    </div>
+
+    <div class="services">
+
+      <button data-open="excursions" class="card card-large" type="button">
+        <div class="card-icon">🏝️</div>
+        <div class="card-content">
+          <b>Экскурсии</b>
+          <small>Морские • сухопутные • private</small>
+        </div>
+        <em>›</em>
+      </button>
+
+      <button data-open="fasttrack" class="card" type="button">
+        <div class="card-icon">✈️</div>
+        <div class="card-content">
+          <b>Fast Track</b>
+          <small>Быстро пройти аэропорт</small>
+        </div>
+        <em>›</em>
+      </button>
+
+      <button data-open="transfer" class="card" type="button">
+        <div class="card-icon">🚕</div>
+        <div class="card-content">
+          <b>Трансфер</b>
+          <small>Аэропорт ↔ отель</small>
+        </div>
+        <em>›</em>
+      </button>
+
+      <button data-open="exchange" class="card" type="button">
+        <div class="card-icon">💱</div>
+        <div class="card-content">
+          <b>Обмен валюты</b>
+          <small>Удобно и безопасно</small>
+        </div>
+        <em>›</em>
+      </button>
+
+      <button data-open="orders" class="card" type="button">
+        <div class="card-icon">📋</div>
+        <div class="card-content">
+          <b>Мои заказы</b>
+          <small>Ваши бронирования</small>
+        </div>
+        <em>›</em>
+      </button>
+
+      <button data-open="business" class="card card-large" type="button">
+        <div class="card-icon">💼</div>
+        <div class="card-content">
+          <b>Консультации по бизнесу и жизни в Таиланде</b>
+          <small>Бизнес в Таиланде и на Пхукете</small>
+        </div>
+        <em>›</em>
+      </button>
+
+      <button data-open="manager" class="card manager" type="button">
+        <div class="manager-photo">👩🏻</div>
+        <div class="card-content">
+          <b>Алина — ваш менеджер</b>
+          <small>Помогу с вопросами и заказами</small>
+        </div>
+        <em>›</em>
+      </button>
+
+    </div>
+
+    <footer>Made with 🌴 in Phuket</footer>
+  </main>
+
+
+  <section id="excursions" class="screen">
+    <button data-home class="back" type="button">‹ Назад</button>
+    <h2>🏝️ Экскурсии</h2>
+    <p class="sub">Выберите формат отдыха</p>
+
+    <div class="list">
+      <button data-cat="sea" type="button">
+        🌊
+        <span><b>Морские</b><small>Острова, море и снорклинг</small></span>
+        ›
+      </button>
+
+      <button data-cat="land" type="button">
+        🏔️
+        <span><b>Сухопутные</b><small>Поездки по острову и за его пределы</small></span>
+        ›
+      </button>
+
+      <button data-cat="boats" type="button">
+        🛥️
+        <span><b>Аренда лодок</b><small>Лодка под вашу компанию</small></span>
+        ›
+      </button>
+
+      <button data-cat="private" type="button">
+        ✨
+        <span><b>Приватные экскурсии</b><small>Маршрут под вас</small></span>
+        ›
+      </button>
+    </div>
+  </section>
+
+
+  <section id="category" class="screen">
+    <button data-back class="back" type="button">‹ Назад</button>
+    <h2 id="catTitle"></h2>
+    <div class="empty">
+      📸
+      <b>Каталог готовим</b>
+      <span>Следующим этапом добавим реальные фото, описания, цены и бронирование.</span>
+    </div>
+  </section>
+
+
+  <section id="placeholder" class="screen">
+    <button data-home class="back" type="button">‹ Назад</button>
+
+    <!-- ТРАНСФЕР -->
+    <div id="transferScreen" class="service-screen">
+
+      <h2>🚕 Трансфер</h2>
+      <p class="sub">Аэропорт ↔ отель — спокойно и без лишних забот.</p>
+
+      <div class="info">
+        <b>Ваш трансфер</b>
+        <span>Заполните данные поездки. После подтверждения заявка поступит менеджеру.</span>
+      </div>
+
+      <form id="transferForm">
+
+        <label>Направление</label>
+
+        <div class="directions">
+          <button type="button" class="direction active" data-direction="Аэропорт → Отель">
+            ✈️ Аэропорт → Отель
+          </button>
+          <button type="button" class="direction" data-direction="Отель → Аэропорт">
+            🏨 Отель → Аэропорт
+          </button>
+        </div>
+
+        <label for="transferDate">Дата поездки</label>
+        <input id="transferDate" name="date" type="date" required>
+
+        <label for="flightNumber">Номер рейса</label>
+        <input id="flightNumber" name="flightNumber" type="text" placeholder="Например, SU123" required>
+
+        <label for="arrivalTime">Время прилёта</label>
+        <input id="arrivalTime" name="arrivalTime" type="time" required>
+
+        <div class="two">
+          <div>
+            <label for="people">Количество человек</label>
+            <input id="people" name="people" type="number" min="1" max="50" value="1" required>
+          </div>
+          <div>
+            <label for="suitcases">Чемоданы</label>
+            <input id="suitcases" name="suitcases" type="number" min="0" max="50" value="0" required>
+          </div>
+        </div>
+
+        <label for="hotel">Название отеля</label>
+        <input id="hotel" name="hotel" type="text" placeholder="Название отеля" required>
+
+        <label for="phone">Номер для связи</label>
+        <input id="phone" name="phone" type="tel" placeholder="+66..." required>
+
+        <div class="payment">
+          <b>💳 Оплата</b>
+          <span>Стоимость будет добавлена позже.</span>
+          <strong>Оплата производится водителю по факту поездки.</strong>
+        </div>
+
+        <button class="submit" type="submit">Подтвердить заказ</button>
+      </form>
+
+      <div id="transferConfirmation" class="confirmation" hidden></div>
+    </div>
+
+
+    <!-- КОНСУЛЬТАЦИЯ -->
+    <div id="businessConsultation" class="service-screen" hidden>
+
+      <h2>💼 Консультация по Таиланду</h2>
+      <p class="sub">Бизнес и жизнь в Таиланде</p>
+
+      <div class="info">
+        <b>Что обсудим</b>
+        <span>
+          Разберём вашу ситуацию и конкретные вопросы:
+          какую компанию лучше открыть и есть ли в этом смысл,
+          варианты ведения бизнеса, документы, банки,
+          жильё, переезд и другие практические вопросы.
+        </span>
+      </div>
+
+      <div class="payment">
+        <b>💳 Стоимость консультации</b>
+        <strong>10 000 ₽</strong>
+      </div>
+
+      <form id="businessForm">
+
+        <label for="businessDate">📅 Дата консультации</label>
+        <input id="businessDate" name="date" type="date" required>
+
+        <label for="businessTime">🕐 Удобное время</label>
+        <input id="businessTime" name="time" type="time" required>
+
+        <label for="businessPhone">📱 Номер для связи</label>
+        <input id="businessPhone" name="phone" type="tel" placeholder="+66..." required>
+
+        <label for="businessQuestion">💬 Что хотите обсудить?</label>
+        <textarea id="businessQuestion" name="question" rows="4" placeholder="Кратко опишите ваш вопрос"></textarea>
+
+        <button class="submit" type="submit">Перейти к оплате · 10 000 ₽</button>
+      </form>
+
+      <div id="businessConfirmation" class="confirmation" hidden></div>
+    </div>
+
+
+    <!-- ЗАГЛУШКА -->
+    <div id="placeholderDefault" class="service-screen" hidden>
+      <h2 id="placeholderTitle"></h2>
+
+      <div class="empty">
+        🚧
+        <b>Раздел создаём</b>
+        <span>Каркас готов. Наполнение подключим следующим этапом.</span>
+      </div>
+    </div>
+
+  </section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
