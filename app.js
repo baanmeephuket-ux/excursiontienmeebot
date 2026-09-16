@@ -5,28 +5,20 @@ if (tg) {
   tg.expand();
 }
 
-
-/* =========================
-   ОСНОВНЫЕ ЭКРАНЫ
-========================= */
-
 const home = document.getElementById("home");
 const screens = document.querySelectorAll(".screen");
 
-function show(id) {
-  if (home) {
-    home.style.display = id === "home" ? "block" : "none";
-  }
+const transferScreen =
+  document.getElementById("transferScreen");
 
-  screens.forEach(screen => {
-    screen.classList.toggle(
-      "active",
-      screen.id === id
-    );
-  });
+const businessConsultation =
+  document.getElementById("businessConsultation");
 
-  window.scrollTo(0, 0);
-}
+const placeholderDefault =
+  document.getElementById("placeholderDefault");
+
+const placeholderTitle =
+  document.getElementById("placeholderTitle");
 
 
 /* =========================
@@ -36,10 +28,54 @@ function show(id) {
 const titles = {
   fasttrack: "Fast Track",
   exchange: "Обмен валюты",
-  business: "Консультации по бизнесу",
   orders: "Мои заказы",
   manager: "Связь с менеджером"
 };
+
+
+/* =========================
+   ПОКАЗ ЭКРАНА
+========================= */
+
+function show(id) {
+
+  if (home) {
+    home.style.display =
+      id === "home" ? "block" : "none";
+  }
+
+  screens.forEach(screen => {
+
+    screen.classList.toggle(
+      "active",
+      screen.id === id
+    );
+
+  });
+
+  window.scrollTo(0, 0);
+}
+
+
+/* =========================
+   СБРОС ВНУТРЕННИХ ЭКРАНОВ
+========================= */
+
+function resetPlaceholder() {
+
+  if (transferScreen) {
+    transferScreen.hidden = true;
+  }
+
+  if (businessConsultation) {
+    businessConsultation.hidden = true;
+  }
+
+  if (placeholderDefault) {
+    placeholderDefault.hidden = true;
+  }
+
+}
 
 
 /* =========================
@@ -55,72 +91,43 @@ document
       const section =
         button.dataset.open;
 
-if (section === "business") {
 
-  const transferScreen =
-    document.getElementById("transferScreen");
-
-  const businessConsultation =
-    document.getElementById("businessConsultation");
-
-  const placeholderDefault =
-    document.getElementById("placeholderDefault");
-
-  if (transferScreen) {
-    transferScreen.style.display = "none";
-  }
-
-  if (placeholderDefault) {
-    placeholderDefault.style.display = "none";
-  }
-
-  if (businessConsultation) {
-    businessConsultation.style.display = "block";
-  }
-
-  show("placeholder");
-
-  return;
-}
       /* ЭКСКУРСИИ */
 
       if (section === "excursions") {
+
+        resetPlaceholder();
+
         show("excursions");
+
         return;
       }
-      if (section === "business") {
-       document.getElementById("transferScreen").style.display = "none";
-       document.getElementById("placeholderTitle").textContent = "";
 
-       document.getElementById("placeholderDefault").style.display = "none";
-       document.getElementById("businessConsultation").style.display = "block";
-
-  show("placeholder");
-  return;
-}
 
       /* ТРАНСФЕР */
 
       if (section === "transfer") {
 
-        const transferScreen =
-          document.getElementById(
-            "transferScreen"
-          );
-
-        const otherPlaceholder =
-          document.getElementById(
-            "otherPlaceholder"
-          );
+        resetPlaceholder();
 
         if (transferScreen) {
-          transferScreen.style.display =
-            "block";
+          transferScreen.hidden = false;
         }
 
-        if (otherPlaceholder) {
-          otherPlaceholder.style.display =
-            "none";
+        show("placeholder");
+
+        return;
+      }
+
+
+      /* КОНСУЛЬТАЦИЯ */
+
+      if (section === "business") {
+
+        resetPlaceholder();
+
+        if (businessConsultation) {
+          businessConsultation.hidden = false;
         }
 
         show("placeholder");
@@ -131,34 +138,17 @@ if (section === "business") {
 
       /* ОСТАЛЬНЫЕ РАЗДЕЛЫ */
 
-      const transferScreen =
-        document.getElementById(
-          "transferScreen"
-        );
-
-      const otherPlaceholder =
-        document.getElementById(
-          "otherPlaceholder"
-        );
-
-      if (transferScreen) {
-        transferScreen.style.display =
-          "none";
-      }
-
-      if (otherPlaceholder) {
-        otherPlaceholder.style.display =
-          "block";
-      }
-
-      const placeholderTitle =
-        document.getElementById(
-          "placeholderTitle"
-        );
+      resetPlaceholder();
 
       if (placeholderTitle) {
+
         placeholderTitle.textContent =
           titles[section] || section;
+
+      }
+
+      if (placeholderDefault) {
+        placeholderDefault.hidden = false;
       }
 
       show("placeholder");
@@ -178,7 +168,13 @@ document
 
     button.addEventListener(
       "click",
-      () => show("home")
+      () => {
+
+        resetPlaceholder();
+
+        show("home");
+
+      }
     );
 
   });
@@ -202,15 +198,44 @@ if (backButton) {
 
 
 /* =========================
+   ЯЗЫК
+========================= */
+
+const langButton =
+  document.getElementById("lang");
+
+if (langButton) {
+
+  langButton.addEventListener(
+    "click",
+    () => {
+
+      alert(
+        "English version подключим после утверждения структуры."
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================
    ЭКСКУРСИИ
 ========================= */
 
 const names = {
+
   sea: "Морские",
+
   land: "Сухопутные",
+
   boats: "Аренда лодок",
+
   private: "Приватные экскурсии"
+
 };
+
 
 document
   .querySelectorAll("[data-cat]")
@@ -226,9 +251,12 @@ document
           );
 
         if (catTitle) {
+
           catTitle.textContent =
-            names[button.dataset.cat] ||
-            "Экскурсии";
+            names[
+              button.dataset.cat
+            ] || "Экскурсии";
+
         }
 
         show("category");
@@ -237,28 +265,6 @@ document
     );
 
   });
-
-
-/* =========================
-   ЯЗЫК
-   НЕ ЛОМАЕМ ПРИ ОТСУТСТВИИ КНОПКИ
-========================= */
-
-const langButton =
-  document.getElementById("lang");
-
-if (langButton) {
-
-  langButton.addEventListener(
-    "click",
-    () => {
-      alert(
-        "English version подключим после утверждения структуры."
-      );
-    }
-  );
-
-}
 
 
 /* =========================
@@ -280,7 +286,11 @@ document
         document
           .querySelectorAll(".direction")
           .forEach(item => {
-            item.classList.remove("active");
+
+            item.classList.remove(
+              "active"
+            );
+
           });
 
         button.classList.add("active");
@@ -303,7 +313,7 @@ const transferForm =
     "transferForm"
   );
 
-const confirmation =
+const transferConfirmation =
   document.getElementById(
     "transferConfirmation"
   );
@@ -319,7 +329,9 @@ if (transferForm) {
 
 
       const form =
-        new FormData(transferForm);
+        new FormData(
+          transferForm
+        );
 
 
       const telegramUser =
@@ -328,7 +340,8 @@ if (transferForm) {
 
       const order = {
 
-        type: "transfer",
+        type:
+          "transfer",
 
         id:
           "TR-" +
@@ -346,10 +359,14 @@ if (transferForm) {
           form.get("date"),
 
         flightNumber:
-          form.get("flightNumber"),
+          form.get(
+            "flightNumber"
+          ),
 
         arrivalTime:
-          form.get("arrivalTime"),
+          form.get(
+            "arrivalTime"
+          ),
 
         people:
           Number(
@@ -399,7 +416,9 @@ if (transferForm) {
           ) || "[]"
         );
 
+
       orders.unshift(order);
+
 
       localStorage.setItem(
         "tienMeeOrders",
@@ -407,80 +426,66 @@ if (transferForm) {
       );
 
 
-      /* ПОКАЗЫВАЕМ ПОДТВЕРЖДЕНИЕ */
+      /* ПОДТВЕРЖДЕНИЕ */
 
-      if (confirmation) {
+      if (transferConfirmation) {
 
-        confirmation.hidden = false;
+        transferConfirmation.hidden =
+          false;
 
-        confirmation.innerHTML = `
+        transferConfirmation.innerHTML = `
 
-          <h2>✅ Заказ создан</h2>
+          <h3>✅ Заказ создан</h3>
 
           <p>
-            Номер заказа:
-            <strong>${order.id}</strong>
+            <b>Номер:</b>
+            ${order.id}
           </p>
 
           <p>
-            Направление:
-            <strong>${order.direction}</strong>
+            <b>Направление:</b>
+            ${order.direction}
           </p>
 
           <p>
-            Дата:
-            <strong>${order.date}</strong>
+            <b>Дата:</b>
+            ${order.date}
           </p>
 
           <p>
-            Рейс:
-            <strong>${order.flightNumber}</strong>
+            <b>Рейс:</b>
+            ${order.flightNumber}
           </p>
 
           <p>
-            Время прилёта:
-            <strong>${order.arrivalTime}</strong>
+            <b>Время:</b>
+            ${order.arrivalTime}
           </p>
 
           <p>
-            Пассажиры:
-            <strong>${order.people}</strong>
+            <b>Пассажиры:</b>
+            ${order.people}
           </p>
 
           <p>
-            Чемоданы:
-            <strong>${order.suitcases}</strong>
+            <b>Чемоданы:</b>
+            ${order.suitcases}
           </p>
 
           <p>
-            Отель:
-            <strong>${order.hotel}</strong>
+            <b>Отель:</b>
+            ${order.hotel}
           </p>
 
           <p>
-            Телефон:
-            <strong>${order.phone}</strong>
+            <b>Телефон:</b>
+            ${order.phone}
           </p>
 
           <p>
-            Оплата:
-            <strong>
-              водителю по факту
-            </strong>
+            <b>Оплата:</b>
+            водитель по факту
           </p>
-
-          ${
-            order.telegramUsername
-              ? `
-                <p>
-                  Telegram:
-                  <strong>
-                    ${order.telegramUsername}
-                  </strong>
-                </p>
-              `
-              : ""
-          }
 
           <p>
             Мы получили вашу заявку.
@@ -488,11 +493,8 @@ if (transferForm) {
             для подтверждения трансфера.
           </p>
 
-          <br>
-
           <button
             type="button"
-            class="primary-button"
             id="newTransfer"
           >
             Создать ещё один заказ
@@ -513,6 +515,7 @@ if (transferForm) {
           "newTransfer"
         );
 
+
       if (newTransfer) {
 
         newTransfer.addEventListener(
@@ -521,15 +524,25 @@ if (transferForm) {
 
             transferForm.reset();
 
-            transferForm.hidden = false;
+            transferForm.hidden =
+              false;
 
-            if (confirmation) {
-              confirmation.hidden = true;
-              confirmation.innerHTML = "";
+
+            if (transferConfirmation) {
+
+              transferConfirmation.hidden =
+                true;
+
+              transferConfirmation.innerHTML =
+                "";
+
             }
 
+
             document
-              .querySelectorAll(".direction")
+              .querySelectorAll(
+                ".direction"
+              )
               .forEach(button => {
 
                 button.classList.toggle(
@@ -540,6 +553,7 @@ if (transferForm) {
 
               });
 
+
             transferDirection =
               "Аэропорт → Отель";
 
@@ -549,7 +563,184 @@ if (transferForm) {
       }
 
 
-      /* HAPTIC */
+      if (tg?.HapticFeedback) {
+
+        tg.HapticFeedback
+          .notificationOccurred(
+            "success"
+          );
+
+      }
+
+    }
+  );
+
+}
+
+
+/* =========================
+   КОНСУЛЬТАЦИЯ
+========================= */
+
+const businessForm =
+  document.getElementById(
+    "businessForm"
+  );
+
+const businessConfirmation =
+  document.getElementById(
+    "businessConfirmation"
+  );
+
+
+if (businessForm) {
+
+  businessForm.addEventListener(
+    "submit",
+    event => {
+
+      event.preventDefault();
+
+
+      const form =
+        new FormData(
+          businessForm
+        );
+
+
+      const telegramUser =
+        tg?.initDataUnsafe?.user || {};
+
+
+      const order = {
+
+        type:
+          "business_consultation",
+
+        id:
+          "BC-" +
+          Date.now()
+            .toString()
+            .slice(-8),
+
+        status:
+          "Ожидает оплаты",
+
+        date:
+          form.get("date"),
+
+        time:
+          form.get("time"),
+
+        phone:
+          form.get("phone"),
+
+        question:
+          form.get("question") || "",
+
+        telegramUsername:
+          telegramUser.username
+            ? "@" +
+              telegramUser.username
+            : "",
+
+        telegramName:
+          [
+            telegramUser.first_name,
+            telegramUser.last_name
+          ]
+            .filter(Boolean)
+            .join(" "),
+
+        telegramId:
+          telegramUser.id || "",
+
+        price:
+          "10 000 ₽"
+
+      };
+
+
+      /* СОХРАНЯЕМ ЗАКАЗ */
+
+      const orders =
+        JSON.parse(
+          localStorage.getItem(
+            "tienMeeOrders"
+          ) || "[]"
+        );
+
+
+      orders.unshift(order);
+
+
+      localStorage.setItem(
+        "tienMeeOrders",
+        JSON.stringify(orders)
+      );
+
+
+      /*
+        Сейчас здесь только
+        подготовка заявки.
+
+        Реальную оплату подключим
+        следующим этапом.
+      */
+
+
+      businessForm.hidden =
+        true;
+
+
+      if (businessConfirmation) {
+
+        businessConfirmation.hidden =
+          false;
+
+        businessConfirmation.innerHTML = `
+
+          <h3>📅 Заявка сохранена</h3>
+
+          <p>
+            <b>Номер заявки:</b>
+            ${order.id}
+          </p>
+
+          <p>
+            <b>Дата:</b>
+            ${order.date}
+          </p>
+
+          <p>
+            <b>Время:</b>
+            ${order.time}
+          </p>
+
+          <p>
+            <b>Стоимость:</b>
+            10 000 ₽
+          </p>
+
+          <p>
+            Следующий шаг —
+            оплата консультации.
+          </p>
+
+          <p>
+            <b>Контакты после оплаты:</b>
+            <br>
+            Telegram:
+            @Spravkathailand
+            <br>
+            WhatsApp:
+            +66 61 727 6406
+          </p>
+
+        `;
+
+      }
+
 
       if (tg?.HapticFeedback) {
 
