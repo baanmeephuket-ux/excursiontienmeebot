@@ -55,7 +55,33 @@ document
       const section =
         button.dataset.open;
 
+if (section === "business") {
 
+  const transferScreen =
+    document.getElementById("transferScreen");
+
+  const businessConsultation =
+    document.getElementById("businessConsultation");
+
+  const placeholderDefault =
+    document.getElementById("placeholderDefault");
+
+  if (transferScreen) {
+    transferScreen.style.display = "none";
+  }
+
+  if (placeholderDefault) {
+    placeholderDefault.style.display = "none";
+  }
+
+  if (businessConsultation) {
+    businessConsultation.style.display = "block";
+  }
+
+  show("placeholder");
+
+  return;
+}
       /* ЭКСКУРСИИ */
 
       if (section === "excursions") {
