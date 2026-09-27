@@ -92,11 +92,73 @@
 </section>
 
 <!-- FAST TRACK -->
+<!-- FAST TRACK -->
 <section id="fasttrack" class="screen">
   <button data-home class="back" type="button">‹ Назад</button>
-  <div class="section-cover cover-fasttrack"><div><b>✈️ Fast Track</b><span>Быстрее пройти аэропорт</span></div></div>
-  <p class="sub">Встреча в аэропорту и сопровождение через Fast Track. Оставьте заявку — менеджер свяжется с вами.</p>
-  <button class="submit" type="button" data-contact-request="fasttrack">Оставить заявку</button>
+
+  <div class="section-cover cover-fasttrack">
+    <div>
+      <b>✈️ Fast Track</b>
+      <span>Быстрее пройти аэропорт</span>
+    </div>
+  </div>
+
+  <p class="sub">
+    Встреча в аэропорту и сопровождение через Fast Track.
+  </p>
+
+  <div class="info">
+    <b>✈️ Как оформить</b>
+    <span>
+      Стоимость — от 1 500 THB.<br>
+      Сложные случаи рассматриваются отдельно.<br><br>
+      Оставьте заявку, указав день,время прилёта и количество человек.
+      Подготовьте паспорта всех пассажиров — они понадобятся менеджеру для проверки возможности оформления.
+      После получения заявки менеджер свяжется с вами и подтвердит стоимость.
+    </span>
+  </div>
+
+  <div class="payment">
+    <b>💳 Оплата</b>
+    <span>Возможна в батах, рублях или USDT.</span>
+  </div>
+
+  <form id="fastTrackForm">
+
+    <label for="fastTrackDate">📅 День прилёта</label>
+    <input
+      id="fastTrackDate"
+      name="date"
+      type="date"
+      required
+    >
+
+    <label for="fastTrackTime">🕐 Время прилёта</label>
+    <input
+      id="fastTrackTime"
+      name="time"
+      type="time"
+      required
+    >
+
+    <label for="fastTrackPeople">👥 Количество человек</label>
+    <input
+      id="fastTrackPeople"
+      name="people"
+      type="number"
+      min="1"
+      max="50"
+      value="1"
+      required
+    >
+
+    <button class="submit" type="submit">
+      📋 Оставить заявку
+    </button>
+
+  </form>
+
+  <div id="fastTrackConfirmation" class="confirmation" hidden></div>
 </section>
 
 <!-- ТРАНСФЕР -->
