@@ -87,13 +87,26 @@ document.querySelectorAll('.direction').forEach(btn => btn.addEventListener('cli
   btn.classList.add('active'); transferDirection = btn.dataset.direction;
 }));
 const transferForm = document.getElementById('transferForm');
-if (transferForm) transferForm.addEventListener('submit', e => {
+if (transferForm) transferForm.addEventListener('submit', async e=>{
   e.preventDefault(); const f = new FormData(transferForm); const order = {
     type:'transfer', id:makeId('TR'), status:'Новая заявка', direction:transferDirection,
     date:f.get('date'), flightNumber:f.get('flightNumber'), arrivalTime:f.get('arrivalTime'),
     people:Number(f.get('people')), suitcases:Number(f.get('suitcases')), hotel:f.get('hotel'), phone:f.get('phone'),
     payment:'Способ оплаты подтвердит менеджер', ...telegramData()
-  }; saveOrder(order); transferForm.hidden=true;
+  }; 
+  const order = {
+  type:'transfer', id:makeId('TR'), status:'Новая заявка', direction:transferDirection,
+  date:f.get('date'), flightNumber:f.get('flightNumber'), arrivalTime:f.get('arrivalTime'),
+  people:Number(f.get('people')), suitcases:Number(f.get('suitcases')), hotel:f.get('hotel'), phone:f.get('phone'),
+  payment:'Способ оплаты подтвердит менеджер', ...telegramData()
+};
+
+const sent = await sendOrder(order);
+
+if (!sent) return;
+
+saveOrder(order);
+transferForm.hidden=true;
   document.getElementById('transferConfirmation').hidden=false;
   document.getElementById('transferConfirmation').innerHTML=`<h3>✅ Заявка отправлена</h3><p><b>Номер:</b> ${order.id}</p><p><b>Направление:</b> ${order.direction}</p><p><b>Дата:</b> ${order.date}</p><p><b>Рейс:</b> ${order.flightNumber}</p><p><b>Время:</b> ${order.arrivalTime}</p><p><b>Пассажиры:</b> ${order.people}</p><p><b>Чемоданы:</b> ${order.suitcases}</p><p><b>Отель:</b> ${order.hotel}</p><p><b>Оплата:</b> способ оплаты будет подтверждён менеджером.</p><p>Менеджер проверит возможность трансфера, подтвердит стоимость и сообщит вам способ оплаты.</p><button type="button" id="newTransfer">Создать ещё одну заявку</button>`;
   document.getElementById('newTransfer').onclick=()=>{ transferForm.reset(); transferForm.hidden=false; document.getElementById('transferConfirmation').hidden=true; document.querySelectorAll('.direction').forEach(x=>x.classList.toggle('active',x.dataset.direction==='Аэропорт → Отель')); transferDirection='Аэропорт → Отель'; };
@@ -105,7 +118,7 @@ let delivery = 'Аэропорт';
 document.querySelectorAll('.choice').forEach(btn => btn.addEventListener('click',()=>{document.querySelectorAll('.choice').forEach(x=>x.classList.remove('active'));btn.classList.add('active');delivery=btn.dataset.delivery;}));
 const carForm=document.getElementById('carForm');
 if(carForm) carForm.addEventListener('submit',e=>{
-  e.preventDefault(); const f=new FormData(carForm); const order={type:'car_rental',id:makeId('CAR'),status:'Новая заявка',startDate:f.get('startDate'),endDate:f.get('endDate'),delivery,location:f.get('location'),carType:f.get('carType'),people:Number(f.get('people')),phone:f.get('phone'),comment:f.get('comment')||'',...telegramData()}; saveOrder(order); carForm.hidden=true;
+  e.preventDefault(); const f=new FormData(carForm); const order={type:'car',id:makeId('CAR'),status:'Новая заявка',startDate:f.get('startDate'),endDate:f.get('endDate'),delivery,location:f.get('location'),carType:f.get('carType'),people:Number(f.get('people')),phone:f.get('phone'),comment:f.get('comment')||'',...telegramData()}; saveOrder(order); carForm.hidden=true;
   const box=document.getElementById('carConfirmation'); box.hidden=false; box.innerHTML=`<h3>✅ Заявка отправлена</h3><p><b>Номер:</b> ${order.id}</p><p>Мы проверим наличие автомобилей и свяжемся с вами с подходящими вариантами.</p><button type="button" id="newCar">Создать ещё одну заявку</button>`;
   document.getElementById('newCar').onclick=()=>{carForm.reset();carForm.hidden=false;box.hidden=true;}; feedback();
 });
