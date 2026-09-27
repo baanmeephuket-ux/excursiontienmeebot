@@ -94,12 +94,6 @@ if (transferForm) transferForm.addEventListener('submit', async e=>{
     people:Number(f.get('people')), suitcases:Number(f.get('suitcases')), hotel:f.get('hotel'), phone:f.get('phone'),
     payment:'Способ оплаты подтвердит менеджер', ...telegramData()
   }; 
-  const order = {
-  type:'transfer', id:makeId('TR'), status:'Новая заявка', direction:transferDirection,
-  date:f.get('date'), flightNumber:f.get('flightNumber'), arrivalTime:f.get('arrivalTime'),
-  people:Number(f.get('people')), suitcases:Number(f.get('suitcases')), hotel:f.get('hotel'), phone:f.get('phone'),
-  payment:'Способ оплаты подтвердит менеджер', ...telegramData()
-};
 
 const sent = await sendOrder(order);
 
