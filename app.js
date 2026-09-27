@@ -111,8 +111,32 @@ transferForm.hidden=true;
 let delivery = 'Аэропорт';
 document.querySelectorAll('.choice').forEach(btn => btn.addEventListener('click',()=>{document.querySelectorAll('.choice').forEach(x=>x.classList.remove('active'));btn.classList.add('active');delivery=btn.dataset.delivery;}));
 const carForm=document.getElementById('carForm');
-if(carForm) carForm.addEventListener('submit',e=>{
-  e.preventDefault(); const f=new FormData(carForm); const order={type:'car',id:makeId('CAR'),status:'Новая заявка',startDate:f.get('startDate'),endDate:f.get('endDate'),delivery,location:f.get('location'),carType:f.get('carType'),people:Number(f.get('people')),phone:f.get('phone'),comment:f.get('comment')||'',...telegramData()}; saveOrder(order); carForm.hidden=true;
+if(carForm) carForm.addEventListener('submit',async e=>{
+  e.preventDefault();
+
+const f=new FormData(carForm);
+
+const order={
+  type:'car',
+  id:makeId('CAR'),
+  status:'Новая заявка',
+  startDate:f.get('startDate'),
+  endDate:f.get('endDate'),
+  delivery,
+  location:f.get('location'),
+  carType:f.get('carType'),
+  people:Number(f.get('people')),
+  phone:f.get('phone'),
+  comment:f.get('comment')||'',
+  ...telegramData()
+};
+
+const sent=await sendOrder(order);
+
+if(!sent)return;
+
+saveOrder(order);
+carForm.hidden=true;
   const box=document.getElementById('carConfirmation'); box.hidden=false; box.innerHTML=`<h3>✅ Заявка отправлена</h3><p><b>Номер:</b> ${order.id}</p><p>Мы проверим наличие автомобилей и свяжемся с вами с подходящими вариантами.</p><button type="button" id="newCar">Создать ещё одну заявку</button>`;
   document.getElementById('newCar').onclick=()=>{carForm.reset();carForm.hidden=false;box.hidden=true;}; feedback();
 });
