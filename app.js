@@ -143,10 +143,50 @@ carForm.hidden=true;
 
 // Недвижимость
 const realEstateForm=document.getElementById('realEstateForm');
-if(realEstateForm) realEstateForm.addEventListener('submit',e=>{
-  e.preventDefault(); const f=new FormData(realEstateForm); const order={type:'real_estate_purchase',id:makeId('RE'),status:'Новая заявка',budget:f.get('budget'),propertyType:f.get('propertyType'),bedrooms:f.get('bedrooms'),purpose:f.get('purpose'),statusOnPhuket:f.get('status'),arrivalDate:f.get('arrivalDate')||'',phone:f.get('phone'),...telegramData()}; saveOrder(order); realEstateForm.hidden=true;
-  const box=document.getElementById('realEstateConfirmation'); box.hidden=false; box.innerHTML=`<h3>✅ Заявка отправлена</h3><p><b>Номер:</b> ${order.id}</p><p>Мы получили ваш запрос. Менеджер свяжется с вами и подберёт подходящие варианты.</p><button type="button" id="newRE">Создать ещё одну заявку</button>`;
-  document.getElementById('newRE').onclick=()=>{realEstateForm.reset();realEstateForm.hidden=false;box.hidden=true;}; feedback();
+
+if(realEstateForm) realEstateForm.addEventListener('submit',async e=>{
+  e.preventDefault();
+
+  const f=new FormData(realEstateForm);
+
+  const order={
+    type:'property',
+    id:makeId('RE'),
+    status:'Новая заявка',
+    budget:f.get('budget'),
+    propertyType:f.get('propertyType'),
+    bedrooms:f.get('bedrooms'),
+    purpose:f.get('purpose'),
+    statusOnPhuket:f.get('status'),
+    arrivalDate:f.get('arrivalDate')||'',
+    phone:f.get('phone'),
+    ...telegramData()
+  };
+
+  const sent=await sendOrder(order);
+
+  if(!sent)return;
+
+  saveOrder(order);
+  realEstateForm.hidden=true;
+
+  const box=document.getElementById('realEstateConfirmation');
+  box.hidden=false;
+
+  box.innerHTML=`
+    <h3>✅ Заявка отправлена</h3>
+    <p><b>Номер:</b> ${order.id}</p>
+    <p>Мы получили ваш запрос. Менеджер свяжется с вами и подберёт подходящие варианты.</p>
+    <button type="button" id="newRE">Создать ещё одну заявку</button>
+  `;
+
+  document.getElementById('newRE').onclick=()=>{
+    realEstateForm.reset();
+    realEstateForm.hidden=false;
+    box.hidden=true;
+  };
+
+  feedback();
 });
 
 // Консультация
