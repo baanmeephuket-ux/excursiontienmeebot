@@ -1,5 +1,37 @@
 const tg = window.Telegram?.WebApp;
-if (tg) { tg.ready(); tg.expand(); }
+const API_URL = "https://worker-production-07b7a.up.railway.app/api/order";
+
+async function sendOrder(order) {
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        ...order,
+        initData: tg?.initData || ""
+      })
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.ok) {
+      throw new Error(result.error || "Ошибка отправки");
+    }
+
+    return true;
+
+  } catch (error) {
+    console.error("Ошибка отправки заявки:", error);
+    alert("Не удалось отправить заявку. Попробуйте ещё раз.");
+    return false;
+  }
+}
+if (tg) {
+  tg.ready();
+  tg.expand();
+}
 
 const home = document.getElementById('home');
 const screens = document.querySelectorAll('.screen');
