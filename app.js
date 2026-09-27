@@ -196,12 +196,60 @@ if(businessForm) businessForm.addEventListener('submit',e=>{
   const box=document.getElementById('businessConfirmation'); box.hidden=false; box.innerHTML=`<h3>📅 Заявка сохранена</h3><p><b>Номер:</b> ${order.id}</p><p><b>Дата:</b> ${order.date}</p><p><b>Время:</b> ${order.time}</p><p><b>Стоимость:</b> 10 000 ₽</p><p>Следующий шаг — оплата консультации. После успешной оплаты вы получите контакты.</p><p><b>Telegram:</b> @Spravkathailand<br><b>WhatsApp:</b> +66 61 727 6406</p>`; feedback();
 });
 
-// Быстрые заявки
-function simpleRequest(type,label){
-  const order={type,id:makeId(type==='fasttrack'?'FT':'EX'),status:'Новая заявка',service:label,...telegramData()}; saveOrder(order);
-  alert('✅ Заявка отправлена. Менеджер свяжется с вами для уточнения деталей.'); feedback();
-}
-document.querySelectorAll('[data-contact-request]').forEach(btn=>btn.addEventListener('click',()=>simpleRequest(btn.dataset.contactRequest,btn.dataset.contactRequest==='fasttrack'?'Fast Track':'Обмен валюты')));
+// FAST TRACK
+const fastTrackForm = document.getElementById('fastTrackForm');
+
+if (fastTrackForm) fastTrackForm.addEventListener('submit', async e => {
+  e.preventDefault();
+
+  const f = new FormData(fastTrackForm);
+
+  const order = {
+    type: 'fasttrack',
+    id: makeId('FT'),
+    status: 'Новая заявка',
+    service: 'Fast Track',
+    date: f.get('date'),
+    time: f.get('time'),
+    people: Number(f.get('people')),
+    price: 'от 1 500 THB',
+    payment: 'Баты / Рубли / USDT',
+    passportRequired: 'Паспорта всех пассажиров',
+    ...telegramData()
+  };
+
+  const sent = await sendOrder(order);
+
+  if (!sent) return;
+
+  saveOrder(order);
+
+  fastTrackForm.hidden = true;
+
+  const box = document.getElementById('fastTrackConfirmation');
+  box.hidden = false;
+
+  box.innerHTML = `
+    <h3>✅ Заявка отправлена</h3>
+    <p><b>Номер:</b> ${order.id}</p>
+    <p><b>Дата прилёта:</b> ${order.date}</p>
+    <p><b>Время:</b> ${order.time}</p>
+    <p><b>Количество человек:</b> ${order.people}</p>
+    <p>Подготовьте паспорта всех пассажиров. Менеджер проверит возможность оформления и свяжется с вами.</p>
+    <button type="button" id="newFastTrack">
+      Создать ещё одну заявку
+    </button>
+  `;
+
+  document.getElementById('newFastTrack').onclick = () => {
+    fastTrackForm.reset();
+    fastTrackForm.hidden = false;
+    box.hidden = true;
+  };
+
+  feedback();
+});
+ectorAll('[data-contact-request]').forEach(btn=>btn.addEventListener('click',()=>simpleRequest(btn.dataset.contactRequest,btn.dataset.contactRequest==='fasttrack'?'Fast Track':'Обмен валюты')));
 
 // Мои заказы
 function renderOrders(){
