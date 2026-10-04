@@ -95,3 +95,21 @@ form{display:flex;flex-direction:column;gap:8px}form label{display:block;color:v
   .hero.hero-brand { min-height: 190px; }
   .photo-excursions { background-position: 63% center !important; }
 }
+
+
+/* Tien Mee — управление кадрированием фотографий.
+   Меняй проценты в background-position, не размеры карточек. */
+.photo-fasttrack { background-position: 58% center !important; }
+.photo-transfer  { background-position: 62% center !important; }
+.photo-cars      { background-position: 58% center !important; }
+
+.cover-fasttrack { background-position: 58% center !important; }
+.cover-transfer  { background-position: 62% center !important; }
+.cover-cars      { background-position: 58% center !important; }
+
+/* На узком экране сохраняем отдельное кадрирование карточки экскурсий. */
+@media (max-width: 430px) {
+  .photo-fasttrack { background-position: 60% center !important; }
+  .photo-transfer  { background-position: 64% center !important; }
+  .photo-cars      { background-position: 60% center !important; }
+}
