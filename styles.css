@@ -44,3 +44,54 @@ form{display:flex;flex-direction:column;gap:8px}form label{display:block;color:v
 .orders-list{display:flex;flex-direction:column;gap:10px}.order-card{position:relative;background:var(--cream);border:1px solid var(--line);border-radius:18px;padding:16px 70px 16px 16px;min-height:90px}.order-card b{display:block;font-size:15px}.order-card span{display:block;color:var(--muted);font-size:11px;margin-top:4px}.order-card small{display:inline-block;margin-top:9px;background:var(--green-light);color:var(--green-dark);padding:4px 8px;border-radius:9px}.order-card em{position:absolute;right:14px;top:16px;font-style:normal;color:var(--muted);font-size:11px}.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--green-dark);color:#fff;padding:12px 16px;border-radius:14px;z-index:20}
 @media(min-width:700px){.app{max-width:1040px;padding:18px 20px 35px}.hero.hero-brand{height:255px}.services{gap:12px}.card{min-height:170px}.card-large,.photo-excursions{min-height:195px}.photo-realestate,.photo-business{min-height:180px}.text-card{min-height:125px}.card-content{width:47%}}
 @media(max-width:380px){.app{padding-left:10px;padding-right:10px}.hero.hero-brand{height:180px}.services{gap:7px}.card{min-height:128px;padding:12px}.card-large,.photo-excursions{min-height:150px}.photo-realestate,.photo-business{min-height:140px}.card-content{width:57%}.card b{font-size:18px}.card small{font-size:10px}.text-card{min-height:96px}}
+/* Tien Mee: replacement hero and excursions image */
+.hero.hero-brand {
+  background: #f8f5ed url("images/hero-brand.jpg") center / cover no-repeat !important;
+  position: relative;
+  overflow: hidden;
+  min-height: 230px;
+  border-radius: 24px;
+}
+.hero-brand .brand-eyebrow,
+.hero-brand h1,
+.hero-brand p {
+  position: relative;
+  z-index: 1;
+}
+.hero-brand h1 {
+  color: #24352b;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  font-size: clamp(54px, 13vw, 78px);
+  line-height: .98;
+  margin: 12px 0 0;
+}
+.hero-brand .brand-eyebrow {
+  color: #465b48;
+  letter-spacing: .32em;
+}
+.hero-brand p {
+  color: #657265;
+  margin-top: 16px;
+}
+
+/* Avoid the excursion cover cropping the boat into the text area on narrow screens. */
+.photo-excursions {
+  background-image: url("images/excursions-new.jpg") !important;
+  background-size: cover !important;
+  background-position: center right !important;
+  min-height: 165px;
+}
+.photo-excursions:before {
+  background: linear-gradient(90deg,
+    #f8f5ed 0%,
+    rgba(248,245,237,.97) 29%,
+    rgba(248,245,237,.72) 47%,
+    rgba(248,245,237,.08) 73%,
+    rgba(248,245,237,0) 100%) !important;
+}
+@media (max-width: 430px) {
+  .hero.hero-brand { min-height: 190px; }
+  .photo-excursions { background-position: 63% center !important; }
+}
