@@ -33,7 +33,7 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}
 footer{text-align:center;color:#A39C90;font-size:10px;margin-top:17px}
 .screen{display:none;padding-bottom:20px}.screen.active{display:block}.back{border:0;background:transparent;color:var(--green);padding:4px 0 12px;font-weight:700}.screen h2{font-size:28px;line-height:1.15;margin:3px 0 5px}.sub{color:var(--muted);margin:0 0 17px;line-height:1.45}
 .section-cover{height:190px;border-radius:22px;overflow:hidden;position:relative;background-size:cover;background-position:center;margin-bottom:14px}.section-cover:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,30,22,.72),rgba(20,30,22,.05) 70%)}.section-cover>div{position:absolute;z-index:2;left:18px;bottom:18px;color:#fff}.section-cover b{display:block;font-size:25px}.section-cover span{display:block;font-size:13px;margin-top:5px}
-.cover-excursions{background-image:url("/excursions.jpg")}.cover-fasttrack{background-image:url("fasttrack.jpg")}.cover-transfer{background-image:url("transfer.jpg")}.cover-cars{background-image:url("cars.jpg")}.cover-exchange{background-image:url("exchange.jpg")}.cover-realestate{background-image:url("realestate.jpg")}.cover-business{background-image:url("business.jpg")}
+.cover-excursions{background-image:url("excursions.jpg")}.cover-fasttrack{background-image:url("fasttrack.jpg")}.cover-transfer{background-image:url("transfer.jpg")}.cover-cars{background-image:url("cars.jpg")}.cover-exchange{background-image:url("exchange.jpg")}.cover-realestate{background-image:url("realestate.jpg")}.cover-business{background-image:url("business.jpg")}
 .list{display:flex;flex-direction:column;gap:9px}.list button,.choice{width:100%;border:1px solid var(--line);background:var(--cream);border-radius:17px;padding:15px;text-align:left;display:flex;align-items:center;gap:12px;color:var(--text);font-size:21px}.list button span{flex:1}.list button b{display:block;font-size:15px}.list button small{display:block;font-size:11px;color:var(--muted);margin-top:3px}
 .empty{margin-top:18px;min-height:190px;border:1px dashed #D8D0C2;border-radius:22px;background:rgba(255,253,248,.6);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:25px;gap:8px}.empty span{font-size:31px}.empty b{font-size:17px}.empty small{font-size:13px;color:var(--muted);line-height:1.45;max-width:300px}
 .info,.payment{display:flex;flex-direction:column;gap:6px;padding:20px;margin:15px 0;border-radius:22px;background:var(--green-light);border:1px solid rgba(95,118,88,.08)}.info b,.payment b{font-size:18px}.info span,.payment span{font-size:14px;line-height:1.5}.payment strong{color:var(--green-dark);font-size:25px}
@@ -46,7 +46,7 @@ form{display:flex;flex-direction:column;gap:8px}form label{display:block;color:v
 @media(max-width:380px){.app{padding-left:10px;padding-right:10px}.hero.hero-brand{height:180px}.services{gap:7px}.card{min-height:128px;padding:12px}.card-large,.photo-excursions{min-height:150px}.photo-realestate,.photo-business{min-height:140px}.card-content{width:57%}.card b{font-size:18px}.card small{font-size:10px}.text-card{min-height:96px}}
 /* Tien Mee: replacement hero and excursions image */
 .hero.hero-brand {
-  background: #f8f5ed url("images/hero-brand.jpg") center / cover no-repeat !important;
+  background: #f8f5ed url("hero-brand.jpg") center / cover no-repeat !important;
   position: relative;
   overflow: hidden;
   min-height: 230px;
@@ -78,7 +78,7 @@ form{display:flex;flex-direction:column;gap:8px}form label{display:block;color:v
 
 /* Avoid the excursion cover cropping the boat into the text area on narrow screens. */
 .photo-excursions {
-  background-image: url("images/excursions-new.jpg") !important;
+  background-image: url("excursions-new.jpg") !important;
   background-size: cover !important;
   background-position: center right !important;
   min-height: 165px;
