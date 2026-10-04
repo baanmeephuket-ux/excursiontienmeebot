@@ -78,7 +78,7 @@ form{display:flex;flex-direction:column;gap:8px}form label{display:block;color:v
 
 /* Avoid the excursion cover cropping the boat into the text area on narrow screens. */
 .photo-excursions {
-  background-image: url("excursions-new.jpg") !important;
+  background-image: url("excursions.jpg") !important;
   background-size: cover !important;
   background-position: center right !important;
   min-height: 165px;
