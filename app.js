@@ -94,7 +94,9 @@ if (transferForm) transferForm.addEventListener('submit', async e=>{
     type:'transfer', id:makeId('TR'), status:'Новая заявка', direction:transferDirection,
     date:f.get('date'), flightNumber:f.get('flightNumber'), arrivalTime:f.get('arrivalTime'),
     people:Number(f.get('people')), suitcases:Number(f.get('suitcases')), hotel:f.get('hotel'), phone:f.get('phone'),
-    payment:'Способ оплаты подтвердит менеджер', ...telegramData()
+    payment: Наличными — водителю при встрече <p>
+    <p>Заранее — перевод в рублях <p>
+  ', ...telegramData()
   }; 
 
 const sent = await sendOrder(order);
@@ -104,7 +106,7 @@ if (!sent) return;
 saveOrder(order);
 transferForm.hidden=true;
   document.getElementById('transferConfirmation').hidden=false;
-  document.getElementById('transferConfirmation').innerHTML=`<h3>✅ Заявка отправлена</h3><p><b>Номер:</b> ${order.id}</p><p><b>Направление:</b> ${order.direction}</p><p><b>Дата:</b> ${order.date}</p><p><b>Рейс:</b> ${order.flightNumber}</p><p><b>Время:</b> ${order.arrivalTime}</p><p><b>Пассажиры:</b> ${order.people}</p><p><b>Чемоданы:</b> ${order.suitcases}</p><p><b>Отель:</b> ${order.hotel}</p><p><b>Оплата:</b> способ оплаты будет подтверждён менеджером.</p><p>Менеджер проверит возможность трансфера, подтвердит стоимость и сообщит вам способ оплаты.</p><button type="button" id="newTransfer">Создать ещё одну заявку</button>`;
+  document.getElementById('transferConfirmation').innerHTML=`<h3>✅ Заявка отправлена</h3><p><b>Номер:</b> ${order.id}</p><p><b>Направление:</b> ${order.direction}</p><p><b>Дата:</b> ${order.date}</p><p><b>Рейс:</b> ${order.flightNumber}</p><p><b>Время:</b> ${order.arrivalTime}</p><p><b>Пассажиры:</b> ${order.people}</p><p><b>Чемоданы:</b> ${order.suitcases}</p><p><b>Отель:</b> ${order.hotel}</p><p><b>Оплата:</b> способ оплаты будет подтверждён менеджером.</p><p> Оставьте детали поездки-мы проверим наличие свободного автомобиля и сообщим стоимость.</p><button type="button" id="newTransfer">Создать ещё одну заявку</button>`;
   document.getElementById('newTransfer').onclick=()=>{ transferForm.reset(); transferForm.hidden=false; document.getElementById('transferConfirmation').hidden=true; document.querySelectorAll('.direction').forEach(x=>x.classList.toggle('active',x.dataset.direction==='Аэропорт → Отель')); transferDirection='Аэропорт → Отель'; };
   feedback();
 });
@@ -321,7 +323,7 @@ if (businessForm) {
             'Сбербанк · +7 910 090-46-35 · Елена Валерьевна Ф.',
 
           consultantPhone:
-            '+66 617 276 406',
+            '+66 617 276 406' Елена,
 
           consultantTelegram:
             '@Spravkathailand',
@@ -438,7 +440,8 @@ if (fastTrackForm) fastTrackForm.addEventListener('submit', async e => {
     <p><b>Дата прилёта:</b> ${order.date}</p>
     <p><b>Время:</b> ${order.time}</p>
     <p><b>Количество человек:</b> ${order.people}</p>
-    <p>Подготовьте паспорта всех пассажиров. Менеджер проверит возможность оформления и свяжется с вами.</p>
+    <p>Ваша заявка принята.Мы свяжемся с вами в Telegram и запросим паспорта всех пассажиров. Проверим данные, уточним стоимость Fast Track и сообщим вам итоговую сумму</p>
+    </p>После подтверждения стоимости вы производите оплату, и мы оформляем услугу</p>
     <button type="button" id="newFastTrack">
       Создать ещё одну заявку
     </button>
