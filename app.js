@@ -89,26 +89,71 @@ document.querySelectorAll('.direction').forEach(btn => btn.addEventListener('cli
   btn.classList.add('active'); transferDirection = btn.dataset.direction;
 }));
 const transferForm = document.getElementById('transferForm');
-if (transferForm) transferForm.addEventListener('submit', async e=>{
-  e.preventDefault(); const f = new FormData(transferForm); const order = {
-    type:'transfer', id:makeId('TR'), status:'Новая заявка', direction:transferDirection,
-    date:f.get('date'), flightNumber:f.get('flightNumber'), arrivalTime:f.get('arrivalTime'),
-    people:Number(f.get('people')), suitcases:Number(f.get('suitcases')), hotel:f.get('hotel'), phone:f.get('phone'),
-    payment:
-    <p> Наличными — водителю при встрече<p>
-    <p>Заранее — перевод в рублях<p>
-  ', ...telegramData()
-  }; 
+const transferForm = document.getElementById('transferForm');
 
-const sent = await sendOrder(order);
+if (transferForm) transferForm.addEventListener('submit', async e => {
+  e.preventDefault();
 
-if (!sent) return;
+  const f = new FormData(transferForm);
 
-saveOrder(order);
-transferForm.hidden=true;
-  document.getElementById('transferConfirmation').hidden=false;
-  document.getElementById('transferConfirmation').innerHTML=`<h3>✅ Заявка отправлена</h3><p><b>Номер:</b> ${order.id}</p><p><b>Направление:</b> ${order.direction}</p><p><b>Дата:</b> ${order.date}</p><p><b>Рейс:</b> ${order.flightNumber}</p><p><b>Время:</b> ${order.arrivalTime}</p><p><b>Пассажиры:</b> ${order.people}</p><p><b>Чемоданы:</b> ${order.suitcases}</p><p><b>Отель:</b> ${order.hotel}</p><p><b>Оплата:</b> способ оплаты будет подтверждён менеджером.</p><p> Оставьте детали поездки-мы проверим наличие свободного автомобиля и сообщим стоимость.</p><button type="button" id="newTransfer">Создать ещё одну заявку</button>`;
-  document.getElementById('newTransfer').onclick=()=>{ transferForm.reset(); transferForm.hidden=false; document.getElementById('transferConfirmation').hidden=true; document.querySelectorAll('.direction').forEach(x=>x.classList.toggle('active',x.dataset.direction==='Аэропорт → Отель')); transferDirection='Аэропорт → Отель'; };
+  const order = {
+    type: 'transfer',
+    id: makeId('TR'),
+    status: 'Новая заявка',
+    direction: transferDirection,
+    date: f.get('date'),
+    flightNumber: f.get('flightNumber'),
+    arrivalTime: f.get('arrivalTime'),
+    people: Number(f.get('people')),
+    suitcases: Number(f.get('suitcases')),
+    hotel: f.get('hotel'),
+    phone: f.get('phone'),
+    payment: 'Наличными — водителю при встрече / Заранее — перевод в рублях',
+    ...telegramData()
+  };
+
+  const sent = await sendOrder(order);
+
+  if (!sent) return;
+
+  saveOrder(order);
+
+  transferForm.hidden = true;
+
+  document.getElementById('transferConfirmation').hidden = false;
+
+  document.getElementById('transferConfirmation').innerHTML = `
+    <h3>✅ Заявка отправлена</h3>
+    <p><b>Номер:</b> ${order.id}</p>
+    <p><b>Направление:</b> ${order.direction}</p>
+    <p><b>Дата:</b> ${order.date}</p>
+    <p><b>Рейс:</b> ${order.flightNumber}</p>
+    <p><b>Время:</b> ${order.arrivalTime}</p>
+    <p><b>Пассажиры:</b> ${order.people}</p>
+    <p><b>Чемоданы:</b> ${order.suitcases}</p>
+    <p><b>Отель:</b> ${order.hotel}</p>
+    <p><b>Оплата:</b> наличными водителю при встрече или заранее переводом в рублях.</p>
+    <p>Мы проверим доступность автомобиля, уточним стоимость и свяжемся с вами для подтверждения поездки.</p>
+    <button type="button" id="newTransfer">Создать ещё одну заявку</button>
+  `;
+
+  document.getElementById('newTransfer').onclick = () => {
+    transferForm.reset();
+    transferForm.hidden = false;
+    document.getElementById('transferConfirmation').hidden = true;
+
+    document
+      .querySelectorAll('.direction')
+      .forEach(x =>
+        x.classList.toggle(
+          'active',
+          x.dataset.direction === 'Аэропорт → Отель'
+        )
+      );
+
+    transferDirection = 'Аэропорт → Отель';
+  };
+
   feedback();
 });
 
@@ -142,7 +187,7 @@ if(!sent)return;
 
 saveOrder(order);
 carForm.hidden=true;
-  const box=document.getElementById('carConfirmation'); box.hidden=false; box.innerHTML=`<h3>✅ Заявка отправлена</h3><p><b>Номер:</b> ${order.id}</p><p>Мы проверим наличие автомобилей и свяжемся с вами с подходящими вариантами.</p><button type="button" id="newCar">Создать ещё одну заявку</button>`;
+  const box=document.getElementById('carConfirmation'); box.hidden=false; box.innerHTML=`<h3>✅ Заявка отправлена</h3><p><b>Номер:</b> ${order.id}</p><p>Мы проверим наличие автомобилей и свяжемся с вами</p><button type="button" id="newCar">Создать ещё одну заявку</button>`;
   document.getElementById('newCar').onclick=()=>{carForm.reset();carForm.hidden=false;box.hidden=true;}; feedback();
 });
 
