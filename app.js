@@ -229,7 +229,7 @@ async function prepareReceipt(file) {
         );
 
         resolve(
-          canvas.toDataURL('image/jpeg', 0.82)
+          canvas.toDataURL('image/png', 0.82)
         );
       };
 
