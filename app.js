@@ -93,7 +93,7 @@ const transferForm = document.getElementById('transferForm');
 if (transferForm) transferForm.addEventListener('submit', async e => {
   e.preventDefault();
 
-  const f = new FormData(transferForm);
+  const f = new FormData(fastTrackForm);
 
   const order = {
     type: 'transfer',
@@ -447,6 +447,7 @@ if (businessForm) {
 }
 
 // FAST TRACK
+// FAST TRACK
 const fastTrackForm = document.getElementById('fastTrackForm');
 
 if (fastTrackForm) fastTrackForm.addEventListener('submit', async e => {
@@ -485,8 +486,16 @@ if (fastTrackForm) fastTrackForm.addEventListener('submit', async e => {
     <p><b>Дата прилёта:</b> ${order.date}</p>
     <p><b>Время:</b> ${order.time}</p>
     <p><b>Количество человек:</b> ${order.people}</p>
-    <p>Ваша заявка принята.Мы свяжемся с вами и запросим паспорта всех пассажиров. Проверим данные, уточним стоимость Fast Track и сообщим вам итоговую сумму</p>
-    </p>После подтверждения стоимости вы производите оплату, и мы оформляем услугу</p>
+
+    <p>
+      Ваша заявка принята. Мы свяжемся с вами и запросим паспорта всех пассажиров.
+      Проверим данные, уточним стоимость Fast Track и сообщим вам итоговую сумму.
+    </p>
+
+    <p>
+      После подтверждения стоимости вы производите оплату, и мы оформляем услугу.
+    </p>
+
     <button type="button" id="newFastTrack">
       Создать ещё одну заявку
     </button>
@@ -500,6 +509,7 @@ if (fastTrackForm) fastTrackForm.addEventListener('submit', async e => {
 
   feedback();
 });
+
 // Быстрые заявки
 function simpleRequest(type, label) {
   const order = {
@@ -516,6 +526,7 @@ function simpleRequest(type, label) {
 
   feedback();
 }
+
 document.querySelectorAll('[data-contact-request]').forEach(btn =>
   btn.addEventListener(
     'click',
