@@ -459,6 +459,22 @@ if (fastTrackForm) fastTrackForm.addEventListener('submit', async e => {
 
   feedback();
 });
+// Быстрые заявки
+function simpleRequest(type, label) {
+  const order = {
+    type: type,
+    id: makeId(type === 'fasttrack' ? 'FT' : 'EX'),
+    status: 'Новая заявка',
+    service: label,
+    ...telegramData()
+  };
+
+  saveOrder(order);
+
+  alert('✅ Заявка отправлена. Менеджер свяжется с вами для уточнения деталей.');
+
+  feedback();
+}
 document.querySelectorAll('[data-contact-request]').forEach(btn =>
   btn.addEventListener(
     'click',
