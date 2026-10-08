@@ -232,16 +232,89 @@
 <!-- БИЗНЕС -->
 <section id="business" class="screen">
   <button data-home class="back" type="button">‹ Назад</button>
-  <div class="section-cover cover-business"><div><b>Консультация</b><span>Бизнес и жизнь в Таиланде</span></div></div>
-  <div class="info"><b>Что обсудим</b><span>Компания, способы ведения бизнеса, документы, банки, жильё, переезд и другие практические вопросы жизни в Таиланде.</span></div>
-  <div class="payment"><b>💳 Стоимость</b><strong>10 000 ₽</strong><span>После оплаты вы получите контакты для связи.</span></div>
+
+  <div class="section-cover cover-business">
+    <div>
+      <b>Консультация</b>
+      <span>Бизнес и жизнь в Таиланде</span>
+    </div>
+  </div>
+
+  <div class="info">
+    <b>Что обсудим</b>
+    <span>
+      Компания, способы ведения бизнеса, документы, банки,
+      жильё, переезд и другие практические вопросы жизни в Таиланде.
+    </span>
+  </div>
+
+  <div class="payment">
+    <b>💳 Стоимость консультации</b>
+    <strong>10 000 ₽</strong>
+  </div>
+
   <form id="businessForm">
-    <label for="businessDate">📅 Дата консультации</label><input id="businessDate" name="date" type="date" required>
-    <label for="businessTime">🕐 Удобное время</label><input id="businessTime" name="time" type="time" required>
-    <label for="businessPhone">📱 Номер для связи</label><input id="businessPhone" name="phone" type="tel" placeholder="+66..." required>
-    <label for="businessQuestion">💬 Что хотите обсудить?</label><textarea id="businessQuestion" name="question" rows="4" placeholder="Кратко опишите ваш вопрос"></textarea>
-    <button class="submit" type="submit">Перейти к оплате · 10 000 ₽</button>
+
+    <label for="businessDate">📅 Дата консультации</label>
+    <input
+      id="businessDate"
+      name="date"
+      type="date"
+      required
+    >
+
+    <label for="businessTime">🕐 Удобное время</label>
+    <input
+      id="businessTime"
+      name="time"
+      type="time"
+      required
+    >
+
+    <label for="businessPhone">📱 Номер для связи</label>
+    <input
+      id="businessPhone"
+      name="phone"
+      type="tel"
+      placeholder="+66..."
+      required
+    >
+
+    <label for="businessQuestion">💬 Что хотите обсудить?</label>
+    <textarea
+      id="businessQuestion"
+      name="question"
+      rows="4"
+      placeholder="Кратко опишите ваш вопрос"
+    ></textarea>
+
+    <div class="payment">
+      <b>💳 Оплата консультации</b>
+      <strong>10 000 ₽</strong>
+      <span>Сбербанк · перевод по номеру телефона</span>
+      <span><b>+7 910 090-46-35</b></span>
+      <span>Получатель: <b>Елена Валерьевна Ф.</b></span>
+    </div>
+
+    <label for="businessReceipt">📎 Прикрепите чек об оплате</label>
+    <input
+      id="businessReceipt"
+      name="receipt"
+      type="file"
+      accept="image/*"
+      required
+    >
+
+    <small class="sub">
+      После перевода прикрепите скриншот или фото чека.
+    </small>
+
+    <button class="submit" type="submit">
+      Отправить заявку · 10 000 ₽
+    </button>
+
   </form>
+
   <div id="businessConfirmation" class="confirmation" hidden></div>
 </section>
 
