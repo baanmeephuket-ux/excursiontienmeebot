@@ -16,15 +16,17 @@ async function sendOrder(order) {
 
     const result = await response.json();
 
-    if (!response.ok || !result.ok) {
-      throw new Error(result.error || "Ошибка отправки");
-    }
+   if (!response.ok || !result.ok) {
+  throw new Error(
+    `Ошибка ${response.status}: ${result.error || "Ошибка отправки"}`
+  );
+}
 
     return true;
 
   } catch (error) {
     console.error("Ошибка отправки заявки:", error);
-    alert("Не удалось отправить заявку. Попробуйте ещё раз.");
+    alert(error.message || "Не удалось отправить заявку.");
     return false;
   }
 }
