@@ -89,7 +89,6 @@ document.querySelectorAll('.direction').forEach(btn => btn.addEventListener('cli
   btn.classList.add('active'); transferDirection = btn.dataset.direction;
 }));
 const transferForm = document.getElementById('transferForm');
-const transferForm = document.getElementById('transferForm');
 
 if (transferForm) transferForm.addEventListener('submit', async e => {
   e.preventDefault();
