@@ -498,5 +498,6 @@ return `<div class="order-card">
   ${o.status ? `<small>${o.status}</small>` : ''}
   <em>${o.date||o.startDate||''}</em>
 </div>`
+}                                      
 // Старт
 show('home');
