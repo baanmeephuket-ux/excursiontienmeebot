@@ -190,8 +190,6 @@ if(realEstateForm) realEstateForm.addEventListener('submit',async e=>{
 });
 
 // Консультация
-// Консультация
-
 async function prepareReceipt(file) {
   if (!file) return '';
 
@@ -251,7 +249,6 @@ async function prepareReceipt(file) {
     reader.readAsDataURL(file);
   });
 }
-
 
 const businessForm =
   document.getElementById('businessForm');
@@ -332,21 +329,17 @@ if (businessForm) {
           ...telegramData()
         };
 
-
         const sent =
           await sendOrder(order);
 
         if (!sent) return;
-
 
         saveOrder({
           ...order,
           receiptData: ''
         });
 
-
         businessForm.hidden = true;
-
 
         const box =
           document.getElementById(
@@ -354,7 +347,6 @@ if (businessForm) {
           );
 
         box.hidden = false;
-
 
         box.innerHTML = `
 
@@ -383,7 +375,6 @@ if (businessForm) {
           </p>
 
         `;
-
 
         feedback();
 
@@ -489,15 +480,42 @@ document.querySelectorAll('[data-contact-request]').forEach(btn =>
 
 // Мои заказы
 function renderOrders(){
-  if(!ordersList)return; const orders=JSON.parse(localStorage.getItem('tienMeeOrders')||'[]');
-  if(!orders.length){ordersList.innerHTML='<div class="empty"><span>📋</span><b>Пока нет заявок</b><small>Ваши заявки и бронирования появятся здесь.</small></div>';return;}
-  ordersList.innerHTML=orders.map(o=>{let title={transfer:'🚕 Трансфер',car_rental:'🚗 Аренда авто',real_estate_purchase:'🏠 Недвижимость',business_consultation:'💼 Консультация',fasttrack:'✈️ Fast Track',exchange:'💱 Обмен валюты'}[o.type]||'Заявка';
-return `<div class="order-card">
-  <b>${title}</b>
-  <span>${o.id}</span>
-  ${o.status ? `<small>${o.status}</small>` : ''}
-  <em>${o.date||o.startDate||''}</em>
-</div>`
-}                                      
+  if(!ordersList)return;
+
+  const orders = JSON.parse(
+    localStorage.getItem('tienMeeOrders') || '[]'
+  );
+
+  if(!orders.length){
+    ordersList.innerHTML = `
+      <div class="empty">
+        <span>📋</span>
+        <b>Пока нет заявок</b>
+        <small>Ваши заявки и бронирования появятся здесь.</small>
+      </div>`;
+    return;
+  }
+
+  ordersList.innerHTML = orders.map(o => {
+    let title = {
+      transfer:'🚕 Трансфер',
+      car_rental:'🚗 Аренда авто',
+      real_estate_purchase:'🏠 Недвижимость',
+      business_consultation:'💼 Консультация',
+      fasttrack:'✈️ Fast Track',
+      exchange:'💱 Обмен валюты'
+    }[o.type] || 'Заявка';
+
+    return `
+      <div class="order-card">
+        <b>${title}</b>
+        <span>${o.id}</span>
+        ${o.status ? `<small>${o.status}</small>` : ''}
+        <em>${o.date || o.startDate || ''}</em>
+      </div>
+    `;
+  }).join('');
+}
+
 // Старт
 show('home');
