@@ -190,11 +190,221 @@ if(realEstateForm) realEstateForm.addEventListener('submit',async e=>{
 });
 
 // Консультация
-const businessForm=document.getElementById('businessForm');
-if(businessForm) businessForm.addEventListener('submit',e=>{
-  e.preventDefault(); const f=new FormData(businessForm); const order={type:'business_consultation',id:makeId('BC'),status:'Ожидает оплаты',date:f.get('date'),time:f.get('time'),phone:f.get('phone'),question:f.get('question')||'',price:'10 000 ₽',...telegramData()}; saveOrder(order); businessForm.hidden=true;
-  const box=document.getElementById('businessConfirmation'); box.hidden=false; box.innerHTML=`<h3>📅 Заявка сохранена</h3><p><b>Номер:</b> ${order.id}</p><p><b>Дата:</b> ${order.date}</p><p><b>Время:</b> ${order.time}</p><p><b>Стоимость:</b> 10 000 ₽</p><p>Следующий шаг — оплата консультации. После успешной оплаты вы получите контакты.</p><p><b>Telegram:</b> @Spravkathailand<br><b>WhatsApp:</b> +66 61 727 6406</p>`; feedback();
-});
+// Консультация
+
+async function prepareReceipt(file) {
+  if (!file) return '';
+
+  if (!file.type.startsWith('image/')) {
+    throw new Error('Чек нужно прикрепить изображением.');
+  }
+
+  return await new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const img = new Image();
+
+      img.onload = () => {
+        const maxSide = 1600;
+
+        const scale = Math.min(
+          1,
+          maxSide / Math.max(img.width, img.height)
+        );
+
+        const canvas = document.createElement('canvas');
+
+        canvas.width = Math.round(img.width * scale);
+        canvas.height = Math.round(img.height * scale);
+
+        const ctx = canvas.getContext('2d');
+
+        ctx.drawImage(
+          img,
+          0,
+          0,
+          canvas.width,
+          canvas.height
+        );
+
+        resolve(
+          canvas.toDataURL('image/jpeg', 0.82)
+        );
+      };
+
+      img.onerror = () => {
+        reject(
+          new Error('Не удалось прочитать чек.')
+        );
+      };
+
+      img.src = reader.result;
+    };
+
+    reader.onerror = () => {
+      reject(
+        new Error('Не удалось загрузить чек.')
+      );
+    };
+
+    reader.readAsDataURL(file);
+  });
+}
+
+
+const businessForm =
+  document.getElementById('businessForm');
+
+if (businessForm) {
+
+  businessForm.addEventListener(
+    'submit',
+    async e => {
+
+      e.preventDefault();
+
+      const f = new FormData(businessForm);
+
+      const receiptFile =
+        f.get('receipt');
+
+      if (
+        !receiptFile ||
+        !receiptFile.size
+      ) {
+        alert(
+          'Пожалуйста, прикрепите чек об оплате.'
+        );
+        return;
+      }
+
+      const submitButton =
+        businessForm.querySelector(
+          'button[type="submit"]'
+        );
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent =
+          'Отправляем заявку…';
+      }
+
+      try {
+
+        const receiptData =
+          await prepareReceipt(receiptFile);
+
+        const order = {
+
+          type:
+            'business_consultation',
+
+          id:
+            makeId('BC'),
+
+          date:
+            f.get('date'),
+
+          time:
+            f.get('time'),
+
+          phone:
+            f.get('phone'),
+
+          question:
+            f.get('question') || '',
+
+          price:
+            '10 000 ₽',
+
+          payment:
+            'Сбербанк · +7 910 090-46-35 · Елена Валерьевна Ф.',
+
+          consultantPhone:
+            '+66 617 276 406',
+
+          consultantTelegram:
+            '@Spravkathailand',
+
+          receiptData,
+
+          ...telegramData()
+        };
+
+
+        const sent =
+          await sendOrder(order);
+
+        if (!sent) return;
+
+
+        saveOrder({
+          ...order,
+          receiptData: ''
+        });
+
+
+        businessForm.hidden = true;
+
+
+        const box =
+          document.getElementById(
+            'businessConfirmation'
+          );
+
+        box.hidden = false;
+
+
+        box.innerHTML = `
+
+          <h3>
+            ✅ Спасибо!
+          </h3>
+
+          <p>
+            Заявка и чек получены.
+          </p>
+
+          <p>
+            Мы проверим оплату и
+            свяжемся с вами в выбранное
+            время.
+          </p>
+
+          <p>
+            <b>Контакт консультанта:</b>
+            <br>
+            WhatsApp:
+            +66 617 276 406
+            <br>
+            Telegram:
+            @Spravkathailand
+          </p>
+
+        `;
+
+
+        feedback();
+
+      } catch (error) {
+
+        console.error(error);
+
+        alert(
+          error.message ||
+          'Не удалось отправить чек.'
+        );
+
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent =
+            'Отправить заявку · 10 000 ₽';
+        }
+      }
+    }
+  );
+}
 
 // FAST TRACK
 const fastTrackForm = document.getElementById('fastTrackForm');
@@ -249,14 +459,28 @@ if (fastTrackForm) fastTrackForm.addEventListener('submit', async e => {
 
   feedback();
 });
-ectorAll('[data-contact-request]').forEach(btn=>btn.addEventListener('click',()=>simpleRequest(btn.dataset.contactRequest,btn.dataset.contactRequest==='fasttrack'?'Fast Track':'Обмен валюты')));
+document.querySelectorAll('[data-contact-request]').forEach(btn =>
+  btn.addEventListener(
+    'click',
+    () => simpleRequest(
+      btn.dataset.contactRequest,
+      btn.dataset.contactRequest === 'fasttrack'
+        ? 'Fast Track'
+        : 'Обмен валюты'
+    )
+  )
+);
 
 // Мои заказы
 function renderOrders(){
   if(!ordersList)return; const orders=JSON.parse(localStorage.getItem('tienMeeOrders')||'[]');
   if(!orders.length){ordersList.innerHTML='<div class="empty"><span>📋</span><b>Пока нет заявок</b><small>Ваши заявки и бронирования появятся здесь.</small></div>';return;}
-  ordersList.innerHTML=orders.map(o=>{let title={transfer:'🚕 Трансфер',car_rental:'🚗 Аренда авто',real_estate_purchase:'🏠 Недвижимость',business_consultation:'💼 Консультация',fasttrack:'✈️ Fast Track',exchange:'💱 Обмен валюты'}[o.type]||'Заявка';return `<div class="order-card"><b>${title}</b><span>${o.id}</span><small>${o.status}</small><em>${o.date||o.startDate||''}</em></div>`}).join('');
-}
-
+  ordersList.innerHTML=orders.map(o=>{let title={transfer:'🚕 Трансфер',car_rental:'🚗 Аренда авто',real_estate_purchase:'🏠 Недвижимость',business_consultation:'💼 Консультация',fasttrack:'✈️ Fast Track',exchange:'💱 Обмен валюты'}[o.type]||'Заявка';
+return `<div class="order-card">
+  <b>${title}</b>
+  <span>${o.id}</span>
+  ${o.status ? `<small>${o.status}</small>` : ''}
+  <em>${o.date||o.startDate||''}</em>
+</div>`
 // Старт
 show('home');
