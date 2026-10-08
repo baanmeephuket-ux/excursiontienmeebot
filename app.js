@@ -94,8 +94,9 @@ if (transferForm) transferForm.addEventListener('submit', async e=>{
     type:'transfer', id:makeId('TR'), status:'Новая заявка', direction:transferDirection,
     date:f.get('date'), flightNumber:f.get('flightNumber'), arrivalTime:f.get('arrivalTime'),
     people:Number(f.get('people')), suitcases:Number(f.get('suitcases')), hotel:f.get('hotel'), phone:f.get('phone'),
-    payment: Наличными — водителю при встрече <p>
-    <p>Заранее — перевод в рублях <p>
+    payment:
+    <p> Наличными — водителю при встрече<p>
+    <p>Заранее — перевод в рублях<p>
   ', ...telegramData()
   }; 
 
@@ -323,7 +324,7 @@ if (businessForm) {
             'Сбербанк · +7 910 090-46-35 · Елена Валерьевна Ф.',
 
           consultantPhone:
-            '+66 617 276 406' Елена,
+            '+66 617 276 406 · Елена',
 
           consultantTelegram:
             '@Spravkathailand',
