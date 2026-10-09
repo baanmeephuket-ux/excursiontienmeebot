@@ -63,7 +63,7 @@ window.TIENMEE_EXCURSIONS = [
       "Вход в храм Суванкуха — 20 ฿."
     ],
     "photo": "C51F56F1-ADC0-405F-8E01-B3234F28B633.jpeg",
-    "image": "C51F56F1-ADC0-405F-8E01-B3234F28B633.jpeg"
+    "image": "images/C51F56F1-ADC0-405F-8E01-B3234F28B633.jpeg"
   },
   {
     "id": "amazing-phang-nga",
@@ -121,7 +121,7 @@ window.TIENMEE_EXCURSIONS = [
       ]
     ],
     "photo": "ADF016DA-2596-4CFC-8F69-60CAB3D66A4B.jpeg",
-    "image": "ADF016DA-2596-4CFC-8F69-60CAB3D66A4B.jpeg"
+    "image": "images/ADF016DA-2596-4CFC-8F69-60CAB3D66A4B.jpeg"
   },
   {
     "id": "rafting",
@@ -206,7 +206,7 @@ window.TIENMEE_EXCURSIONS = [
       }
     ],
     "photo": "A2FD0861-6C85-4B32-945E-98B83857C02D.jpeg",
-    "image": "A2FD0861-6C85-4B32-945E-98B83857C02D.jpeg"
+    "image": "images/A2FD0861-6C85-4B32-945E-98B83857C02D.jpeg"
   },
   {
     "id": "khao-lak",
@@ -264,7 +264,7 @@ window.TIENMEE_EXCURSIONS = [
       ]
     ],
     "photo": "13902817-C281-4714-8ADD-633BCE4C35FA.jpeg",
-    "image": "13902817-C281-4714-8ADD-633BCE4C35FA.jpeg"
+    "image": "images/13902817-C281-4714-8ADD-633BCE4C35FA.jpeg"
   },
   {
     "id": "cheow-lan-overnight",
@@ -361,7 +361,7 @@ window.TIENMEE_EXCURSIONS = [
       "Электричество от генератора обычно доступно с 18:00 до 06:00, время может отличаться."
     ],
     "photo": "E509E669-5086-473A-89EE-2177E9F3FFD9.jpeg",
-    "image": "E509E669-5086-473A-89EE-2177E9F3FFD9.jpeg"
+    "image": "images/E509E669-5086-473A-89EE-2177E9F3FFD9.jpeg"
   },
   {
     "id": "samet-cheow-lan-day",
@@ -407,7 +407,7 @@ window.TIENMEE_EXCURSIONS = [
       ]
     ],
     "photo": "11E2BC55-B46F-4B78-A5BC-A5F8C575D3DD.jpeg",
-    "image": "11E2BC55-B46F-4B78-A5BC-A5F8C575D3DD.jpeg"
+    "image": "images/11E2BC55-B46F-4B78-A5BC-A5F8C575D3DD.jpeg"
   },
   {
     "id": "phuket-half-day",
@@ -473,7 +473,7 @@ window.TIENMEE_EXCURSIONS = [
       ]
     ],
     "photo": "1053D8E3-BADB-48C2-A9D3-4AC687630123.jpeg",
-    "image": "1053D8E3-BADB-48C2-A9D3-4AC687630123.jpeg"
+    "image": "images/1053D8E3-BADB-48C2-A9D3-4AC687630123.jpeg"
   },
   {
     "id": "private-phuket-tour",
@@ -501,7 +501,7 @@ window.TIENMEE_EXCURSIONS = [
     "description": "Индивидуальная авто-экскурсия с маршрутом под ваши интересы. Основные места: гора обезьян, Ват Чалонг, смотровая площадка возле Большого Будды (храм временно закрыт), ферма слонов, мыс Промтхеп, пляж Найхарн, смотровая «Ветряк», Ката-Карон. По желанию — рынок выходного дня, прогулка по старому городу, купание со слонёнком, дельфинарий, океанариум, ужин в ресторане Тунк-Каа, рынок морепродуктов Раваи, башня Као Кад и другие места.",
     "program": [],
     "photo": "75883C61-BC03-4967-8750-F632F868CB08.jpeg",
-    "image": "75883C61-BC03-4967-8750-F632F868CB08.jpeg"
+    "image": "images/75883C61-BC03-4967-8750-F632F868CB08.jpeg"
   },
   {
     "id": "coral-racha-maiton",
@@ -547,7 +547,7 @@ window.TIENMEE_EXCURSIONS = [
       ]
     ],
     "photo": "C0469E1B-9447-4176-880F-25D3D0CD589A.jpeg",
-    "image": "C0469E1B-9447-4176-880F-25D3D0CD589A.jpeg"
+    "image": "images/C0469E1B-9447-4176-880F-25D3D0CD589A.jpeg"
   },
   {
     "id": "surin-islands",
@@ -601,7 +601,7 @@ window.TIENMEE_EXCURSIONS = [
       ]
     ],
     "photo": "photo_5350357635737263681_w(1).jpg",
-    "image": "photo_5350357635737263681_w(1).jpg"
+    "image": "images/photo_5350357635737263681_w(1).jpg"
   },
   {
     "id": "similan-islands",
@@ -655,7 +655,7 @@ window.TIENMEE_EXCURSIONS = [
       ]
     ],
     "photo": "photo_5350357635737263681_w.jpg",
-    "image": "photo_5350357635737263681_w.jpg"
+    "image": "images/photo_5350357635737263681_w.jpg"
   },
   {
     "id": "andaman-11-islands",
@@ -733,7 +733,7 @@ window.TIENMEE_EXCURSIONS = [
       ]
     ],
     "photo": "A9C9964E-2C97-4DA7-A60B-96D569094AC0.jpeg",
-    "image": "A9C9964E-2C97-4DA7-A60B-96D569094AC0.jpeg"
+    "image": "images/A9C9964E-2C97-4DA7-A60B-96D569094AC0.jpeg"
   },
   {
     "id": "phi-phi-2-days-a",
@@ -820,7 +820,7 @@ window.TIENMEE_EXCURSIONS = [
       ]
     ],
     "photo": "2026-10-08_02-04-28.png",
-    "image": "2026-10-08_02-04-28.png"
+    "image": "images/2026-10-08_02-04-28.png"
   },
   {
     "id": "phi-phi-2-days-b",
@@ -919,7 +919,7 @@ window.TIENMEE_EXCURSIONS = [
       ]
     ],
     "photo": "photo_5350688008916642589_w.jpg",
-    "image": "photo_5350688008916642589_w.jpg"
+    "image": "images/photo_5350688008916642589_w.jpg"
   },
   {
     "id": "phi-phi-day",
@@ -985,7 +985,7 @@ window.TIENMEE_EXCURSIONS = [
       ]
     ],
     "photo": "FF9CC9EE-4084-461A-98B2-EF79F92CDC6E.png",
-    "image": "FF9CC9EE-4084-461A-98B2-EF79F92CDC6E.png"
+    "image": "images/FF9CC9EE-4084-461A-98B2-EF79F92CDC6E.png"
   },
   {
     "id": "jet-ski-seadoo-gti",
@@ -1022,7 +1022,7 @@ window.TIENMEE_EXCURSIONS = [
       "Трансфер +500 ฿ только для Ката, Карон и Патонга."
     ],
     "photo": "2941F120-A7D9-410E-BA02-351933BD47C7.jpeg",
-    "image": "2941F120-A7D9-410E-BA02-351933BD47C7.jpeg"
+    "image": "images/2941F120-A7D9-410E-BA02-351933BD47C7.jpeg"
   },
   {
     "id": "jet-ski-rental-4-hours",
@@ -1062,7 +1062,7 @@ window.TIENMEE_EXCURSIONS = [
       "Страховка"
     ],
     "photo": "B289F8BA-6156-497F-8E70-85404B066ABF.jpeg",
-    "image": "B289F8BA-6156-497F-8E70-85404B066ABF.jpeg"
+    "image": "images/B289F8BA-6156-497F-8E70-85404B066ABF.jpeg"
   },
   {
     "id": "fishing-group",
@@ -1105,7 +1105,7 @@ window.TIENMEE_EXCURSIONS = [
       "Возвращение на пирс ближе к 17:00"
     ],
     "photo": "photo_5350688008916642682_w.jpg",
-    "image": "photo_5350688008916642682_w.jpg"
+    "image": "images/photo_5350688008916642682_w.jpg"
   },
   {
     "id": "private-boat-rental",
@@ -1119,7 +1119,7 @@ window.TIENMEE_EXCURSIONS = [
     "days": "daily",
     "description": "Вместимость: спидбот до 20 человек; яхта до 10 человек; катамаран до 10 человек; рыбацкая лодка до 10 человек. Возможно сопровождение русскоговорящего гида. Индивидуальное составление программ — подробности в личных сообщениях.",
     "photo": "photo_5350688008916642679_w.jpg",
-    "image": "photo_5350688008916642679_w.jpg"
+    "image": "images/photo_5350688008916642679_w.jpg"
   },
   {
     "id": "hong-phang-nga",
@@ -1189,7 +1189,7 @@ window.TIENMEE_EXCURSIONS = [
       ]
     ],
     "photo": "2F31B16A-EABB-4F57-A22A-1ACCA32745D1.jpeg",
-    "image": "2F31B16A-EABB-4F57-A22A-1ACCA32745D1.jpeg"
+    "image": "images/2F31B16A-EABB-4F57-A22A-1ACCA32745D1.jpeg"
   },
   {
     "id": "simon-cabaret",
@@ -1235,7 +1235,7 @@ window.TIENMEE_EXCURSIONS = [
       "jwMarriottMaiKhaoBus": 1000
     },
     "photo": "IMG_1383.jpeg",
-    "image": "IMG_1383.jpeg"
+    "image": "images/IMG_1383.jpeg"
   },
   {
     "id": "siam-niramit",
@@ -1284,7 +1284,7 @@ window.TIENMEE_EXCURSIONS = [
       "Дополнительный трансфер — 250 ฿."
     ],
     "photo": "2026-10-08_01-29-26.png",
-    "image": "2026-10-08_01-29-26.png"
+    "image": "images/2026-10-08_01-29-26.png"
   },
   {
     "id": "phuket-fantasea",
@@ -1323,7 +1323,7 @@ window.TIENMEE_EXCURSIONS = [
       "Трансфер — 350 ฿ с человека с любого района."
     ],
     "photo": "059C3DF3-21AA-4E55-A067-707DDE3CDE68.jpeg",
-    "image": "059C3DF3-21AA-4E55-A067-707DDE3CDE68.jpeg"
+    "image": "images/059C3DF3-21AA-4E55-A067-707DDE3CDE68.jpeg"
   },
   {
     "id": "carnival-magic",
@@ -1357,7 +1357,7 @@ window.TIENMEE_EXCURSIONS = [
       "Младенцам до 100 см не предоставляются театральные кресла или игрушки."
     ],
     "photo": "3618A777-A20C-4C5E-AAF2-3A5B24A3E99B.jpeg",
-    "image": "3618A777-A20C-4C5E-AAF2-3A5B24A3E99B.jpeg"
+    "image": "images/3618A777-A20C-4C5E-AAF2-3A5B24A3E99B.jpeg"
   },
   {
     "id": "surin",
@@ -1374,6 +1374,6 @@ window.TIENMEE_EXCURSIONS = [
     "description": "Архипелаг пяти островов с изумрудными бухтами и коралловыми рифами.",
     "program": [],
     "photo": "6559DC57-8F60-45E1-BDC1-E4908FB30663.jpeg",
-    "image": "6559DC57-8F60-45E1-BDC1-E4908FB30663.jpeg"
+    "image": "images/6559DC57-8F60-45E1-BDC1-E4908FB30663.jpeg"
   }
 ];
