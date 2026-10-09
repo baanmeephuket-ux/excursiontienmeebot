@@ -582,12 +582,12 @@ function renderOrders(){
 // Tien Mee excursions catalogue integration (app.js patch)
 (function initTienMeeExcursions() {
   const categoryMeta = {
-    sea: { title: 'Морские экскурсии', image: 'images/islands-route.jpg', label: 'Морские' },
-    land: { title: 'Сухопутные программы', image: 'images/hong-phangnga.jpg', label: 'Сухопутные' },
-    activities: { title: 'Активности и аренда', image: 'images/jet-ski-route.jpg', label: 'Активности' },
-    shows: { title: 'Вечерние шоу', image: 'images/maiton-coral-racha.jpg', label: 'Вечерние шоу' },
-    boats: { title: 'Аренда лодок', image: 'images/speedboat.jpg', label: 'Аренда лодок' },
-    private: { title: 'Приватные экскурсии', image: 'images/speedboat.jpg', label: 'Приватные' }
+    sea: { title: 'Морские экскурсии', image: 'islands-route.jpg', label: 'Морские' },
+    land: { title: 'Сухопутные программы', image: 'hong-phangnga.jpg', label: 'Сухопутные' },
+    activities: { title: 'Активности и аренда', image: 'jet-ski-route.jpg', label: 'Активности' },
+    shows: { title: 'Вечерние шоу', image: 'maiton-coral-racha.jpg', label: 'Вечерние шоу' },
+    boats: { title: 'Аренда лодок', image: 'speedboat.jpg', label: 'Аренда лодок' },
+    private: { title: 'Приватные экскурсии', image: 'speedboat.jpg', label: 'Приватные' }
   };
   const escapeHtml = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const money = p => p == null ? 'Уточнить стоимость' : `${Number(p).toLocaleString('ru-RU')} ${'THB'}`;
@@ -622,7 +622,7 @@ function renderOrders(){
       const items = all.filter(x => x.category === key);
       const section = document.getElementById('category');
       if (!section) return;
-      const meta = categoryMeta[category] || categoryMeta[key] || { title: 'Экскурсии', image: 'images/islands-route.jpg' };
+      const meta = categoryMeta[category] || categoryMeta[key] || { title: 'Экскурсии', image: 'islands-route.jpg' };
       section.innerHTML = `<button data-back class="back" type="button">‹ К экскурсиям</button><h2 id="catTitle">${escapeHtml(meta.title)}</h2><div class="excursion-grid">${items.map(x => {
         const fallback = meta.image;
         return `<button class="excursion-card" type="button" data-excursion-id="${escapeHtml(x.id)}"><img src="${escapeHtml(fallback)}" alt="" loading="lazy"><span class="excursion-card-body"><b>${escapeHtml(x.title)}</b><small>${escapeHtml(x.description || '')}</small><strong>${money(x.price?.adult)}</strong></span><span class="excursion-arrow">›</span></button>`;
