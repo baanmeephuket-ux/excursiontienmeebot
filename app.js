@@ -583,10 +583,10 @@ function renderOrders(){
   const categoryMeta = {
     sea: { title: 'Морские экскурсии', image: 'images/islands-route.jpg', label: 'Морские' },
     land: { title: 'Сухопутные программы', image: 'images/hong-phangnga.jpg', label: 'Сухопутные' },
-    activities: { title: 'Активности и аренда', image: 'images/jet-ski-route.jpg', label: 'Активности' },
-    shows: { title: 'Вечерние шоу', image: 'images/maiton-coral-racha.jpg', label: 'Вечерние шоу' },
-    boats: { title: 'Аренда лодок', image: 'images/speedboat.jpg', label: 'Аренда лодок' },
-    private: { title: 'Приватные экскурсии', image: 'images/speedboat.jpg', label: 'Приватные' }
+    activities: { title: 'Активности', label: 'Активности' },
+    shows: { title: 'Вечерние шоу', label: 'Вечерние шоу' },
+    boats: { title: 'Аренда лодок', label: 'Аренда лодок' },
+    private: { title: 'Приватные экскурсии', label: 'Приватные' }
   };
   const escapeHtml = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const money = p => p == null ? 'Уточнить стоимость' : `${Number(p).toLocaleString('ru-RU')} ${'THB'}`;
@@ -616,31 +616,40 @@ function renderOrders(){
   // Добавляем категорию вечерних шоу в существующий экран экскурсий без изменения index.html.
   function ensureShowsCategoryButton() {
     const list = document.querySelector('#excursions .list');
-    if (!list || list.querySelector('[data-cat="shows"]')) return;
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.dataset.cat = 'shows';
-    button.innerHTML = '🎭 <span><b>Вечерние шоу</b><small>Siam Niramit, Phuket FantaSea, Carnival Magic</small></span>›';
-    button.addEventListener('click', () => renderCategory('shows'));
-    list.appendChild(button);
+    if (!list) return;
+    const addCategoryButton = (category, icon, title, subtitle) => {
+      if (list.querySelector(`[data-cat="${category}"]`)) return;
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.dataset.cat = category;
+      button.innerHTML = `${icon} <span><b>${title}</b><small>${subtitle}</small></span>›`;
+      list.appendChild(button);
+    };
+    addCategoryButton('activities', '🌊', 'Активности', 'Гидроциклы и морская рыбалка');
+    addCategoryButton('shows', '🎭', 'Вечерние шоу', 'Simon Cabaret, Siam Niramit, Phuket FantaSea, Carnival Magic');
     const sub = document.querySelector('#excursions .sub');
-    if (sub) sub.textContent = 'Морские и сухопутные поездки, аренда лодок, приватные маршруты и вечерние шоу.';
+    if (sub) sub.textContent = 'Морские и сухопутные программы, активности, аренда лодок, приватные экскурсии и вечерние шоу.';
   }
   ensureShowsCategoryButton();
 
   function renderCategory(category) {
     loadCatalog(() => {
       const all = window.TIENMEE_EXCURSIONS || [];
-      const categoryMap = { boats: 'activities', private: 'activities' };
-      const key = categoryMap[category] || category;
-      const items = all.filter(x => x.category === key);
+      const items = category === 'private'
+        ? all.filter(x => x.id === 'private-phuket-tour')
+        : all.filter(x => x.category === category);
       const section = document.getElementById('category');
       if (!section) return;
-      const meta = categoryMeta[category] || categoryMeta[key] || { title: 'Экскурсии', image: 'images/islands-route.jpg' };
+      const meta = categoryMeta[category] || { title: 'Экскурсии' };
       section.innerHTML = `<button data-back class="back" type="button">‹ К экскурсиям</button><h2 id="catTitle">${escapeHtml(meta.title)}</h2><div class="excursion-grid">${items.map(x => {
-        const fallback = meta.image;
-        const cardPrice = x.price?.adult != null ? money(x.price.adult) : (Array.isArray(x.price?.options) && x.price.options.length ? `от ${money(x.price.options[0].adult ?? x.price.options[0].amount)}` : 'Стоимость в карточке');
-        return `<button class="excursion-card" type="button" data-excursion-id="${escapeHtml(x.id)}"><img src="${escapeHtml(x.image || fallback)}" alt="${escapeHtml(x.title)}" loading="lazy" onerror="this.onerror=null;this.src='${escapeHtml(fallback)}'"><span class="excursion-card-body"><b>${escapeHtml(x.title)}</b><small>${escapeHtml(x.description || '')}</small><strong>${escapeHtml(cardPrice)}</strong></span><span class="excursion-arrow">›</span></button>`;
+        const firstOption = Array.isArray(x.price?.options) ? x.price.options[0] : null;
+        const optionPrice = firstOption?.perHour != null ? `от ${money(firstOption.perHour)} / час`
+          : firstOption?.adult != null ? `от ${money(firstOption.adult)}`
+          : firstOption?.amount != null ? `от ${money(firstOption.amount)}`
+          : firstOption ? 'Стоимость указана в вариантах' : 'Уточнить стоимость';
+        const cardPrice = x.price?.adult != null ? money(x.price.adult) : optionPrice;
+        const imageMarkup = x.image ? `<img src="${escapeHtml(x.image)}" alt="${escapeHtml(x.title)}" loading="lazy" onerror="this.hidden=true">` : '';
+        return `<button class="excursion-card" type="button" data-excursion-id="${escapeHtml(x.id)}">${imageMarkup}<span class="excursion-card-body"><b>${escapeHtml(x.title)}</b><small>${escapeHtml(x.description || '')}</small><strong>${escapeHtml(cardPrice)}</strong></span><span class="excursion-arrow">›</span></button>`;
       }).join('') || '<p class="excursion-empty">В этой категории пока нет программ.</p>'}</div>`;
       section.querySelector('[data-back]')?.addEventListener('click', () => show('excursions'));
       section.querySelectorAll('[data-excursion-id]').forEach(btn => btn.addEventListener('click', () => renderDetail(btn.dataset.excursionId)));
@@ -658,9 +667,17 @@ function renderOrders(){
         : '';
       const days = x.days === 'daily' ? 'Ежедневно' : Array.isArray(x.days) ? x.days.join(', ') : (x.days || 'Уточняется');
       const notes = Array.isArray(x.notes) ? `<ul class="excursion-notes">${x.notes.map(n => `<li>${escapeHtml(n)}</li>`).join('')}</ul>` : (x.notes ? `<p class="excursion-notes">${escapeHtml(x.notes)}</p>` : '');
-      const optionPrices = Array.isArray(x.price?.options) ? `<div class="excursion-price-options"><h3>Варианты билетов</h3>${x.price.options.map(option => `<div class="excursion-price-option"><span>${escapeHtml(option.name || 'Билет')}</span><b>${option.adult != null ? `Взрослый: ${money(option.adult)}` : money(option.amount)}${option.child != null ? ` · Детский: ${money(option.child)}` : ''}</b></div>`).join('')}</div>` : '';
+      const optionPrices = Array.isArray(x.price?.options) ? `<div class="excursion-price-options"><h3>Варианты</h3>${x.price.options.map(option => {
+        const priceParts = [];
+        if (option.adult != null) priceParts.push(`Взрослый: ${money(option.adult)}`);
+        if (option.child != null) priceParts.push(`Детский: ${money(option.child)}`);
+        if (option.perHour != null) priceParts.push(`${money(option.perHour)} / час`);
+        if (option.amount != null && option.adult == null) priceParts.push(money(option.amount));
+        return `<div class="excursion-price-option"><span>${escapeHtml(option.name || 'Вариант')}</span><b>${escapeHtml(priceParts.join(' · ') || 'Уточнить стоимость')}</b></div>`;
+      }).join('')}</div>` : '';
+      const imageMarkup = x.image ? `<img class="excursion-hero-image" src="${escapeHtml(x.image)}" alt="${escapeHtml(x.title)}" onerror="this.hidden=true">` : '';
       detail.querySelector('#excursionDetailContent').innerHTML = `
-        <img class="excursion-hero-image" src="${escapeHtml(x.image || meta.image)}" alt="${escapeHtml(x.title)}" onerror="this.onerror=null;this.src='${escapeHtml(meta.image)}'">
+        ${imageMarkup}
         <h2>${escapeHtml(x.title)}</h2>
         <p class="excursion-description">${escapeHtml(x.description || '')}</p>
         ${x.price?.adult != null || x.price?.child != null ? `<div class="excursion-prices">${x.price?.adult != null ? `<div><small>Взрослый</small><b>${money(x.price.adult)}</b></div>` : ''}${x.price?.child != null ? `<div><small>Детский</small><b>${money(x.price.child)}</b></div>` : ''}</div>` : ''}
@@ -671,7 +688,7 @@ function renderOrders(){
         <form id="excursionBookingForm" class="excursion-form">
           <label>Имя и фамилия (латиницей)<input name="fullName" required autocomplete="name" placeholder="Например, IVAN IVANOV"></label>
           <label>Отель или место подачи<input name="hotel" required placeholder="Название отеля / адрес"></label>
-          <label>Дата экскурсии<input name="date" type="date" required></label>
+          <label>Дата экскурсии<input name="date" type="date" required min="${new Date().toLocaleDateString('en-CA')}"></label>
           <div class="excursion-form-row"><label>Взрослые<input name="adults" type="number" min="1" value="2" required></label><label>Дети<input name="children" type="number" min="0" value="0" required></label></div>
           <label>Возраст детей (если есть)<input name="childrenAges" placeholder="Например, 5 и 8 лет"></label>
           <label>Контакт для связи<input name="phone" required placeholder="Telegram / WhatsApp / телефон"></label>
@@ -686,6 +703,18 @@ function renderOrders(){
         const status = form.querySelector('.excursion-form-status');
         submit.disabled = true; submit.textContent = 'Отправляем…';
         const f = new FormData(form);
+        const selectedDate = f.get('date');
+        if (Array.isArray(x.days) && selectedDate) {
+          const weekdayNames = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+          const [year, month, day] = selectedDate.split('-').map(Number);
+          const weekday = weekdayNames[new Date(year, month - 1, day).getDay()];
+          if (!x.days.includes(weekday)) {
+            status.textContent = `Эта программа отправляется: ${x.days.join(', ')}. Выберите подходящую дату.`;
+            submit.disabled = false;
+            submit.textContent = 'Отправить заявку';
+            return;
+          }
+        }
         const order = {
           type: 'excursion', id: makeId('EX'), status: 'Новая заявка',
           excursionId: x.id, service: x.title, excursionTitle: x.title,
@@ -698,7 +727,7 @@ function renderOrders(){
         const sent = await sendOrder(order);
         if (!sent) { submit.disabled = false; submit.textContent = 'Отправить заявку'; return; }
         saveOrder(order); feedback();
-        form.innerHTML = `<h3>✅ Заявка отправлена</h3><p>Номер заявки: <b>${escapeHtml(order.id)}</b></p><p>Экскурсия: ${escapeHtml(x.title)}</p><p>Менеджер свяжется с вами для подтверждения деталей.</p><button type="button" id="excursionNewRequest">Оставить ещё одну заявку</button>`;
+        form.innerHTML = `<h3>✅ Спасибо!</h3><p>Ваша заявка отправлена.</p><p>Номер заявки: <b>${escapeHtml(order.id)}</b></p><p>Экскурсия: ${escapeHtml(x.title)}</p><p>Мы свяжемся с вами для подтверждения деталей.</p><button type="button" id="excursionNewRequest">Оставить ещё одну заявку</button>`;
         form.querySelector('#excursionNewRequest').addEventListener('click', () => renderDetail(id));
       });
     });
