@@ -675,7 +675,6 @@ function renderOrders(){
         if (option.amount != null && option.adult == null) priceParts.push(money(option.amount));
         return `<div class="excursion-price-option"><span>${escapeHtml(option.name || 'Вариант')}</span><b>${escapeHtml(priceParts.join(' · ') || 'Уточнить стоимость')}</b></div>`;
       }).join('')}</div>` : '';
-      ```js
 const galleryImages = Array.isArray(x.images) && x.images.length
   ? x.images
   : (x.image ? [x.image] : []);
@@ -702,7 +701,6 @@ const imageMarkup = galleryImages.length ? `
     ` : ''}
   </div>
 ` : '';
-```
       detail.querySelector('#excursionDetailContent').innerHTML = `
         ${imageMarkup}
         <h2>${escapeHtml(x.title)}</h2>
