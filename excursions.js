@@ -1235,7 +1235,14 @@ window.TIENMEE_EXCURSIONS = [
       "jwMarriottMaiKhaoBus": 1000
     },
     "photo": "TienMee_Simon_Cabaret.jpg",
-    "image": "TienMee_Simon_Cabaret.jpg"
+    "image": "TienMee_Simon_Cabaret.jpg",
+    "images": [
+      "TienMee_Simon_Cabaret.jpg",
+      "TienMee_Simon_Cabaret_1.jpg",
+      "TienMee_Simon_Cabaret_2.jpg",
+      "TienMee_Simon_Cabaret_3.jpg",
+      "TienMee_Simon_Cabaret_4.jpg"
+]
   },
   {
     "id": "siam-niramit",
@@ -1284,7 +1291,14 @@ window.TIENMEE_EXCURSIONS = [
       "Дополнительный трансфер — 250 ฿."
     ],
     "photo": "TienMee_Siam_Niramit.jpg",
-    "image": "TienMee_Siam_Niramit.jpg"
+    "image": "TienMee_Siam_Niramit.jpg",
+    "images": [
+      "TienMee_Siam_Niramit.jpg",
+      "TienMee_Siam_Niramit_1.jpg",
+      "TienMee_Siam_Niramit_2.jpg",
+      "TienMee_Siam_Niramit_3.jpg",
+      "TienMee_Siam_Niramit_4.jpg"
+]   
   },
   {
     "id": "phuket-fantasea",
