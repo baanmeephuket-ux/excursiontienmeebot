@@ -1323,7 +1323,15 @@ window.TIENMEE_EXCURSIONS = [
       "Трансфер — 350 ฿ с человека с любого района."
     ],
     "photo": "TienMee_Phuket_FantaSea.jpg",
-    "image": "TienMee_Phuket_FantaSea.jpg"
+"image": "TienMee_Phuket_FantaSea.jpg",
+"images": [
+  "TienMee_Phuket_FantaSea.jpg",
+  "TienMee_Phuket_FantaSea_2.jpg",
+  "TienMee_Phuket_FantaSea_3.jpg",
+  "TienMee_Phuket_FantaSea_4.jpg"
+  "TienMee_Phuket_FantaSea_5.jpg",
+  "TienMee_Phuket_FantaSea_6.jpg"
+]
   },
   {
     "id": "carnival-magic",
