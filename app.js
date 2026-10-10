@@ -720,38 +720,44 @@ const imageMarkup = galleryImages.length ? `
           <label>Комментарий<textarea name="comment" rows="3" placeholder="Дополнительные пожелания"></textarea></label>
           <button type="submit">Отправить заявку</button><p class="excursion-form-status" aria-live="polite"></p>
         </form>`;
-      show('excursionDetail');
-      requestAnimationFrame(() => {
-        const galleryTrack = detail.querySelector('.excursion-gallery-track');
-        if (!galleryTrack) return;
+show('excursionDetail');
+const galleryTrack = detail.querySelector('.excursion-gallery-track');
 
+if (galleryTrack) {
   const slides = [...galleryTrack.querySelectorAll('.excursion-hero-image')];
   const dots = [...detail.querySelectorAll('.excursion-gallery-dot')];
 
-  // Каждый раз открываем галерею с первой фотографии.
-  galleryTrack.style.scrollSnapType = 'none';
+  // Сбрасываем галерею на первый слайд.
   galleryTrack.style.scrollBehavior = 'auto';
-  galleryTrack.scrollLeft = 0;
+  galleryTrack.style.scrollSnapType = 'none';
+  galleryTrack.scrollTo(0, 0);
 
-    requestAnimationFrame(() => {
-      galleryTrack.scrollLeft = 0;
-
-    requestAnimationFrame(() => {
-      galleryTrack.style.scrollSnapType = '';
-      galleryTrack.style.scrollBehavior = '';
-
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('is-active', i === 0);
-        dot.onclick = () => {
-          galleryTrack.scrollTo({
-            left: slides[i]?.offsetLeft ?? 0,
-            behavior: 'smooth'
-          });
-        };
-      });
+  if (slides[0]) {
+    slides[0].scrollIntoView({
+      behavior: 'auto',
+      block: 'nearest',
+      inline: 'start'
     });
+  }
+
+  galleryTrack.style.scrollSnapType = '';
+
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('is-active', i === 0);
+
+    dot.onclick = () => {
+      slides[i]?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'start'
+      });
+
+      dots.forEach((item, index) => {
+        item.classList.toggle('is-active', index === i);
+      });
+    };
   });
-});
+}
       const form = detail.querySelector('#excursionBookingForm');
       form.addEventListener('submit', async e => {
         e.preventDefault();
