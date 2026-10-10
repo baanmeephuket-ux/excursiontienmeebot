@@ -722,9 +722,11 @@ const imageMarkup = galleryImages.length ? `
         </form>`;
       show('excursionDetail');
            requestAnimationFrame(() => {
-        const galleryTrack = detail.querySelector('.excursion-gallery-track');
-        if (galleryTrack) galleryTrack.scrollLeft = 0;
-      });
+  const galleryTrack = detail.querySelector('.excursion-gallery-track');
+  if (galleryTrack) {
+    galleryTrack.scrollTo({ left: 0, behavior: 'instant' });
+  }
+});
       const form = detail.querySelector('#excursionBookingForm');
       form.addEventListener('submit', async e => {
         e.preventDefault();
