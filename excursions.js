@@ -1365,7 +1365,7 @@ window.TIENMEE_EXCURSIONS = [
       "Младенцам до 100 см не предоставляются театральные кресла или игрушки."
     ],
     "photo": "TienMee_Carnival_Magic.jpg",
-    "image": "TienMee_Carnival_Magic.jpg"
+    "image": "TienMee_Carnival_Magic.jpg",
     "images": [
   "TienMee_Carnival_Magic.jpg",
   "TienMee_Carnival_Magic_1.jpeg",
