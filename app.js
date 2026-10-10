@@ -648,7 +648,7 @@ function renderOrders(){
           : firstOption?.amount != null ? `от ${money(firstOption.amount)}`
           : firstOption ? 'Стоимость указана в вариантах' : 'Уточнить стоимость';
         const cardPrice = x.price?.adult != null ? money(x.price.adult) : optionPrice;
-        const imageMarkup = x.image ? `<img src="${escapeHtml(x.image)}" alt="${escapeHtml(x.title)}" loading="lazy" onerror="this.hidden=true">` : '';
+        const imageMarkup = x.image ? `<img class="${x.category === 'shows' ? 'show-poster' : ''}" src="${escapeHtml(x.image)}" alt="${escapeHtml(x.title)}" loading="lazy" onerror="this.hidden=true">` : '';
         return `<button class="excursion-card" type="button" data-excursion-id="${escapeHtml(x.id)}">${imageMarkup}<span class="excursion-card-body"><b>${escapeHtml(x.title)}</b><small>${escapeHtml(x.description || '')}</small><strong>${escapeHtml(cardPrice)}</strong></span><span class="excursion-arrow">›</span></button>`;
       }).join('') || '<p class="excursion-empty">В этой категории пока нет программ.</p>'}</div>`;
       section.querySelector('[data-back]')?.addEventListener('click', () => show('excursions'));
@@ -675,7 +675,7 @@ function renderOrders(){
         if (option.amount != null && option.adult == null) priceParts.push(money(option.amount));
         return `<div class="excursion-price-option"><span>${escapeHtml(option.name || 'Вариант')}</span><b>${escapeHtml(priceParts.join(' · ') || 'Уточнить стоимость')}</b></div>`;
       }).join('')}</div>` : '';
-      const imageMarkup = x.image ? `<img class="excursion-hero-image" src="${escapeHtml(x.image)}" alt="${escapeHtml(x.title)}" onerror="this.hidden=true">` : '';
+      const imageMarkup = x.image ? `<img class="excursion-hero-image ${x.category === 'shows' ? 'show-poster' : ''}" src="${escapeHtml(x.image)}" alt="${escapeHtml(x.title)}" onerror="this.hidden=true">` : '';
       detail.querySelector('#excursionDetailContent').innerHTML = `
         ${imageMarkup}
         <h2>${escapeHtml(x.title)}</h2>
@@ -747,6 +747,11 @@ function renderOrders(){
     .excursion-card-body strong{font-size:17px;color:#087c8a;background:#e5f8f7;border-radius:999px;padding:7px 12px;margin-top:2px}
     .excursion-arrow{position:absolute;right:15px;bottom:20px;font-size:24px;color:var(--tm-coral);font-weight:800}
     .excursion-hero-image{display:block;width:100%;height:245px;object-fit:cover;border-radius:24px;margin:10px 0 20px;background:#d6f1f1;box-shadow:0 10px 24px rgba(8,94,105,.12)}
+    .excursion-card img.show-poster,
+    .excursion-hero-image.show-poster {
+     object-fit: contain;
+     background: #171016;
+}
     .excursion-description{font-size:15px;line-height:1.75;white-space:pre-line;color:#4d6465;margin:12px 0 20px}
     #excursionDetailContent h3{font-size:22px;line-height:1.25;color:#173a3d;margin:24px 0 12px}
     .excursion-prices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
