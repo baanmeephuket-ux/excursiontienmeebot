@@ -721,56 +721,34 @@ const imageMarkup = galleryImages.length ? `
           <button type="submit">Отправить заявку</button><p class="excursion-form-status" aria-live="polite"></p>
         </form>`;
       show('excursionDetail');
-           
 requestAnimationFrame(() => {
   const galleryTrack = detail.querySelector('.excursion-gallery-track');
   if (!galleryTrack) return;
 
-  const slides = [...galleryTrack.querySelectorAll('.excursion-hero-image')];
-  const dots = [...detail.querySelectorAll('.excursion-gallery-dot')];
-
-  const goToSlide = (index) => {
-    const slide = slides[index];
-    if (!slide) return;
-
-  galleryTrack.scrollLeft =
-   slide.getBoundingClientRect().left -
-   galleryTrack.getBoundingClientRect().left +
-   galleryTrack.scrollLeft;
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('is-active', i === index);
-    });
-  };
-
-  // Каждое открытие экскурсии начинается с первого слайда.
+  // Сбрасываем галерею в самое начало при каждом открытии.
+  galleryTrack.style.scrollBehavior = 'auto';
   galleryTrack.scrollLeft = 0;
-  goToSlide(0);
 
-  dots.forEach((dot, index) => {
-    dot.onclick = () => goToSlide(index);
+  requestAnimationFrame(() => {
+    galleryTrack.scrollLeft = 0;
+    galleryTrack.style.scrollBehavior = '';
+
+    const slides = [...galleryTrack.querySelectorAll('.excursion-hero-image')];
+    const dots = [...detail.querySelectorAll('.excursion-gallery-dot')];
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('is-active', i === 0);
+      dot.onclick = () => {
+        slides[i]?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'start'
+        });
+      };
+    });
   });
-
-  galleryTrack.onscroll = () => {
-    const trackLeft = galleryTrack.getBoundingClientRect().left;
-    let nearestIndex = 0;
-    let nearestDistance = Infinity;
-
-    slides.forEach((slide, index) => {
-      const distance = Math.abs(
-        slide.getBoundingClientRect().left - trackLeft
-      );
-
-      if (distance < nearestDistance) {
-        nearestDistance = distance;
-        nearestIndex = index;
-      }
-    });
-
-    dots.forEach((dot, index) => {
-      dot.classList.toggle('is-active', index === nearestIndex);
-    });
-  };
 });
+
       const form = detail.querySelector('#excursionBookingForm');
       form.addEventListener('submit', async e => {
         e.preventDefault();
