@@ -799,6 +799,7 @@ const imageMarkup = galleryImages.length ? `
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+  direction: ltr;
 }
 
 .excursion-gallery-track::-webkit-scrollbar {
