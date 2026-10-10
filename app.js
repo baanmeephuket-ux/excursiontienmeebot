@@ -724,7 +724,7 @@ const imageMarkup = galleryImages.length ? `
            requestAnimationFrame(() => {
   const galleryTrack = detail.querySelector('.excursion-gallery-track');
   if (galleryTrack) {
-    galleryTrack.scrollTo({ left: 0, behavior: 'instant' });
+    galleryTrack.scrollTo(0, 0);
   }
 });
       const form = detail.querySelector('#excursionBookingForm');
