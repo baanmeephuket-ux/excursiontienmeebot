@@ -675,7 +675,34 @@ function renderOrders(){
         if (option.amount != null && option.adult == null) priceParts.push(money(option.amount));
         return `<div class="excursion-price-option"><span>${escapeHtml(option.name || 'Вариант')}</span><b>${escapeHtml(priceParts.join(' · ') || 'Уточнить стоимость')}</b></div>`;
       }).join('')}</div>` : '';
-      const imageMarkup = x.image ? `<img class="excursion-hero-image ${x.category === 'shows' ? 'show-poster' : ''}" src="${escapeHtml(x.image)}" alt="${escapeHtml(x.title)}" onerror="this.hidden=true">` : '';
+      ```js
+const galleryImages = Array.isArray(x.images) && x.images.length
+  ? x.images
+  : (x.image ? [x.image] : []);
+
+const imageMarkup = galleryImages.length ? `
+  <div class="excursion-gallery">
+    <div class="excursion-gallery-track">
+      ${galleryImages.map((src, i) => `
+        <img
+          class="excursion-hero-image${x.category === 'shows' ? ' excursion-hero-image--poster' : ''}"
+          src="${escapeHtml(src)}"
+          alt="${escapeHtml(x.title)} — фото ${i + 1}"
+          loading="lazy"
+          onerror="this.hidden=true"
+        >
+      `).join('')}
+    </div>
+    ${galleryImages.length > 1 ? `
+      <div class="excursion-gallery-dots">
+        ${galleryImages.map((_, i) => `
+          <button type="button" class="excursion-gallery-dot${i === 0 ? ' is-active' : ''}" data-gallery-index="${i}"></button>
+        `).join('')}
+      </div>
+    ` : ''}
+  </div>
+` : '';
+```
       detail.querySelector('#excursionDetailContent').innerHTML = `
         ${imageMarkup}
         <h2>${escapeHtml(x.title)}</h2>
@@ -756,6 +783,52 @@ function renderOrders(){
      object-fit: contain;
      background: transparent;
      border-radius: 24px;
+}
+.excursion-gallery {
+  width: 100%;
+  overflow: hidden;
+}
+
+.excursion-gallery-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.excursion-gallery-track::-webkit-scrollbar {
+  display: none;
+}
+
+.excursion-gallery-track .excursion-hero-image {
+  flex: 0 0 100%;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  object-fit: contain;
+  scroll-snap-align: start;
+  background: transparent;
+}
+
+.excursion-gallery-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 0;
+}
+
+.excursion-gallery-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #c8d3d5;
+}
+
+.excursion-gallery-dot.is-active {
+  background: #087f8c;
 }
     .excursion-description{font-size:15px;line-height:1.75;white-space:pre-line;color:#4d6465;margin:12px 0 20px}
     #excursionDetailContent h3{font-size:22px;line-height:1.25;color:#173a3d;margin:24px 0 12px}
