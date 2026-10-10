@@ -1328,8 +1328,8 @@ window.TIENMEE_EXCURSIONS = [
   "TienMee_Phuket_FantaSea.jpg",
   "TienMee_Phuket_FantaSea_2.jpg",
   "TienMee_Phuket_FantaSea_3.jpg",
-  "TienMee_Phuket_FantaSea_4.jpg"
-  "TienMee_Phuket_FantaSea_5.jpg",
+  "TienMee_Phuket_FantaSea_4.jpg",
+  "TienMee_Phuket_FantaSea_5.png",
   "TienMee_Phuket_FantaSea_6.jpg"
 ]
   },
