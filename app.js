@@ -721,11 +721,53 @@ const imageMarkup = galleryImages.length ? `
           <button type="submit">Отправить заявку</button><p class="excursion-form-status" aria-live="polite"></p>
         </form>`;
       show('excursionDetail');
-           requestAnimationFrame(() => {
+           
+requestAnimationFrame(() => {
   const galleryTrack = detail.querySelector('.excursion-gallery-track');
-  if (galleryTrack) {
-    galleryTrack.scrollTo(0, 0);
-  }
+  if (!galleryTrack) return;
+
+  const slides = [...galleryTrack.querySelectorAll('.excursion-hero-image')];
+  const dots = [...detail.querySelectorAll('.excursion-gallery-dot')];
+
+  const goToSlide = (index) => {
+    const slide = slides[index];
+    if (!slide) return;
+
+    galleryTrack.scrollLeft = slide.offsetLeft - slides[0].offsetLeft;
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('is-active', i === index);
+    });
+  };
+
+  // Каждое открытие экскурсии начинается с первого слайда.
+  galleryTrack.scrollLeft = 0;
+  goToSlide(0);
+
+  dots.forEach((dot, index) => {
+    dot.onclick = () => goToSlide(index);
+  });
+
+  galleryTrack.onscroll = () => {
+    const trackLeft = galleryTrack.getBoundingClientRect().left;
+    let nearestIndex = 0;
+    let nearestDistance = Infinity;
+
+    slides.forEach((slide, index) => {
+      const distance = Math.abs(
+        slide.getBoundingClientRect().left - trackLeft
+      );
+
+      if (distance < nearestDistance) {
+        nearestDistance = distance;
+        nearestIndex = index;
+      }
+    });
+
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('is-active', index === nearestIndex);
+    });
+  };
 });
       const form = detail.querySelector('#excursionBookingForm');
       form.addEventListener('submit', async e => {
@@ -806,11 +848,16 @@ const imageMarkup = galleryImages.length ? `
   display: none;
 }
 
+
 .excursion-gallery-track .excursion-hero-image {
+  display: block;
   flex: 0 0 100%;
   width: 100%;
+  max-width: 100%;
   height: auto;
   min-height: 0;
+  margin: 0;
+  box-sizing: border-box;
   object-fit: contain;
   scroll-snap-align: start;
   background: transparent;
