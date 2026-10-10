@@ -1366,6 +1366,15 @@ window.TIENMEE_EXCURSIONS = [
     ],
     "photo": "TienMee_Carnival_Magic.jpg",
     "image": "TienMee_Carnival_Magic.jpg"
+    "images": [
+  "TienMee_Carnival_Magic.jpg",
+  "TienMee_Carnival_Magic_1.jpeg",
+  "TienMee_Carnival_Magic_2.jpg",
+  "TienMee_Carnival_Magic_3.jpg",
+  "TienMee_Carnival_Magic_4.png",
+  "TienMee_Carnival_Magic_5.jpg",
+  "TienMee_Carnival_Magic_6.png"
+]
   },
   {
     "id": "surin",
