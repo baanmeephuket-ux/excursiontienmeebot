@@ -721,6 +721,10 @@ const imageMarkup = galleryImages.length ? `
           <button type="submit">Отправить заявку</button><p class="excursion-form-status" aria-live="polite"></p>
         </form>`;
       show('excursionDetail');
+           requestAnimationFrame(() => {
+        const galleryTrack = detail.querySelector('.excursion-gallery-track');
+        if (galleryTrack) galleryTrack.scrollLeft = 0;
+      });
       const form = detail.querySelector('#excursionBookingForm');
       form.addEventListener('submit', async e => {
         e.preventDefault();
