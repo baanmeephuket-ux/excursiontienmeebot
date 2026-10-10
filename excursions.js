@@ -1371,9 +1371,9 @@ window.TIENMEE_EXCURSIONS = [
        "TienMee_Carnival_Magic_1.jpeg",
        "TienMee_Carnival_Magic_2.jpg",
        "TienMee_Carnival_Magic_3.jpg",
-       "TienMee_Carnival_Magic_4.png",
+       "TienMee_Carnival_Magic_4.jpg",
        "TienMee_Carnival_Magic_5.jpg",
-       "TienMee_Carnival_Magic_6.png"
+       "TienMee_Carnival_Magic_6.jpg"
 ]
   },
   {
