@@ -1234,8 +1234,8 @@ window.TIENMEE_EXCURSIONS = [
       },
       "jwMarriottMaiKhaoBus": 1000
     },
-    "photo": "TienMee_Simon_Cabaret.jpeg",
-    "image": "TienMee_Simon_Cabaret.jpeg"
+    "photo": "TienMee_Simon_Cabaret.jpg",
+    "image": "TienMee_Simon_Cabaret.jpg"
   },
   {
     "id": "siam-niramit",
@@ -1283,8 +1283,8 @@ window.TIENMEE_EXCURSIONS = [
     "notes": [
       "Дополнительный трансфер — 250 ฿."
     ],
-    "photo": "TienMee_Siam_Niramit.png",
-    "image": "TienMee_Siam_Niramit.png"
+    "photo": "TienMee_Siam_Niramit.jpg",
+    "image": "TienMee_Siam_Niramit.jpg"
   },
   {
     "id": "phuket-fantasea",
@@ -1322,8 +1322,8 @@ window.TIENMEE_EXCURSIONS = [
       "Золотые места можно приобрести дополнительно за 250 ฿.",
       "Трансфер — 350 ฿ с человека с любого района."
     ],
-    "photo": "TienMee_Phuket_FantaSea.jpeg",
-    "image": "TienMee_Phuket_FantaSea.jpeg"
+    "photo": "TienMee_Phuket_FantaSea.jpg",
+    "image": "TienMee_Phuket_FantaSea.jpg"
   },
   {
     "id": "carnival-magic",
@@ -1356,8 +1356,8 @@ window.TIENMEE_EXCURSIONS = [
       "Детям 100–140 см с билетом на ужин доступна одна бесплатная игрушка в детском клубе.",
       "Младенцам до 100 см не предоставляются театральные кресла или игрушки."
     ],
-    "photo": "TienMee_Carnival_Magic.jpeg",
-    "image": "TienMee_Carnival_Magic.jpeg"
+    "photo": "TienMee_Carnival_Magic.jpg",
+    "image": "TienMee_Carnival_Magic.jpg"
   },
   {
     "id": "surin",
