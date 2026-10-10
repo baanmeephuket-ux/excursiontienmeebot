@@ -721,33 +721,89 @@ const imageMarkup = galleryImages.length ? `
           <button type="submit">Отправить заявку</button><p class="excursion-form-status" aria-live="polite"></p>
         </form>`;
       show('excursionDetail');
-requestAnimationFrame(() => {
-  const galleryTrack = detail.querySelector('.excursion-gallery-track');
-  if (!galleryTrack) return;
 
-  // Сбрасываем галерею в самое начало при каждом открытии.
-  galleryTrack.style.scrollBehavior = 'auto';
-  galleryTrack.scrollLeft = 0;
+      requestAnimationFrame(() => {
+        const galleryTrack = detail.querySelector(
+          '.excursion-gallery-track'
+        );
 
-  requestAnimationFrame(() => {
-    galleryTrack.scrollLeft = 0;
-    galleryTrack.style.scrollBehavior = '';
+        if (!galleryTrack) return;
 
-    const slides = [...galleryTrack.querySelectorAll('.excursion-hero-image')];
-    const dots = [...detail.querySelectorAll('.excursion-gallery-dot')];
+        const slides = Array.from(
+          galleryTrack.querySelectorAll('.excursion-hero-image')
+        );
 
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('is-active', i === 0);
-      dot.onclick = () => {
-        slides[i]?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'start'
+        const dots = Array.from(
+          detail.querySelectorAll('.excursion-gallery-dot')
+        );
+
+        if (!slides.length) return;
+
+        const updateActiveDot = () => {
+          const trackRect = galleryTrack.getBoundingClientRect();
+          let activeIndex = 0;
+          let minDistance = Infinity;
+
+          slides.forEach((slide, index) => {
+            if (slide.hidden) return;
+
+            const distance = Math.abs(
+              slide.getBoundingClientRect().left - trackRect.left
+            );
+
+            if (distance < minDistance) {
+              minDistance = distance;
+              activeIndex = index;
+            }
+          });
+
+          dots.forEach((dot, index) => {
+            dot.classList.toggle(
+              'is-active',
+              index === activeIndex
+            );
+          });
+        };
+
+        const goToSlide = (index) => {
+          const slide = slides[index];
+
+          if (!slide || slide.hidden) return;
+
+          const trackRect = galleryTrack.getBoundingClientRect();
+          const slideRect = slide.getBoundingClientRect();
+
+          const targetLeft =
+            slideRect.left - trackRect.left + galleryTrack.scrollLeft;
+
+          galleryTrack.scrollTo({
+            left: targetLeft,
+            behavior: 'smooth'
+          });
+        };
+
+        galleryTrack.style.scrollBehavior = 'auto';
+        galleryTrack.scrollLeft = 0;
+
+        requestAnimationFrame(() => {
+          galleryTrack.scrollLeft = 0;
+          galleryTrack.style.scrollBehavior = '';
+
+          updateActiveDot();
+
+          dots.forEach((dot, index) => {
+            dot.onclick = () => goToSlide(index);
+          });
+
+          galleryTrack.onscroll = updateActiveDot;
+
+          slides.forEach((slide) => {
+            slide.addEventListener('load', updateActiveDot);
+            slide.addEventListener('error', updateActiveDot);
+          });
         });
-      };
-    });
-  });
-});
+      });
+
 
       const form = detail.querySelector('#excursionBookingForm');
       form.addEventListener('submit', async e => {
