@@ -749,8 +749,13 @@ function renderOrders(){
     .excursion-hero-image{display:block;width:100%;height:245px;object-fit:cover;border-radius:24px;margin:10px 0 20px;background:#d6f1f1;box-shadow:0 10px 24px rgba(8,94,105,.12)}
     .excursion-card img.show-poster,
     .excursion-hero-image.show-poster {
+     width: 100%;
+     height: auto;
+     min-height: 0;
+     max-height: none;
      object-fit: contain;
-     background: #171016;
+     background: transparent;
+     border-radius: 24px;
 }
     .excursion-description{font-size:15px;line-height:1.75;white-space:pre-line;color:#4d6465;margin:12px 0 20px}
     #excursionDetailContent h3{font-size:22px;line-height:1.25;color:#173a3d;margin:24px 0 12px}
