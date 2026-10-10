@@ -733,8 +733,10 @@ requestAnimationFrame(() => {
     const slide = slides[index];
     if (!slide) return;
 
-    galleryTrack.scrollLeft = slide.offsetLeft - slides[0].offsetLeft;
-
+  galleryTrack.scrollLeft =
+   slide.getBoundingClientRect().left -
+   galleryTrack.getBoundingClientRect().left +
+   galleryTrack.scrollLeft;
     dots.forEach((dot, i) => {
       dot.classList.toggle('is-active', i === index);
     });
