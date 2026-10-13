@@ -62,16 +62,16 @@ window.TIENMEE_EXCURSIONS = [
       "Программа может меняться в зависимости от пробок и погоды.",
       "Вход в храм Суванкуха — 20 ฿."
     ],
-    "photo": "chiewlan.jpeg",
-    "image": "chiewlan.jpeg"
+    "photo": "chiewlan.jpg",
+    "image": "chiewlan.jpg",
     "images": [
       "chiewlan.jpg",
       "chiewlan_1.jpg",
       "chiewlan.jpg_2.jpg",
       "chiewlan.jpg_3.jpg",
       "chiewlan.jpg_4.jpg",
-      "chiewlan.jpg_5.jpg",
-      ],
+      "chiewlan.jpg_5.jpg"
+]
   },
   {
     "id": "amazing-phang-nga",
@@ -679,7 +679,7 @@ window.TIENMEE_EXCURSIONS = [
       "Similan.jpg_7.jpg",
       "Similan.jpg_8.jpg",
       "Similan.jpg_9.jpg",
-      "Similan.jpg_10.jpg",
+      "Similan.jpg_10.jpg"
 ]
   },
   {
