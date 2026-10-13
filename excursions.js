@@ -387,6 +387,7 @@ window.TIENMEE_EXCURSIONS = [
       "21_4.jpg",
       "21_5.jpg",
       "21_6.jpg",
+      "21_7.jpg",
       "safari_5.jpg"
      ] 
   },
