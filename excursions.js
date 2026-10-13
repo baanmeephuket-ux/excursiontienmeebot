@@ -146,13 +146,9 @@ window.TIENMEE_EXCURSIONS = [
     "category": "land",
     "title": "Рафтинг",
     "price": {
-      "currency": "THB",
-      "options": [
-        {
-          "name": "Программа B",
-          "adult": 1800,
-          "child": 1600
-        }
+      "adult": 1900,
+      "child": 1700,
+      "currency": "THB"
       ]
     },
     "childAge": "4–9 лет",
