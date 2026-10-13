@@ -722,36 +722,38 @@ const imageMarkup = galleryImages.length ? `
         </form>`;
 show('excursionDetail');
 const galleryTrack = detail.querySelector('.excursion-gallery-track');
-
 if (galleryTrack) {
   const slides = [...galleryTrack.querySelectorAll('.excursion-hero-image')];
   const dots = [...detail.querySelectorAll('.excursion-gallery-dot')];
+  const resetGallery = () => {
+    galleryTrack.scrollLeft = 0;
+    galleryTrack.querySelectorAll('.excursion-hero-image').forEach((slide, i) => {
+      slide.style.scrollSnapAlign = i === 0 ? 'start' : 'start';
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('is-active', i === 0);
+    });
+  };
 
-  // Сбрасываем галерею на первый слайд.
   galleryTrack.style.scrollBehavior = 'auto';
   galleryTrack.style.scrollSnapType = 'none';
-  galleryTrack.scrollTo(0, 0);
+  resetGallery();
 
-  if (slides[0]) {
-    slides[0].scrollIntoView({
-      behavior: 'auto',
-      block: 'nearest',
-      inline: 'start'
+  requestAnimationFrame(() => {
+    resetGallery();
+    requestAnimationFrame(() => {
+      resetGallery();
+      galleryTrack.style.scrollSnapType = 'x mandatory';
+      galleryTrack.style.scrollBehavior = '';
     });
-  }
-
-  galleryTrack.style.scrollSnapType = '';
+  });
 
   dots.forEach((dot, i) => {
-    dot.classList.toggle('is-active', i === 0);
-
     dot.onclick = () => {
-      slides[i]?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'start'
+      galleryTrack.scrollTo({
+        left: slides[i]?.offsetLeft || 0,
+        behavior: 'smooth'
       });
-
       dots.forEach((item, index) => {
         item.classList.toggle('is-active', index === i);
       });
