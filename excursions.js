@@ -197,7 +197,7 @@ window.TIENMEE_EXCURSIONS = [
     ],
     "notes": [
       "Программа может меняться в зависимости от пробок и погоды.",
-      "Вход в Храм Обезьян  — 20 ฿,"
+      "Вход в Храм Обезьян  — 20 ฿",
       "Входной депозит на стеклянный мост: 200 ฿ для взрослого и 100 ฿ для ребёнка. Депозит невозвратный, но полностью включает вход и еду с напитками."
     ],  
     "photo": "skywalk.jpg",
@@ -576,6 +576,7 @@ window.TIENMEE_EXCURSIONS = [
         "15:00",
         "Возвращение в отель"
       ]
+      ], 
      "photo": "tour.jpeg",
     "image": "tour.jpeg",
     "images": [
@@ -595,11 +596,11 @@ window.TIENMEE_EXCURSIONS = [
       "options": [
         {
           "name": "Автомобиль до 4 человек",
-          "perHour": 1100  в час
+          "perHour": 1100 
         },
         {
-          "name": "Автомобиль 5–10 человек",
-          "perHour": 1300 в час
+          "name": "Автомобиль 5–10 в час,
+          "perHour": 1300
         },
         {
           "name": "Автомобиль 11–20 человек",
@@ -667,7 +668,7 @@ window.TIENMEE_EXCURSIONS = [
       ]
     ],
     "photo": "coral1.jpg",
-    "image": "coral1.jpg"
+    "image": "coral1.jpg",
     "images": [
       "coral1.jpg",
       "coral.jpg",
@@ -728,7 +729,7 @@ window.TIENMEE_EXCURSIONS = [
       ]
     ],   
     "photo": "surin.jpg",
-    "image": "surin.jpg"
+    "image": "surin.jpg",
     "images": [
       "surin.jpg",
       "surin1.jpg",
@@ -1174,7 +1175,7 @@ window.TIENMEE_EXCURSIONS = [
       "9.jpg",
       "10.jpg",
       "11.jpeg",
-      "12.jpg"
+      "12.jpg",
       "13.jpeg",
       "14.jpg",
       "15.jpg",
