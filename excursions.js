@@ -242,7 +242,7 @@ window.TIENMEE_EXCURSIONS = [
       ],
       [
         "11:00",
-        "Рафинг 5 км"
+        "Рафтинг 5 км"
       ], 
       [
         "12:00",
@@ -518,7 +518,7 @@ window.TIENMEE_EXCURSIONS = [
   {
     "id": "phuket-half-day",
     "category": "land",
-    "title": "Обзорная экскурсия по Пхукету — полдня",
+    "title": "Обзорная экскурсия по Пхукету — пол дня",
     "price": {
       "adult": 800,
       "child": 700,
@@ -585,7 +585,7 @@ window.TIENMEE_EXCURSIONS = [
       "tour_2.jpg",
       "tour_3.jpg",
       "tour_4.jpg"
-     ] 
+    ] 
   },
   {
     "id": "private-phuket-tour",
@@ -1098,7 +1098,6 @@ window.TIENMEE_EXCURSIONS = [
       ]
     ],
     "photo": "photo_5350688008916642589_w.jpg",
-    "image": "images/photo_5350688008916642589_w.jpg"
   },
   {
     "id": "phi-phi-day",
