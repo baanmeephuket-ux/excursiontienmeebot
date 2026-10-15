@@ -1097,7 +1097,27 @@ window.TIENMEE_EXCURSIONS = [
         "Отправление на пирс Чалонг и трансфер в отель"
       ]
     ],
-    "photo": "photo_5350688008916642589_w.jpg",
+    "photo": "7.jpg",
+     "image": "7.jpg",
+      "images": [
+      "7.jpg",
+      "1.jpg",
+      "2.jpg",
+      "3.jpg",
+      "5.jpg",
+      "6.jpg",
+      "8.jpg",
+      "9.jpg",
+      "10.jpg",
+      "11.jpg",
+      "12.jpg",
+      "13.jpg",
+      "14.jpg",
+      "15.jpg",
+      "16.jpg",
+      "17.jpg",
+      "18.jpg" 
+]
   },
   {
     "id": "phi-phi-day",
@@ -1173,9 +1193,9 @@ window.TIENMEE_EXCURSIONS = [
       "8.jpg",
       "9.jpg",
       "10.jpg",
-      "11.jpeg",
+      "11.jpg",
       "12.jpg",
-      "13.jpeg",
+      "13.jpg",
       "14.jpg",
       "15.jpg",
       "16.jpg",
