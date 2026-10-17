@@ -599,7 +599,7 @@ window.TIENMEE_EXCURSIONS = [
           "perHour": 1100 
         },
         {
-          "name": "Автомобиль 5–10 в час",
+          "name": "Автомобиль 5–10 человек",
           "perHour": 1300
         },
         {
@@ -741,7 +741,7 @@ window.TIENMEE_EXCURSIONS = [
     ]   
   },
   {
-    "id": "similan-islands",
+    "id": "similan-islands vip",
     "category": "sea",
     "title": "Симиланские острова VIP",
     "price": {
@@ -1379,8 +1379,8 @@ window.TIENMEE_EXCURSIONS = [
       [
         "18:00",
         "Наслаждение закатом во время возвращения на пирс."
-      ],
-   ]   
+      ]
+   ],  
     "photo": "pw.jpg",
      "image": "pw.jpg",
       "images": [
@@ -1408,7 +1408,7 @@ window.TIENMEE_EXCURSIONS = [
     "childAge": "4–10 лет",
    "days": [
       "Воскресенье",
-      "Вторник,
+      "Вторник",
     ],
     "description": "Погрузитесь в атмосферу тропической сказки среди бирюзовых вод, таинственных лагун и величественных известняковых скал. Вас ждут живописные острова, укромные бухты и захватывающие виды Андаманского моря. Идеальное путешествие для любителей природы, морских приключений и красивых фотографий!",
     "program": [
@@ -1467,8 +1467,8 @@ window.TIENMEE_EXCURSIONS = [
        [
         "15:00",
         "Отправление на пирс с острова Нака Яй"
-      ],
-   ]   
+      ]
+   ],   
     "photo": "hk1.jpg",
      "image": "hk1.jpg",
       "images": [
@@ -1575,6 +1575,7 @@ window.TIENMEE_EXCURSIONS = [
       "ya3.jpg",
       "ya4.jpg",
       "ya5.jpg"
+  ],    
   },
   {
     "id": "fishing-group",
@@ -1632,6 +1633,7 @@ window.TIENMEE_EXCURSIONS = [
       [
         "17:00",
         "Трансфер в отель"
+      ]
       ],
    "photo": "fish.jpg",
      "image": "fish.jpg",
