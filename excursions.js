@@ -1381,10 +1381,10 @@ window.TIENMEE_EXCURSIONS = [
         "Наслаждение закатом во время возвращения на пирс."
       ]
    ],  
-    "photo": "pw.jpg",
-     "image": "pw.jpg",
+    "photo": "pw.png",
+     "image": "pw.png",
       "images": [
-      "pw.jpg",
+      "pw.png",
       "pw1.jpg",
       "pw2.jpg",
       "pw3.jpg",
@@ -1473,7 +1473,7 @@ window.TIENMEE_EXCURSIONS = [
      "image": "hk1.jpg",
       "images": [
       "hk1.jpg",
-      "hk.jpg",
+      "hk.GPG",
       "hk2.jpg",
       "hk3.jpg",
       "hk4.jpg",
@@ -1652,8 +1652,8 @@ window.TIENMEE_EXCURSIONS = [
     },
     "days": "daily",
     "description": "Море — по вашим правилам! Отправляйтесь на острова, наслаждайтесь отдыхом на борту, организуйте рыбалку или выберите прогулку на роскошной яхте. На Пхукете доступны разные варианты аренды — от традиционных тайских лодок до современных катеров и люксовых яхт.Подберём судно под ваши пожелания, чтобы вы могли провести время на море именно так, как мечтали: в компании близких, с комфортом и без лишней спешки.Расскажите, какой отдых вы хотите, — и мы поможем подобрать подходящий вариант!",
-    "photo": "pLuxury Yacht Island Escape.jpg",
-    "image": "Luxury Yacht Island Escape.jpg"
+    "photo": "pLuxury Yacht Island Escape.png",
+    "image": "Luxury Yacht Island Escape.png"
   },
   {
     "id": "simon-cabaret",
