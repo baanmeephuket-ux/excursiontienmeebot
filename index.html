@@ -54,12 +54,19 @@
     <button data-open="orders" class="card text-card" type="button">
       <div class="text-card-mark">01</div><div class="card-content"><b>Мои заказы</b><small>Все ваши заявки в одном месте</small></div>
     </button>
-
+    
+     <button data-open="license" class="card text-card" type="button">
+       <span class="card-icon">🚗</span>
+       <span class="card-title">Водительское удостоверение</span>
+       <span class="card-description">
+          Помощь с оформлением на Пхукете
+      </span>
+   </button>
     <button data-open="manager" class="card text-card manager-text-card" type="button">
       <div class="text-card-mark">TM</div><div class="card-content"><b>Алина — ваш менеджер</b><small>Помогу с вопросами и заказами</small></div>
     </button>
   </div>
-  <footer>Made with 🌴 in Phuket</footer>
+  <footer>Made in Phuket🌴</footer>
 </main>
 
 <!-- ЭКСКУРСИИ -->
@@ -309,7 +316,82 @@
 
   <div id="businessConfirmation" class="confirmation" hidden></div>
 </section>
+  
+<!-- ВОДИТЕЛЬСКОЕ УДОСТОВЕРЕНИЕ -->
+<section id="license" class="screen">
+  <button data-home class="back" type="button">‹ Назад</button>
 
+  <div class="section-cover cover-license">
+    <div>
+      <b>Водительское удостоверение</b>
+      <span>Помощь в оформлении на Пхукете</span>
+    </div>
+  </div>
+
+  <p class="sub">
+    Поможем разобраться с оформлением водительского удостоверения
+    на Пхукете. Оставьте ваши данные — свяжемся с вами
+    и расскажем о дальнейших действиях.
+  </p>
+
+  <div class="license-prices">
+    <h3>Категории и стоимость</h3>
+
+    <div class="license-price-row">
+      <span>Автомобиль</span><b>13 000 ฿</b>
+    </div>
+    <div class="license-price-row">
+      <span>Мотоцикл</span><b>9 500 ฿</b>
+    </div>
+    <div class="license-price-row">
+      <span>Автомобиль+мотоцикл</span><b>21 000 ฿</b>
+    </div>
+    <div class="license-price-row">
+      <span>Сертификат резидента</span><b>2 500 ฿</b>
+    </div>
+    <div class="license-price-row">
+      <span>Медицинская справка</span><b>300 ฿</b>
+    </div>
+
+    <p class="license-note">
+      Сертификат резидента и медицинскую справку можно оформить самостоятельно.
+    </p>
+
+    <h3>Дополнительные услуги</h3>
+
+    <div class="license-price-row">
+      <span>Транспортное средство для экзамена</span><b>1 000 ฿</b>
+    </div>
+    <div class="license-price-row">
+      <span>Услуги сопровождающего в транспортный офис для получения водительского удостоверения</span><b>1 000 ฿</b>
+    </div>
+  </div>
+
+  <form id="licenseForm">
+    <label for="licenseName">Ваше имя</label>
+    <input
+      id="licenseName"
+      name="clientName"
+      type="text"
+      placeholder="Как к вам обращаться"
+      required
+    >
+
+    <label for="licenseContact">Телефон или Telegram для связи</label>
+    <input
+      id="licenseContact"
+      name="contact"
+      type="text"
+      placeholder="Номер телефона или @username"
+      required
+    >
+
+    <button class="submit" type="submit">Оставить заявку</button>
+  </form>
+
+  <div id="licenseConfirmation" class="confirmation" hidden></div>
+</section>
+  
 <!-- ЗАКАЗЫ -->
 <section id="orders" class="screen">
   <button data-home class="back" type="button">‹ Назад</button>
