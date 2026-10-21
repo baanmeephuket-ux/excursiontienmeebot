@@ -113,3 +113,76 @@ form{display:flex;flex-direction:column;gap:8px}form label{display:block;color:v
   .photo-transfer  { background-position: 64% center !important; }
   .photo-cars      { background-position: 60% center !important; }
 }
+/* Водительское удостоверение */
+.cover-license {
+  background: linear-gradient(135deg, #dfe8d8, #f7f3ea);
+}
+
+.license-prices {
+  background: #fff;
+  border: 1px solid #e8e4da;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 16px 0 20px;
+}
+
+.license-prices h3 {
+  font-size: 16px;
+  margin: 4px 0 10px;
+}
+
+.license-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eeeae2;
+  font-size: 14px;
+}
+
+.license-price-row:last-of-type {
+  border-bottom: 0;
+}
+
+.license-price-row b {
+  white-space: nowrap;
+}
+
+.license-note {
+  font-size: 12px;
+  color: #706f69;
+  margin: 10px 0 16px;
+}
+
+#licenseForm {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+#licenseForm label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+#licenseForm input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px;
+  border: 1px solid #dedbd2;
+  border-radius: 10px;
+  font: inherit;
+}
+
+#licenseForm button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+#licenseConfirmation {
+  padding: 16px;
+  margin: 16px 0;
+  background: #f1f5ec;
+  border-radius: 12px;
+}
