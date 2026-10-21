@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#5F7658">
+<meta name="theme-color" content="#164a35">
 <title>Tien Mee Phuket</title>
 <link rel="stylesheet" href="styles.css">
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -11,65 +11,57 @@
 <body>
 <div class="app">
 
-<header class="topbar topbar-minimal brand-header">
-  <a class="brand-lockup" href="#home" data-home aria-label="Tien Mee Phuket — на главную">
-    <span class="brand-palm">✺</span><span><b>TIEN MEE</b><small>PHUKET</small></span>
+<header class="tm-header">
+  <a class="tm-logo" href="#" data-home aria-label="Tien Mee Phuket">
+    <span class="tm-palm">♣</span><span><strong>TIEN MEE</strong><small>PHUKET</small></span>
   </a>
-  <nav class="desktop-nav" aria-label="Основная навигация">
-    <button data-open="excursions" type="button">Услуги</button>
-    <button data-open="orders" type="button">Мои заказы</button>
-    <button data-open="manager" type="button">О нас</button>
-  </nav>
+  <nav class="tm-nav"><a href="#services">Услуги</a><button data-open="orders" type="button">Мои заказы</button><button data-open="manager" type="button">О нас</button></nav>
+  <button class="tm-menu" type="button" aria-label="Меню" onclick="document.querySelector('.tm-nav').classList.toggle('tm-nav-open')">☰</button>
   <button id="lang" class="lang" type="button">EN</button>
 </header>
 
 <main id="home">
-  <section class="hero hero-brand">
-    <div class="hero-copy">
-      <span class="brand-eyebrow">PHUKET · THAILAND</span>
+  <section class="tm-hero">
+    <div class="tm-hero-copy">
+      <span class="tm-eyebrow">TIEN MEE · PHUKET</span>
       <h1>Больше, чем<br><em>экскурсии</em></h1>
       <p>Ваш надёжный помощник на Пхукете — экскурсии, трансферы, недвижимость, документы и многое другое.</p>
-      <button class="hero-cta" type="button" data-open="excursions">Выбрать услугу <span>→</span></button>
+      <a class="tm-cta" href="#services">Выбрать услугу <span>→</span></a>
     </div>
-    <div class="hero-botanical" aria-hidden="true">✿</div>
+    <img class="tm-fairy" src="assets/tienmee-fairy.png" alt="Фея Tien Mee в тропическом образе">
+    <span class="tm-flower tm-flower-one">✿</span><span class="tm-flower tm-flower-two">✿</span>
   </section>
 
-  <section class="home-services" aria-label="Услуги Tien Mee">
-    <button data-open="excursions" class="service-tile" type="button"><span class="service-icon icon-green">♧</span><b>Экскурсии</b><small>Морские прогулки и острова</small></button>
-    <button data-open="fasttrack" class="service-tile" type="button"><span class="service-icon icon-sand">✈</span><b>Fast Track</b><small>Быстро в аэропорту</small></button>
-    <button data-open="transfer" class="service-tile" type="button"><span class="service-icon icon-coral">🚘</span><b>Трансфер</b><small>Аэропорт ↔ отель</small></button>
-    <button data-open="cars" class="service-tile" type="button"><span class="service-icon icon-gold">🚙</span><b>Аренда авто</b><small>Комфортные поездки</small></button>
-    <button data-open="exchange" class="service-tile" type="button"><span class="service-icon icon-gold">฿</span><b>Обмен валюты</b><small>Удобно и безопасно</small></button>
-    <button data-open="realestate" class="service-tile" type="button"><span class="service-icon icon-sage">⌂</span><b>Недвижимость</b><small>Покупка и аренда</small></button>
-    <button data-open="license" class="service-tile" type="button"><span class="service-icon icon-cream">▣</span><b>Водительские права</b><small>Помощь с оформлением</small></button>
-    <button data-open="business" class="service-tile" type="button"><span class="service-icon icon-coral">☏</span><b>Консультации</b><small>Бизнес, документы, переезд</small></button>
+  <section id="services" class="tm-service-grid" aria-label="Услуги Tien Mee">
+    <button data-open="excursions" class="tm-service"><span class="tm-icon green">♧</span><b>Экскурсии</b></button>
+    <button data-open="fasttrack" class="tm-service"><span class="tm-icon sand">✈</span><b>Fast Track</b></button>
+    <button data-open="transfer" class="tm-service"><span class="tm-icon coral">▰</span><b>Трансфер</b></button>
+    <button data-open="cars" class="tm-service"><span class="tm-icon gold">🚙</span><b>Аренда авто</b></button>
+    <button data-open="exchange" class="tm-service"><span class="tm-icon gold">$</span><b>Обмен валюты</b></button>
+    <button data-open="realestate" class="tm-service"><span class="tm-icon sage">⌂</span><b>Недвижимость</b></button>
+    <button data-open="business" class="tm-service"><span class="tm-icon cream">▣</span><b>Водительские права</b></button>
+    <button data-open="business" class="tm-service"><span class="tm-icon terra">•••</span><b>Консультации</b></button>
   </section>
 
-  <button class="feature-banner" type="button" data-open="excursions">
-    <span class="feature-label">TIEN MEE · PHUKET</span>
-    <strong>Экскурсии<br>по райским местам</strong>
-    <small>Острова, лагуны, снорклинг и закаты</small>
-    <span class="feature-cta">Смотреть туры <b>→</b></span>
+  <button data-open="excursions" class="tm-excursion-banner" type="button">
+    <span><b>Экскурсии<br>по райским местам</b><small>Острова, лагуны, снорклинг и закаты</small><i>Смотреть туры <span>→</span></i></span>
   </button>
 
-  <section class="popular-section">
-    <div class="section-heading"><h2>Популярные направления</h2><button data-open="excursions" type="button">Все экскурсии →</button></div>
-    <div class="popular-grid">
-      <button class="popular-card popular-phi" data-open="excursions" type="button"><span class="popular-photo"></span><b>Пхи-Пхи</b><small>Легендарные острова</small><strong>от 1 900 ฿ <i>→</i></strong></button>
-      <button class="popular-card popular-similan" data-open="excursions" type="button"><span class="popular-photo"></span><b>Симиланские острова</b><small>Белоснежные пляжи</small><strong>от 2 500 ฿ <i>→</i></strong></button>
-      <button class="popular-card popular-phangnga" data-open="excursions" type="button"><span class="popular-photo"></span><b>Залив Пханг Нга</b><small>Скалы и лагуны</small><strong>от 2 200 ฿ <i>→</i></strong></button>
+  <section class="tm-popular">
+    <div class="tm-section-heading"><h2>Планируйте отдых на Пхукете</h2><button data-open="excursions" type="button">Все экскурсии →</button></div>
+    <div class="tm-feature-grid">
+      <button data-open="excursions" type="button"><span class="tm-feature-photo photo-sea"></span><b>Морские экскурсии</b><small>Острова, лагуны и бирюзовая вода</small></button>
+      <button data-open="fasttrack" type="button"><span class="tm-feature-photo photo-airport"></span><b>Fast Track</b><small>Комфортнее пройти аэропорт</small></button>
+      <button data-open="transfer" type="button"><span class="tm-feature-photo photo-car"></span><b>Трансфер</b><small>Поездка без лишних забот</small></button>
     </div>
   </section>
 
-  <button class="manager-banner" data-open="manager" type="button">
-    <span class="manager-avatar">TM</span><span class="manager-copy"><b>Алина — ваш менеджер</b><small>Помогу с выбором и отвечу на вопросы</small></span><span class="manager-action">Написать в Telegram ↗</span>
-  </button>
-
-  <div class="home-utility-links">
-    <button data-open="orders" type="button"><span>01</span><b>Мои заказы</b><small>Все ваши заявки в одном месте</small>→</button>
-    <button data-open="manager" type="button"><span>✿</span><b>Связаться с нами</b><small>Помощь и консультации</small>→</button>
-  </div>
-  <footer>Made with 🌴 in Phuket</footer>
+  <section class="tm-manager-strip">
+    <img src="assets/tienmee-fairy.png" alt="" loading="lazy">
+    <div><b>Алина — ваш менеджер</b><p>Помогу с выбором и отвечу на вопросы</p></div>
+    <button data-open="manager" type="button">Написать →</button>
+  </section>
+  <footer class="tm-footer">Made with ♡ in Phuket</footer>
 </main>
 
 <!-- ЭКСКУРСИИ -->
@@ -319,32 +311,6 @@
   </form>
 
   <div id="businessConfirmation" class="confirmation" hidden></div>
-</section>
-
-<!-- ВОДИТЕЛЬСКОЕ УДОСТОВЕРЕНИЕ -->
-<section id="license" class="screen">
-  <button data-home class="back" type="button">‹ На главную</button>
-  <div class="section-cover cover-license"><div><b>Водительское удостоверение</b><span>Помощь с оформлением на Пхукете</span></div></div>
-  <p class="sub">Поможем разобраться с оформлением водительского удостоверения на автомобиль, мотоцикл или обе категории.</p>
-  <div class="license-prices">
-    <h3>Категории</h3>
-    <div class="license-price-row"><span>Автомобиль</span><b>13 000 ฿</b></div>
-    <div class="license-price-row"><span>Мотоцикл</span><b>9 500 ฿</b></div>
-    <div class="license-price-row"><span>Автомобиль и мотоцикл</span><b>21 000 ฿</b></div>
-    <h3>Дополнительные услуги</h3>
-    <div class="license-price-row"><span>Сертификат резидента</span><b>2 500 ฿</b></div>
-    <div class="license-price-row"><span>Медицинская справка</span><b>300 ฿</b></div>
-    <div class="license-price-row"><span>Транспортное средство для экзамена</span><b>1 000 ฿</b></div>
-    <div class="license-price-row"><span>Услуги сопровождающего</span><b>1 000 ฿</b></div>
-    <p class="license-note">Сертификат резидента и медицинскую справку можно оформить самостоятельно.</p>
-  </div>
-  <div class="form-intro"><h2>Оставить заявку</h2><p>Оставьте имя и контакты — мы свяжемся с вами и расскажем подробности.</p></div>
-  <form id="licenseForm" class="simple-license-form">
-    <label for="licenseName">Ваше имя</label><input id="licenseName" name="clientName" type="text" placeholder="Как к вам обращаться" required>
-    <label for="licenseContact">Телефон или Telegram</label><input id="licenseContact" name="contact" type="text" placeholder="Номер телефона или @username" required>
-    <button class="submit" type="submit">Оставить заявку →</button>
-  </form>
-  <div id="licenseConfirmation" class="confirmation" hidden></div>
 </section>
 
 <!-- ЗАКАЗЫ -->

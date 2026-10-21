@@ -40,7 +40,7 @@ const screens = document.querySelectorAll('.screen');
 const ordersList = document.getElementById('ordersList');
 const titles = {
   excursions:'Экскурсии', fasttrack:'Fast Track', transfer:'Трансфер', cars:'Аренда авто',
-  exchange:'Обмен валюты', realestate:'Недвижимость', business:'Консультация', license:'Водительское удостоверение', orders:'Мои заказы', manager:'Связь с менеджером'
+  exchange:'Обмен валюты', realestate:'Недвижимость', business:'Консультация', orders:'Мои заказы', manager:'Связь с менеджером'
 };
 
 function show(id) {
@@ -93,7 +93,7 @@ const transferForm = document.getElementById('transferForm');
 if (transferForm) transferForm.addEventListener('submit', async e => {
   e.preventDefault();
 
-  const f = new FormData(transferForm);
+  const f = new FormData(fastTrackForm);
 
   const order = {
     type: 'transfer',
@@ -132,7 +132,7 @@ if (transferForm) transferForm.addEventListener('submit', async e => {
     <p><b>Чемоданы:</b> ${order.suitcases}</p>
     <p><b>Отель:</b> ${order.hotel}</p>
     <p><b>Оплата:</b> наличными водителю при встрече или заранее переводом в рублях.</p>
-    <p>Мы проверим доступность автомобиля, уточним стоимость и свяжемся с вами в Telegram для подтверждения поездки.</p>
+    <p>Мы проверим доступность автомобиля, уточним стоимость и свяжемся с вами для подтверждения поездки.</p>
     <button type="button" id="newTransfer">Создать ещё одну заявку</button>
   `;
 
@@ -404,7 +404,7 @@ if (businessForm) {
           </h3>
 
           <p>
-            Заявка и чек получены.
+            Заявка и чек получены!
           </p>
 
           <p>
@@ -417,7 +417,7 @@ if (businessForm) {
             <b>Контакт консультанта:</b>
             <br>
             WhatsApp:
-            +66 617 276 406
+            +66 617 276 406 Елена
             <br>
             Telegram:
             @Spravkathailand
@@ -446,6 +446,7 @@ if (businessForm) {
   );
 }
 
+// FAST TRACK
 // FAST TRACK
 const fastTrackForm = document.getElementById('fastTrackForm');
 
@@ -485,8 +486,16 @@ if (fastTrackForm) fastTrackForm.addEventListener('submit', async e => {
     <p><b>Дата прилёта:</b> ${order.date}</p>
     <p><b>Время:</b> ${order.time}</p>
     <p><b>Количество человек:</b> ${order.people}</p>
-    <p>Ваша заявка принята. Мы свяжемся с вами в Telegram и запросим паспорта всех пассажиров. Проверим данные, уточним стоимость Fast Track и сообщим вам итоговую сумму.</p>
-    <p>После подтверждения стоимости вы производите оплату, и мы оформляем услугу.</p>
+
+    <p>
+      Ваша заявка принята. Мы свяжемся с вами и запросим паспорта всех пассажиров.
+      Проверим данные, уточним стоимость Fast Track и сообщим вам итоговую сумму.
+    </p>
+
+    <p>
+      После подтверждения стоимости вы производите оплату, и мы оформляем услугу.
+    </p>
+
     <button type="button" id="newFastTrack">
       Создать ещё одну заявку
     </button>
@@ -500,6 +509,7 @@ if (fastTrackForm) fastTrackForm.addEventListener('submit', async e => {
 
   feedback();
 });
+
 // Быстрые заявки
 function simpleRequest(type, label) {
   const order = {
@@ -516,6 +526,7 @@ function simpleRequest(type, label) {
 
   feedback();
 }
+
 document.querySelectorAll('[data-contact-request]').forEach(btn =>
   btn.addEventListener(
     'click',
@@ -527,39 +538,6 @@ document.querySelectorAll('[data-contact-request]').forEach(btn =>
     )
   )
 );
-
-// Заявка на оформление водительского удостоверения — имя и контакт.
-const licenseForm = document.getElementById('licenseForm');
-if (licenseForm) licenseForm.addEventListener('submit', async e => {
-  e.preventDefault();
-  const f = new FormData(licenseForm);
-  const order = {
-    type: 'drivers_license',
-    id: makeId('DL'),
-    status: 'Новая заявка',
-    service: 'Получение водительского удостоверения',
-    clientName: String(f.get('clientName') || '').trim(),
-    contact: String(f.get('contact') || '').trim(),
-    ...telegramData()
-  };
-  if (!order.clientName || !order.contact) return;
-  const button = licenseForm.querySelector('button[type="submit"]');
-  if (button) button.disabled = true;
-  try {
-    const sent = await sendOrder(order);
-    if (!sent) return;
-    saveOrder(order);
-    licenseForm.hidden = true;
-    const box = document.getElementById('licenseConfirmation');
-    if (box) {
-      box.hidden = false;
-      box.innerHTML = `<h3>Заявка отправлена</h3><p>Номер заявки: ${order.id}</p><p>Спасибо! Мы свяжемся с вами.</p>`;
-    }
-    feedback();
-  } finally {
-    if (button) button.disabled = false;
-  }
-});
 
 // Мои заказы
 function renderOrders(){
@@ -602,167 +580,3 @@ function renderOrders(){
 
 // Старт
 show('home');
-
-(function initTienMeeExcursions() {
-  const categoryMeta = {
-    sea: { title: 'Морские экскурсии', image: 'images/islands-route.jpg', label: 'Морские' },
-    land: { title: 'Сухопутные программы', image: 'images/hong-phangnga.jpg', label: 'Сухопутные' },
-    activities: { title: 'Активности и аренда', image: 'images/jet-ski-route.jpg', label: 'Активности' },
-    shows: { title: 'Вечерние шоу', image: 'images/maiton-coral-racha.jpg', label: 'Вечерние шоу' },
-    boats: { title: 'Аренда лодок', image: 'images/speedboat.jpg', label: 'Аренда лодок' },
-    private: { title: 'Приватные экскурсии', image: 'images/speedboat.jpg', label: 'Приватные' }
-  };
-  const escapeHtml = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const money = p => p == null ? 'Уточнить стоимость' : `${Number(p).toLocaleString('ru-RU')} ${'THB'}`;
-  function loadCatalog(callback) {
-    if (Array.isArray(window.TIENMEE_EXCURSIONS)) return callback();
-    const s = document.createElement('script');
-    s.src = './excursions.js';
-    s.onload = callback;
-    s.onerror = () => {
-      const box = document.getElementById('category');
-      if (box) box.innerHTML = '<button data-home class="back" type="button">‹ Назад</button><p>Не удалось загрузить каталог. Проверьте, что excursions.js находится в корне репозитория.</p>';
-    };
-    document.head.appendChild(s);
-  }
-  function ensureDetailScreen() {
-    let detail = document.getElementById('excursionDetail');
-    if (!detail) {
-      detail = document.createElement('section');
-      detail.id = 'excursionDetail';
-      detail.className = 'screen';
-      detail.innerHTML = '<button type="button" class="back" id="excursionDetailBack">‹ К списку экскурсий</button><div id="excursionDetailContent"></div>';
-      document.querySelector('.app')?.appendChild(detail);
-      document.getElementById('excursionDetailBack').addEventListener('click', () => show('category'));
-    }
-    return detail;
-  }
-  // Добавляем категорию вечерних шоу в существующий экран экскурсий без изменения index.html.
-  function ensureShowsCategoryButton() {
-    const list = document.querySelector('#excursions .list');
-    if (!list || list.querySelector('[data-cat="shows"]')) return;
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.dataset.cat = 'shows';
-    button.innerHTML = '🎭 <span><b>Вечерние шоу</b><small>Siam Niramit, Phuket FantaSea, Carnival Magic</small></span>›';
-    button.addEventListener('click', () => renderCategory('shows'));
-    list.appendChild(button);
-    const sub = document.querySelector('#excursions .sub');
-    if (sub) sub.textContent = 'Морские и сухопутные поездки, аренда лодок, приватные маршруты и вечерние шоу.';
-  }
-  ensureShowsCategoryButton();
-
-  function renderCategory(category) {
-    loadCatalog(() => {
-      const all = window.TIENMEE_EXCURSIONS || [];
-      const categoryMap = { boats: 'activities', private: 'activities' };
-      const key = categoryMap[category] || category;
-      const items = all.filter(x => x.category === key);
-      const section = document.getElementById('category');
-      if (!section) return;
-      const meta = categoryMeta[category] || categoryMeta[key] || { title: 'Экскурсии', image: 'images/islands-route.jpg' };
-      section.innerHTML = `<button data-back class="back" type="button">‹ К экскурсиям</button><h2 id="catTitle">${escapeHtml(meta.title)}</h2><div class="excursion-grid">${items.map(x => {
-        const fallback = meta.image;
-        const cardPrice = x.price?.adult != null ? money(x.price.adult) : (Array.isArray(x.price?.options) && x.price.options.length ? `от ${money(x.price.options[0].adult ?? x.price.options[0].amount)}` : 'Стоимость в карточке');
-        return `<button class="excursion-card" type="button" data-excursion-id="${escapeHtml(x.id)}"><img src="${escapeHtml(x.image || fallback)}" alt="${escapeHtml(x.title)}" loading="lazy" onerror="this.onerror=null;this.src='${escapeHtml(fallback)}'"><span class="excursion-card-body"><b>${escapeHtml(x.title)}</b><small>${escapeHtml(x.description || '')}</small><strong>${escapeHtml(cardPrice)}</strong></span><span class="excursion-arrow">›</span></button>`;
-      }).join('') || '<p class="excursion-empty">В этой категории пока нет программ.</p>'}</div>`;
-      section.querySelector('[data-back]')?.addEventListener('click', () => show('excursions'));
-      section.querySelectorAll('[data-excursion-id]').forEach(btn => btn.addEventListener('click', () => renderDetail(btn.dataset.excursionId)));
-      show('category');
-    });
-  }
-  function renderDetail(id) {
-    loadCatalog(() => {
-      const x = (window.TIENMEE_EXCURSIONS || []).find(item => item.id === id);
-      if (!x) return;
-      const meta = categoryMeta[x.category] || categoryMeta.sea;
-      const detail = ensureDetailScreen();
-      const program = Array.isArray(x.program) && x.program.length
-        ? `<h3>Программа</h3><ol class="excursion-program">${x.program.map(row => Array.isArray(row) ? `<li><b>${escapeHtml(row[0])}</b> ${escapeHtml(row[1])}</li>` : `<li>${escapeHtml(row)}</li>`).join('')}</ol>`
-        : '';
-      const days = x.days === 'daily' ? 'Ежедневно' : Array.isArray(x.days) ? x.days.join(', ') : (x.days || 'Уточняется');
-      const notes = Array.isArray(x.notes) ? `<ul class="excursion-notes">${x.notes.map(n => `<li>${escapeHtml(n)}</li>`).join('')}</ul>` : (x.notes ? `<p class="excursion-notes">${escapeHtml(x.notes)}</p>` : '');
-      const optionPrices = Array.isArray(x.price?.options) ? `<div class="excursion-price-options"><h3>Варианты билетов</h3>${x.price.options.map(option => `<div class="excursion-price-option"><span>${escapeHtml(option.name || 'Билет')}</span><b>${option.adult != null ? `Взрослый: ${money(option.adult)}` : money(option.amount)}${option.child != null ? ` · Детский: ${money(option.child)}` : ''}</b></div>`).join('')}</div>` : '';
-      detail.querySelector('#excursionDetailContent').innerHTML = `
-        <img class="excursion-hero-image" src="${escapeHtml(x.image || meta.image)}" alt="${escapeHtml(x.title)}" onerror="this.onerror=null;this.src='${escapeHtml(meta.image)}'">
-        <h2>${escapeHtml(x.title)}</h2>
-        <p class="excursion-description">${escapeHtml(x.description || '')}</p>
-        ${x.price?.adult != null || x.price?.child != null ? `<div class="excursion-prices">${x.price?.adult != null ? `<div><small>Взрослый</small><b>${money(x.price.adult)}</b></div>` : ''}${x.price?.child != null ? `<div><small>Детский</small><b>${money(x.price.child)}</b></div>` : ''}</div>` : ''}
-        ${optionPrices}
-        ${x.childAge ? `<p><b>Детский тариф:</b> ${escapeHtml(x.childAge)}</p>` : ''}
-        <p><b>Дни отправления:</b> ${escapeHtml(days)}</p>${notes}${program}
-        <h3>Оставить заявку</h3>
-        <form id="excursionBookingForm" class="excursion-form">
-          <label>Имя и фамилия (латиницей)<input name="fullName" required autocomplete="name" placeholder="Например, IVAN IVANOV"></label>
-          <label>Отель или место подачи<input name="hotel" required placeholder="Название отеля / адрес"></label>
-          <label>Дата экскурсии<input name="date" type="date" required></label>
-          <div class="excursion-form-row"><label>Взрослые<input name="adults" type="number" min="1" value="2" required></label><label>Дети<input name="children" type="number" min="0" value="0" required></label></div>
-          <label>Возраст детей (если есть)<input name="childrenAges" placeholder="Например, 5 и 8 лет"></label>
-          <label>Контакт для связи<input name="phone" required placeholder="Telegram / WhatsApp / телефон"></label>
-          <label>Комментарий<textarea name="comment" rows="3" placeholder="Дополнительные пожелания"></textarea></label>
-          <button type="submit">Отправить заявку</button><p class="excursion-form-status" aria-live="polite"></p>
-        </form>`;
-      show('excursionDetail');
-      const form = detail.querySelector('#excursionBookingForm');
-      form.addEventListener('submit', async e => {
-        e.preventDefault();
-        const submit = form.querySelector('button[type="submit"]');
-        const status = form.querySelector('.excursion-form-status');
-        submit.disabled = true; submit.textContent = 'Отправляем…';
-        const f = new FormData(form);
-        const order = {
-          type: 'excursion', id: makeId('EX'), status: 'Новая заявка',
-          excursionId: x.id, service: x.title, excursionTitle: x.title,
-          excursionPriceAdult: x.price?.adult ?? '', excursionPriceChild: x.price?.child ?? '',
-          fullName: f.get('fullName'), hotel: f.get('hotel'), date: f.get('date'),
-          adults: Number(f.get('adults')), children: Number(f.get('children')),
-          childrenAges: f.get('childrenAges') || '', phone: f.get('phone'),
-          comment: f.get('comment') || '', departureDays: days, ...telegramData()
-        };
-        const sent = await sendOrder(order);
-        if (!sent) { submit.disabled = false; submit.textContent = 'Отправить заявку'; return; }
-        saveOrder(order); feedback();
-        form.innerHTML = `<h3>✅ Заявка отправлена</h3><p>Номер заявки: <b>${escapeHtml(order.id)}</b></p><p>Экскурсия: ${escapeHtml(x.title)}</p><p>Менеджер свяжется с вами для подтверждения деталей.</p><button type="button" id="excursionNewRequest">Оставить ещё одну заявку</button>`;
-        form.querySelector('#excursionNewRequest').addEventListener('click', () => renderDetail(id));
-      });
-    });
-  }
-  const style = document.createElement('style');
-  style.textContent = `
-    :root{--tm-sea:#10a9b8;--tm-deep:#087c8a;--tm-coral:#ff805f;--tm-sand:#fff7e9;--tm-ink:#19363a}
-    #category,#excursionDetail{color:var(--tm-ink)}
-    #category h2,#excursionDetail h2{font-size:clamp(26px,6vw,34px);line-height:1.12;letter-spacing:-.6px;margin:12px 0 18px;color:#173a3d}
-    .excursion-grid{display:grid;grid-template-columns:1fr;gap:18px;margin:16px 0 28px}
-    .excursion-card{display:flex;flex-direction:column;align-items:stretch;width:100%;padding:0;border:1px solid rgba(8,124,138,.15);border-radius:23px;background:#fff;color:var(--tm-ink);text-align:left;overflow:hidden;position:relative;box-shadow:0 8px 22px rgba(8,94,105,.10);transition:transform .18s ease,box-shadow .18s ease}
-    .excursion-card:active{transform:scale(.99)}
-    .excursion-card img{display:block;width:100%;height:190px;min-height:0;object-fit:cover;background:#d6f1f1}
-    .excursion-card-body{display:flex;flex-direction:column;align-items:flex-start;gap:9px;padding:15px 17px 17px}
-    .excursion-card-body b{font-size:19px;line-height:1.25;font-weight:800;color:#173a3d;padding-right:5px}
-    .excursion-card-body small{font-size:14px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;color:#5e7273}
-    .excursion-card-body strong{font-size:17px;color:#087c8a;background:#e5f8f7;border-radius:999px;padding:7px 12px;margin-top:2px}
-    .excursion-arrow{position:absolute;right:15px;bottom:20px;font-size:24px;color:var(--tm-coral);font-weight:800}
-    .excursion-hero-image{display:block;width:100%;height:245px;object-fit:cover;border-radius:24px;margin:10px 0 20px;background:#d6f1f1;box-shadow:0 10px 24px rgba(8,94,105,.12)}
-    .excursion-description{font-size:15px;line-height:1.75;white-space:pre-line;color:#4d6465;margin:12px 0 20px}
-    #excursionDetailContent h3{font-size:22px;line-height:1.25;color:#173a3d;margin:24px 0 12px}
-    .excursion-prices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
-    .excursion-prices>div{padding:15px 13px;border-radius:18px;background:linear-gradient(145deg,#e2f8f7,#f4ffff);border:1px solid #c5eeee;display:flex;flex-direction:column;gap:7px;min-width:0}
-    .excursion-prices small{font-size:12px;color:#577879}.excursion-prices b{font-size:16px;color:#087c8a;overflow-wrap:anywhere}
-    .excursion-program{padding:0;list-style:none;line-height:1.5;counter-reset:program}
-    .excursion-price-options{margin:18px 0}.excursion-price-option{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #d9e8e5}.excursion-price-option span{flex:1}.excursion-price-option b{color:var(--tm-deep);text-align:right}.excursion-notes li{margin:6px 0}.excursion-program li{position:relative;margin:0 0 10px;padding:13px 13px 13px 56px;background:#fff;border:1px solid #e2f0ed;border-radius:15px;color:#4d6465;min-height:45px}
-    .excursion-program li b{position:absolute;left:12px;top:13px;color:#087c8a;font-size:13px}
-    .excursion-notes{background:#fff3e9;border:1px solid #ffdacb;border-radius:16px;padding:14px;color:#775246;line-height:1.55}
-    .excursion-form{display:grid;gap:13px;margin:16px 0 28px;padding:18px;border-radius:23px;background:linear-gradient(160deg,#f0fcfa,#fff8ef);border:1px solid #d7efeb;box-shadow:0 8px 20px rgba(8,94,105,.07)}
-    .excursion-form label{display:grid;gap:7px;font-size:13px;font-weight:700;color:#31585b}
-    .excursion-form input,.excursion-form textarea{width:100%;min-height:46px;box-sizing:border-box;padding:12px 13px;border:1px solid #cde4e2;border-radius:13px;font:inherit;font-size:15px;background:#fff;color:#19363a;outline:none}
-    .excursion-form input:focus,.excursion-form textarea:focus{border-color:#10a9b8;box-shadow:0 0 0 3px rgba(16,169,184,.12)}
-    .excursion-form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .excursion-form button{padding:15px 18px;border:0;border-radius:15px;background:linear-gradient(100deg,#0aa9b8,#087c8a);color:#fff;font-size:16px;font-weight:800;box-shadow:0 8px 18px rgba(8,124,138,.22)}
-    .excursion-form button:disabled{opacity:.65}.excursion-form-status{font-size:12px;color:#a33}
-    .excursion-empty{padding:18px;color:#687b7b;background:#fff;border-radius:18px}
-    @media(min-width:600px){.excursion-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.excursion-card img{height:205px}}
-  `
-  document.head.appendChild(style);
-  document.querySelectorAll('[data-cat]').forEach(btn => {
-    btn.addEventListener('click', () => renderCategory(btn.dataset.cat));
-  });
-})();
