@@ -129,13 +129,13 @@ window.TIENMEE_EXCURSIONS = [
     "notes": [
       "Программа может меняться в зависимости от погодных условий.",
     ],
-    "photo": "bondb.jpg",
-    "image": "bondb.jpg",
+    "photo": "bondb.PNG",
+    "image": "bondb.PNG",
     "images": [
-      "bondb.jpg",
-      "bondb1.jpg",
+      "bondb.PNG",
+      "bondb1.PNG",
       "bondb2.jpg",
-      "bondb3.jpg",
+      "bondb3.PNG",
       "bondsp.jpg"
     ]
   },
@@ -200,11 +200,11 @@ window.TIENMEE_EXCURSIONS = [
     "images": [
       "bondsp.jpg",
       "bondsp1.jpg",
-      "bondsp2.jpg",
-      "bondsp3.jpg",
-      "bondsp4.jpg",
-      "bondsp5.jpg",
-      "bondsp6.jpg"
+      "bondsp2.JPG",
+      "bondsp3.JPG",
+      "bondsp4.PNG",
+      "bondsp5.PNG",
+      "bondsp6.PNG"
     ]
   },
   {
