@@ -4,7 +4,7 @@
 // Photos provided by user are included in ./images. Confirm exact photo-to-product matching before publishing.
 window.TIENMEE_EXCURSIONS = [
   {
-    "id": "khao-sok-cheow-lan-1-day",
+    "id": "khaosokcheowlan1day",
     "category": "land",
     "title": "Кхао Сок и озеро Чео Лан — 1 день",
     "price": {
@@ -73,7 +73,7 @@ window.TIENMEE_EXCURSIONS = [
     ]
   },
    {
-    "id": "bond bigboat",
+    "id": "bondbigboat",
     "category": "sea",
     "title": "Острова Джеймс Бонда и залив Пхангна (большой катер)",
     "price": {
@@ -140,7 +140,7 @@ window.TIENMEE_EXCURSIONS = [
     ]
   },
    {
-    "id": "bond speedboat",
+    "id": "bondspeedboat",
     "category": "sea",
     "title": "Острова Джеймс Бонда и залив Пхангна (скоростной катер)",
     "price": {
@@ -192,10 +192,10 @@ window.TIENMEE_EXCURSIONS = [
         "16:30",
         "Прибытие на пирс, отправление в отель"
       ]
-    ],
+      ],
     "notes": [
       "Программа может меняться в зависимости от погодных условий.",
-     ], 
+    ], 
     "photo": "bondsp.jpg",
     "image": "bondsp.jpg",
     "images": [
@@ -209,7 +209,7 @@ window.TIENMEE_EXCURSIONS = [
     ]
   },
   {
-    "id": "amazing-phang-nga",
+    "id": "amazingphangnga",
     "category": "land",
     "title": "Удивительная Пханг Нга",
     "price": {
@@ -278,7 +278,7 @@ window.TIENMEE_EXCURSIONS = [
 ]
   },
    {
-    "id": "amazing-phang-nga+skywalk",
+    "id": "amazingphangngaskywalk",
     "category": "land",
     "title": "Удивительная Пханг Нга + стеклянный мост",
     "price": {
@@ -333,7 +333,7 @@ window.TIENMEE_EXCURSIONS = [
     ],
     "notes": [
       "Программа может меняться в зависимости от погодных условий",
-      "Вход в Храм Обезьян  — 20 ฿",
+      "Вход в Храм Обезьян — 20 ฿",
       "Входной депозит на стеклянный мост: 200 ฿ для взрослого и 100 ฿ для ребёнка. Депозит невозвратный, но полностью включает вход и еду с напитками."
     ],  
     "photo": "skywalk.jpg",
@@ -417,7 +417,7 @@ window.TIENMEE_EXCURSIONS = [
     ]
   },    
   {
-    "id": "khao-lak",
+    "id": "khaolak",
     "category": "land",
     "title": "Кхао Лак Сафари",
     "price": {
@@ -486,7 +486,7 @@ window.TIENMEE_EXCURSIONS = [
      ] 
   },
   {
-    "id": "cheow-lan-overnight",
+    "id": "cheowlanovernight",
     "category": "land",
     "title": "Кхао Сок и озеро Чео Лан — 2 дня 1 ночь",
     "price": {
@@ -598,7 +598,7 @@ window.TIENMEE_EXCURSIONS = [
      ] 
   },
   {
-    "id": "samet-cheow-lan-day",
+    "id": "sametcheowlanday",
     "category": "land",
     "title": "Самет Нангши и озеро Чеолан — 1 день",
     "price": {
@@ -653,7 +653,7 @@ window.TIENMEE_EXCURSIONS = [
      ] 
   },
   {
-    "id": "phuket-half-day",
+    "id": "phukethalfday",
     "category": "land",
     "title": "Обзорная экскурсия по Пхукету — пол дня",
     "price": {
@@ -728,7 +728,7 @@ window.TIENMEE_EXCURSIONS = [
     ] 
   },
   {
-    "id": "private-phuket-tour",
+    "id": "privatephukettour",
     "category": "land",
     "title": "Индивидуальная обзорная экскурсия по Пхукету",
     "price": {
@@ -766,7 +766,7 @@ window.TIENMEE_EXCURSIONS = [
     ]   
   },
   {
-    "id": "coral-racha-maiton",
+    "id": "coralrachamaiton",
     "category": "sea",
     "title": "Майтон, Корал и Рача 1 день",
     "price": {
@@ -822,7 +822,7 @@ window.TIENMEE_EXCURSIONS = [
     ]   
   },
   {
-    "id": "surin-islands",
+    "id": "surinislands",
     "category": "sea",
     "title": "Острова Сурин — снорклинг",
     "price": {
@@ -887,7 +887,7 @@ window.TIENMEE_EXCURSIONS = [
     ]   
   },
   {
-    "id": "similan-islands vip",
+    "id": "similanislandsvip",
     "category": "sea",
     "title": "Симиланские острова VIP",
     "price": {
@@ -959,7 +959,7 @@ window.TIENMEE_EXCURSIONS = [
 ]
   },
   {
-    "id": "similan-islands",
+    "id": "similanislands",
     "category": "sea",
     "title": "Симиланские острова стандарт",
     "price": {
@@ -1020,7 +1020,7 @@ window.TIENMEE_EXCURSIONS = [
 ]
   },
   {
-    "id": "andaman-11-islands",
+    "id": "andaman11islands",
     "category": "sea",
     "title": "11 островов Андаманского моря 1 день",
     "price": {
@@ -1111,7 +1111,7 @@ window.TIENMEE_EXCURSIONS = [
 ]
   },
   {
-    "id": "phi-phi-2-days-a",
+    "id": "phiphi2daysa",
     "category": "sea",
     "title": "Архипелаг Пхи-Пхи+остров Бамбу+Кхай+Майтон — 2 дня 1 ночь",
     "price": {
@@ -1218,7 +1218,7 @@ window.TIENMEE_EXCURSIONS = [
 ]
   },
   {
-    "id": "phi-phi-2-days-b",
+    "id": "phiphi2daysb",
     "category": "sea",
     "title": "4 Жемчужины Андамана (архипелаг Пхи Пхи) 2 дня 1 ночь",
     "price": {
@@ -1338,7 +1338,7 @@ window.TIENMEE_EXCURSIONS = [
 ]
   },
   {
-    "id": "phi-phi-day",
+    "id": "phiphiday",
     "category": "sea",
     "title": "Пхи-Пхи, Бамбу, Кхай, Майтон — 1 день",
     "price": {
@@ -1420,7 +1420,7 @@ window.TIENMEE_EXCURSIONS = [
 ]
   },
 {
-    "id": "phi-phi-day vip",
+    "id": "phiphidayvip",
     "category": "sea",
     "title": "Пхи-Пхи+Бамбу программа  VIP",
     "price": {
@@ -1499,7 +1499,7 @@ window.TIENMEE_EXCURSIONS = [
 ]
   },
 {
-    "id": "phi-phi-day shark",
+    "id": "phiphidayshark",
     "category": "sea",
     "title": "Острова Пхи-Пхи – Лагуна Пиле – Бухта Майя Бей – Остров Майтон – Закат на катамаране «Китовая акула»",
     "price": {
@@ -1567,7 +1567,7 @@ window.TIENMEE_EXCURSIONS = [
 ]
   },
 {
-    "id": "hong+krabi",
+    "id": "hongkrabi",
     "category": "sea",
     "title": "Залив Пханг Нга — остров Хонг, Краби",
     "price": {
@@ -1657,7 +1657,7 @@ window.TIENMEE_EXCURSIONS = [
 ]
   }, 
   {
-    "id": "jet-ski-seadoo-gti",
+    "id": "jetskiseadoogti",
     "category": "activities",
     "title": "Гидроцикл Sea-Doo GTI SE 1490 cc — 8 островов",
     "price": {
@@ -1832,7 +1832,7 @@ window.TIENMEE_EXCURSIONS = [
     "image": "Luxury Yacht Island Escape.png"
   },
   {
-    "id": "simon-cabaret",
+    "id": "simoncabaret",
     "category": "shows",
     "title": "Вечернее шоу Simon Cabaret",
     "price": {
@@ -1942,7 +1942,6 @@ window.TIENMEE_EXCURSIONS = [
     "id": "phuket-fantasea",
     "category": "shows",
     "title": "Phuket FantaSea",
-    "whatsapp": "https://wa.me/p/5802830083093773/66911640931",
     "price": {
       "currency": "THB",
       "options": [
@@ -1986,7 +1985,7 @@ window.TIENMEE_EXCURSIONS = [
 ]
   },
   {
-    "id": "carnival-magic",
+    "id": "carnivalmagic",
     "category": "shows",
     "title": "Carnival Magic",
     "price": {
