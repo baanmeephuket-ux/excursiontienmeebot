@@ -667,6 +667,22 @@ function renderOrders(){
         : '';
       const days = x.days === 'daily' ? 'Ежедневно' : Array.isArray(x.days) ? x.days.join(', ') : (x.days || 'Уточняется');
       const notes = Array.isArray(x.notes) ? `<ul class="excursion-notes">${x.notes.map(n => `<li>${escapeHtml(n)}</li>`).join('')}</ul>` : (x.notes ? `<p class="excursion-notes">${escapeHtml(x.notes)}</p>` : '');
+      const includesBlock = Array.isArray(x.includes) && x.includes.length
+? `
+    <section style="margin:24px 0;padding:18px;border:1px solid #d7efeb;border-radius:16px;background:#f0fcfa">
+      <h3 style="margin:0 0 14px">Что включено в стоимость</h3>
+      <ul style="list-style:none;padding:0;margin:0;display:grid;gap:10px">
+        ${x.includes.map(item => `
+          <li style="display:flex;gap:9px;line-height:1.5">
+            <span style="color:#087c8a;font-weight:bold">✓</span>
+            <span>${escapeHtml(item)}</span>
+          </li>
+        `).join('')}
+      </ul>
+    </section>
+  `
+  : '';
+
       const optionPrices = Array.isArray(x.price?.options) ? `<div class="excursion-price-options"><h3>Варианты</h3>${x.price.options.map(option => {
         const priceParts = [];
         if (option.adult != null) priceParts.push(`Взрослый: ${money(option.adult)}`);
@@ -708,7 +724,7 @@ const imageMarkup = galleryImages.length ? `
         ${x.price?.adult != null || x.price?.child != null ? `<div class="excursion-prices">${x.price?.adult != null ? `<div><small>Взрослый</small><b>${money(x.price.adult)}</b></div>` : ''}${x.price?.child != null ? `<div><small>Детский</small><b>${money(x.price.child)}</b></div>` : ''}</div>` : ''}
         ${optionPrices}
         ${x.childAge ? `<p><b>Детский тариф:</b> ${escapeHtml(x.childAge)}</p>` : ''}
-        <p><b>Дни отправления:</b> ${escapeHtml(days)}</p>${notes}${program}
+        <p><b>Дни отправления:</b> ${escapeHtml(days)}</p>${notes}${program}${includesBlock}
         <h3>Оставить заявку</h3>
         <form id="excursionBookingForm" class="excursion-form">
           <label>Имя и фамилия (латиницей)<input name="fullName" required autocomplete="name" placeholder="Например, IVAN IVANOV"></label>
