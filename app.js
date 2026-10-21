@@ -38,7 +38,7 @@ if (tg) {
 const home = document.getElementById('home');
 const ordersList = document.getElementById('ordersList');
 const titles = {
-  excursions:'Экскурсии', fasttrack:'Fast Track', transfer:'Трансфер', cars:'Аренда авто',
+  excursions:'Экскурсии', fasttrack:'Fast Track', transfer:'Трансфер', cars:'Аренда авто',license: 'Водительское удостоверение',
   exchange:'Обмен валюты', realestate:'Недвижимость', business:'Консультация', orders:'Мои заказы', manager:'Связь с менеджером'
 };
 
@@ -445,7 +445,55 @@ if (businessForm) {
   );
 }
 
-// FAST TRACK
+// ЗАЯВКА: ВОДИТЕЛЬСКОЕ УДОСТОВЕРЕНИЕ
+const licenseForm = document.getElementById('licenseForm');
+
+if (licenseForm) {
+  licenseForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const f = new FormData(licenseForm);
+
+    const order = {
+      type: 'drivers_license',
+      id: makeId('DL'),
+      status: 'Новая заявка',
+      service: 'Получение водительского удостоверения',
+      clientName: String(f.get('clientName') || '').trim(),
+      contact: String(f.get('contact') || '').trim(),
+      ...telegramData()
+    };
+
+    if (!order.clientName || !order.contact) {
+      alert('Заполните имя и контакты.');
+      return;
+    }
+
+    const button = licenseForm.querySelector('button[type="submit"]');
+    if (button) button.disabled = true;
+
+    try {
+      const sent = await sendOrder(order);
+
+      if (!sent) return;
+
+      saveOrder(order);
+      licenseForm.hidden = true;
+
+      const box = document.getElementById('licenseConfirmation');
+      box.hidden = false;
+      box.innerHTML = `
+        <h3>Заявка отправлена!</h3>
+        <p>Номер заявки: ${order.id}</p>
+        <p>Спасибо! Мы свяжемся с вами.</p>
+      `;
+
+      feedback();
+    } finally {
+      if (button) button.disabled = false;
+    }
+  });
+}
 // FAST TRACK
 const fastTrackForm = document.getElementById('fastTrackForm');
 
