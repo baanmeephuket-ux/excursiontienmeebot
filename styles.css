@@ -453,3 +453,39 @@ form textarea {
   width: 100%;
 }
 
+/* Горизонтальные категории экскурсий */
+.excursion-tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 8px 2px 12px;
+  margin: 8px 0 12px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.excursion-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.excursion-tab {
+  flex: 0 0 auto;
+  width: auto;
+  min-height: 40px;
+  padding: 10px 16px;
+  border: 1px solid #eadfc9;
+  border-radius: 999px;
+  background: #f5efe3;
+  color: #344338;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.excursion-tab.active {
+  background: #174b35;
+  border-color: #174b35;
+  color: #fffaf0;
+}
+
