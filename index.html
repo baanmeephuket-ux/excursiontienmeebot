@@ -76,12 +76,14 @@
   <button data-home class="back" type="button">‹ Назад</button>
   <div class="section-cover cover-excursions"><div><b>Экскурсии</b><span>Откройте Пхукет и его окрестности</span></div></div>
   <p class="sub">Морские и сухопутные поездки, аренда лодок и приватные маршруты.</p>
-  <div class="list">
-    <button data-cat="sea" type="button">🌊 <span><b>Морские</b><small>Пхи-Пхи, Симиланы, Coral и другие острова</small></span>›</button>
-    <button data-cat="land" type="button">🏔️ <span><b>Сухопутные</b><small>Поездки по Пхукету и за его пределы</small></span>›</button>
-    <button data-cat="boats" type="button">🛥️ <span><b>Аренда лодок</b><small>Лодка под вашу компанию и маршрут</small></span>›</button>
-    <button data-cat="private" type="button">✨ <span><b>Приватные экскурсии</b><small>Маршрут и формат отдыха под вас</small></span>›</button>
-  </div>
+<div class="excursion-tabs">
+  <button type="button" class="excursion-tab active" data-filter="all">Морские</button>
+  <button type="button" class="excursion-tab" data-cat="sea">Сухопутные</button>
+  <button type="button" class="excursion-tab" data-cat="land">Вечерние шоу</button>
+  <button type="button" class="excursion-tab" data-cat="shows">Активности</button>
+  <button type="button" class="excursion-tab" data-cat="boats">Аренда лодок</button>
+</div>
+
 </section>
 
 <section id="category" class="screen">
