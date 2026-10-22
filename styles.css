@@ -18,13 +18,13 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}
 .card-content{position:relative;z-index:1;width:53%;min-width:0;padding:0 0 0 2px}
 .card b{display:block;font-family:Georgia,"Times New Roman",serif;font-size:clamp(19px,5vw,24px);font-weight:500;line-height:1.08;color:#26352C}
 .card small{display:block;margin-top:7px;font-size:12px;line-height:1.4;color:#687165;max-width:230px}
-.photo-excursions{background-image:url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1400&q=85");min-height:164px}
-.photo-fasttrack{background-image:url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1400&q=85")}
-.photo-transfer{background-image:url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=85")}
-.photo-cars{background-image:url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=85")}
-.photo-exchange{background-image:url("https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1400&q=85")}
-.photo-realestate{background-image:url("https://images.unsplash.com/photo-1600595649335-8e2b0b6e6e4b?auto=format&fit=crop&w=1400&q=85");grid-column:1/-1;min-height:156px}
-.photo-business{background-image:url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=85");grid-column:1/-1;min-height:150px}
+.photo-excursions{background-image:url("excursions.jpg");min-height:164px}
+.photo-fasttrack{background-image:url("fasttrack.jpg")}
+.photo-transfer{background-image:url("transfer.jpg")}
+.photo-cars{background-image:url("cars.jpg")}
+.photo-exchange{background-image:url("exchange.jpg")}
+.photo-realestate{background-image:url("realestate.jpg");grid-column:1/-1;min-height:156px}
+.photo-business{background-image:url("business.jpg");grid-column:1/-1;min-height:150px}
 .card-shade{display:none}.card em{display:none}
 .text-card{min-height:104px;align-items:center;background:#FBF9F3 url("palm-corners.svg") center/cover no-repeat;border:1px solid rgba(95,118,88,.08);box-shadow:0 4px 13px rgba(74,70,61,.035);padding:16px 14px;gap:12px}
 .text-card .card-content{width:auto;flex:1;padding:0}
@@ -33,7 +33,7 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}
 footer{text-align:center;color:#A39C90;font-size:10px;margin-top:17px}
 .screen{display:none;padding-bottom:20px}.screen.active{display:block}.back{border:0;background:transparent;color:var(--green);padding:4px 0 12px;font-weight:700}.screen h2{font-size:28px;line-height:1.15;margin:3px 0 5px}.sub{color:var(--muted);margin:0 0 17px;line-height:1.45}
 .section-cover{height:190px;border-radius:22px;overflow:hidden;position:relative;background-size:cover;background-position:center;margin-bottom:14px}.section-cover:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,30,22,.72),rgba(20,30,22,.05) 70%)}.section-cover>div{position:absolute;z-index:2;left:18px;bottom:18px;color:#fff}.section-cover b{display:block;font-size:25px}.section-cover span{display:block;font-size:13px;margin-top:5px}
-.cover-excursions{background-image:url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1400&q=85")}.cover-fasttrack{background-image:url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1400&q=85")}.cover-transfer{background-image:url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=85")}.cover-cars{background-image:url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=85")}.cover-exchange{background-image:url("https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1400&q=85")}.cover-realestate{background-image:url("https://images.unsplash.com/photo-1600595649335-8e2b0b6e6e4b?auto=format&fit=crop&w=1400&q=85")}.cover-business{background-image:url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=85")}
+.cover-excursions{background-image:url("excursions.jpg")}.cover-fasttrack{background-image:url("fasttrack.jpg")}.cover-transfer{background-image:url("transfer.jpg")}.cover-cars{background-image:url("cars.jpg")}.cover-exchange{background-image:url("exchange.jpg")}.cover-realestate{background-image:url("realestate.jpg")}.cover-business{background-image:url("business.jpg")}
 .list{display:flex;flex-direction:column;gap:9px}.list button,.choice{width:100%;border:1px solid var(--line);background:var(--cream);border-radius:17px;padding:15px;text-align:left;display:flex;align-items:center;gap:12px;color:var(--text);font-size:21px}.list button span{flex:1}.list button b{display:block;font-size:15px}.list button small{display:block;font-size:11px;color:var(--muted);margin-top:3px}
 .empty{margin-top:18px;min-height:190px;border:1px dashed #D8D0C2;border-radius:22px;background:rgba(255,253,248,.6);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:25px;gap:8px}.empty span{font-size:31px}.empty b{font-size:17px}.empty small{font-size:13px;color:var(--muted);line-height:1.45;max-width:300px}
 .info,.payment{display:flex;flex-direction:column;gap:6px;padding:20px;margin:15px 0;border-radius:22px;background:var(--green-light);border:1px solid rgba(95,118,88,.08)}.info b,.payment b{font-size:18px}.info span,.payment span{font-size:14px;line-height:1.5}.payment strong{color:var(--green-dark);font-size:25px}
@@ -46,7 +46,7 @@ form{display:flex;flex-direction:column;gap:8px}form label{display:block;color:v
 @media(max-width:380px){.app{padding-left:10px;padding-right:10px}.hero.hero-brand{height:180px}.services{gap:7px}.card{min-height:128px;padding:12px}.card-large,.photo-excursions{min-height:150px}.photo-realestate,.photo-business{min-height:140px}.card-content{width:57%}.card b{font-size:18px}.card small{font-size:10px}.text-card{min-height:96px}}
 /* Tien Mee: replacement hero and excursions image */
 .hero.hero-brand {
-  background: #f8f5ed url("https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1400&q=85") center / cover no-repeat !important;
+  background: #f8f5ed url("hero-brand.jpg") center / cover no-repeat !important;
   position: relative;
   overflow: hidden;
   min-height: 230px;
@@ -78,7 +78,7 @@ form{display:flex;flex-direction:column;gap:8px}form label{display:block;color:v
 
 /* Avoid the excursion cover cropping the boat into the text area on narrow screens. */
 .photo-excursions {
-  background-image: url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1400&q=85") !important;
+  background-image: url("excursions.jpg") !important;
   background-size: cover !important;
   background-position: center right !important;
   min-height: 165px;
@@ -113,59 +113,76 @@ form{display:flex;flex-direction:column;gap:8px}form label{display:block;color:v
   .photo-transfer  { background-position: 64% center !important; }
   .photo-cars      { background-position: 60% center !important; }
 }
+/* Водительское удостоверение */
+.cover-license {
+  background: linear-gradient(135deg, #dfe8d8, #f7f3ea);
+}
 
+.license-prices {
+  background: #fff;
+  border: 1px solid #e8e4da;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 16px 0 20px;
+}
 
-/* TIEN MEE TROPICAL BOUTIQUE REDESIGN */
-:root{--tm-forest:#164a35;--tm-green:#246044;--tm-gold:#bd8427;--tm-cream:#fff7e6;--tm-paper:#fffaf0;--tm-ink:#142f24;--tm-muted:#756b5c}
-html{scroll-behavior:smooth} body{background:#f5ead3!important;color:var(--tm-ink)!important}
-.app{max-width:1180px!important;padding:12px 20px 34px!important}
-.tm-header{position:relative;z-index:5;display:flex;align-items:center;gap:24px;min-height:68px;padding:10px 22px;margin:0 0 16px;background:rgba(255,250,239,.96);border:1px solid #ead8b4;border-radius:20px;box-shadow:0 8px 24px #4a37151a}
-.tm-logo{display:flex;align-items:center;gap:9px;color:var(--tm-ink);text-decoration:none;margin-right:auto}
-.tm-logo strong{display:block;font-family:Georgia,serif;font-size:21px;letter-spacing:1.6px;line-height:1}
-.tm-logo small{display:block;text-align:center;font-size:9px;letter-spacing:4px;color:#99631d;margin-top:4px}
-.tm-palm{font-size:32px;color:#9c661e;transform:rotate(-25deg)}
-.tm-nav{display:flex;align-items:center;gap:22px}
-.tm-nav a,.tm-nav button{font-size:13px;color:var(--tm-ink);text-decoration:none;border:0;background:none;padding:8px}
-.tm-menu{display:none;border:0;background:none;font-size:25px;color:var(--tm-forest)}
-.tm-header .lang{order:4;margin-left:0;background:#fff6e6;border-color:#ead8b4}
-#home{display:block}
-.tm-hero{position:relative;isolation:isolate;overflow:hidden;min-height:360px;border-radius:28px;margin-bottom:18px;padding:42px 40% 38px 34px;background:linear-gradient(105deg,#fff7e5 0%,#fff4dc 40%,#d8e5b8 100%);box-shadow:0 12px 32px #5b45151a;border:1px solid #e8d4ab}
-.tm-hero:before{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(ellipse at 82% 40%,#f2d6a77a,transparent 40%),linear-gradient(90deg,transparent,#fff2d52b)}
-.tm-hero-copy{position:relative;z-index:2;max-width:520px}
-.tm-eyebrow{font-size:11px;letter-spacing:3px;color:#96611f;font-weight:700}
-.tm-hero h1{font:clamp(38px,5vw,64px)/.99 Georgia,serif;letter-spacing:-1.8px;margin:18px 0;color:#143d2b}
-.tm-hero h1 em{font-style:normal;color:#a66c18}
-.tm-hero p{font-size:16px;line-height:1.55;max-width:420px;color:#344538}
-.tm-cta{display:inline-flex;align-items:center;gap:25px;margin-top:10px;padding:14px 22px;border-radius:30px;background:var(--tm-forest);color:#fff9ec;text-decoration:none;font-weight:700;box-shadow:0 5px 0 #123c2c24}
-.tm-cta span{font-size:21px}
-.tm-fairy{position:absolute;z-index:1;right:-2%;bottom:-20%;height:112%;width:49%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 9px 10px #47371926)}
-.tm-flower{position:absolute;color:#fff4d0;text-shadow:0 2px 2px #ae782d;font-size:50px;z-index:2}
-.tm-flower-one{right:34%;bottom:3%}.tm-flower-two{right:3%;top:8%;font-size:27px}
-.tm-service-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:12px;margin:0 0 20px}
-.tm-service{min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;padding:16px 6px 13px;background:linear-gradient(150deg,#fffdf5,#fff4df);border:1px solid #eadbbd;border-radius:18px;color:#1a3426;box-shadow:0 6px 15px #59451a0d;transition:transform .18s,box-shadow .18s}
-.tm-service:hover{transform:translateY(-3px);box-shadow:0 12px 22px #59451a1a}
-.tm-service b{font-size:12px;line-height:1.25;text-align:center}
-.tm-icon{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:27px;font-weight:600}
-.tm-icon.green{background:#20553b;color:#fff4d5}.tm-icon.sand{background:#efd5a0;color:#204a34}.tm-icon.coral{background:#d65b3b;color:#fff5df}.tm-icon.gold{background:#dba33e;color:#fff9e9}.tm-icon.sage{background:#b5c48c;color:#244d35}.tm-icon.cream{background:#eee0b7;color:#25432f}.tm-icon.terra{background:#a64c30;color:#fff3df}
-.tm-excursion-banner{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;text-align:left;width:100%;min-height:220px;padding:28px 32px;border:0;border-radius:24px;margin:0 0 24px;background:linear-gradient(90deg,#0c3e37f2,#0c4b3b9c 50%,#123d2b1c),url("https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1800&q=85") center 55%/cover;color:white;box-shadow:0 12px 26px #4c35141c}
-.tm-excursion-banner b{display:block;font:clamp(30px,4vw,46px)/1.04 Georgia,serif}.tm-excursion-banner small{display:block;font-size:14px;margin:10px 0 17px}.tm-excursion-banner i{display:inline-flex;gap:18px;align-items:center;background:#c28a2d;color:#fff8e9;font-style:normal;font-weight:700;padding:11px 18px;border-radius:24px}
-.tm-section-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 12px}.tm-section-heading h2{font:27px Georgia,serif;margin:0;color:#173c2a}.tm-section-heading button{border:0;background:none;color:#97621d;font-weight:700}
-.tm-feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.tm-feature-grid>button{overflow:hidden;text-align:left;padding:0 0 14px;background:#fff9eb;border:1px solid #ead9b8;border-radius:18px;color:#1b3024;box-shadow:0 7px 18px #49351410}
-.tm-feature-photo{display:block;height:150px;background-size:cover;background-position:center}
-.photo-sea{background-image:url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=800&q=80")}
-.photo-airport{background-image:url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80")}
-.photo-car{background-image:url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80")}
-.tm-feature-grid b,.tm-feature-grid small{display:block;margin:10px 13px 0}.tm-feature-grid b{font:19px Georgia,serif}.tm-feature-grid small{font-size:12px;color:#766d5f}
-.tm-manager-strip{display:flex;align-items:center;gap:16px;overflow:hidden;margin-top:22px;padding:12px 18px;background:linear-gradient(100deg,#fff1d2,#f2d39a);border:1px solid #e7c78a;border-radius:20px;min-height:108px}
-.tm-manager-strip img{width:82px;height:95px;object-fit:cover;object-position:top;border-radius:16px 16px 5px 5px;align-self:flex-end}
-.tm-manager-strip div{flex:1}.tm-manager-strip b{font:22px Georgia,serif}.tm-manager-strip p{margin:5px 0 0;font-size:13px}
-.tm-manager-strip button{border:0;border-radius:24px;background:var(--tm-forest);color:white;padding:13px 18px;font-weight:700}
-.tm-footer{text-align:center;color:#8e8068;font-size:11px;padding:20px}
-.screen{background:#fff9ec!important;border:1px solid #ead9b8!important;border-radius:22px!important;box-shadow:0 10px 28px #523c1712!important;padding:18px!important}
-.screen .back{border-radius:18px;background:#f6e9cd!important;color:#234b35!important}
-.screen .submit,.screen .contact-button{background:var(--tm-forest)!important;border-radius:24px!important}
-.screen input,.screen textarea,.screen select{border-radius:13px!important;border-color:#e5d3b1!important;background:#fffdf7!important}
-.card,.info,.payment,.order-card{border-radius:18px!important}
-@media(max-width:900px){.app{max-width:760px!important;padding:10px 14px 28px!important}.tm-service-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.tm-hero{min-height:340px;padding-left:28px;padding-right:39%}.tm-fairy{width:48%;right:-4%}.tm-feature-photo{height:125px}}
-@media(max-width:560px){.app{padding:8px 9px 24px!important}.tm-header{min-height:55px;padding:8px 11px;gap:8px;border-radius:16px}.tm-logo strong{font-size:17px}.tm-palm{font-size:25px}.tm-nav{display:none;position:absolute;top:60px;right:6px;left:6px;padding:12px;background:#fff8e9;border:1px solid #ead8b4;border-radius:14px;box-shadow:0 10px 22px #0002;flex-direction:column;align-items:stretch;gap:2px}.tm-nav.tm-nav-open{display:flex}.tm-menu{display:block}.tm-header .lang{font-size:11px;padding:6px 8px}.tm-hero{min-height:360px;padding:24px 22px 205px;border-radius:22px}.tm-hero h1{font-size:39px;margin:12px 0}.tm-hero p{font-size:13px;max-width:280px}.tm-hero-copy{max-width:100%}.tm-fairy{height:64%;width:75%;right:-8%;bottom:-9%}.tm-flower-one{right:31%;bottom:7%;font-size:35px}.tm-flower-two{right:6%;top:6%;font-size:22px}.tm-service-grid{gap:8px;grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:14px}.tm-service{padding:11px 3px 10px;border-radius:14px;gap:7px}.tm-icon{width:44px;height:44px;font-size:21px}.tm-service b{font-size:10px}.tm-excursion-banner{min-height:170px;padding:22px 18px;border-radius:19px}.tm-excursion-banner b{font-size:29px}.tm-excursion-banner small{font-size:11px;max-width:240px}.tm-excursion-banner i{font-size:11px;padding:9px 13px}.tm-section-heading h2{font-size:21px}.tm-section-heading button{font-size:11px}.tm-feature-grid{gap:8px}.tm-feature-photo{height:85px}.tm-feature-grid b{font:15px Georgia,serif;margin:8px 8px 0}.tm-feature-grid small{font-size:10px;margin:5px 8px 0}.tm-manager-strip{gap:10px;padding:9px 10px;margin-top:16px}.tm-manager-strip img{width:56px;height:70px}.tm-manager-strip b{font-size:16px}.tm-manager-strip p{font-size:10px}.tm-manager-strip button{font-size:10px;padding:10px}.screen{padding:12px!important}}
+.license-prices h3 {
+  font-size: 16px;
+  margin: 4px 0 10px;
+}
+
+.license-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eeeae2;
+  font-size: 14px;
+}
+
+.license-price-row:last-of-type {
+  border-bottom: 0;
+}
+
+.license-price-row b {
+  white-space: nowrap;
+}
+
+.license-note {
+  font-size: 12px;
+  color: #706f69;
+  margin: 10px 0 16px;
+}
+
+#licenseForm {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+#licenseForm label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+#licenseForm input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px;
+  border: 1px solid #dedbd2;
+  border-radius: 10px;
+  font: inherit;
+}
+
+#licenseForm button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+#licenseConfirmation {
+  padding: 16px;
+  margin: 16px 0;
+  background: #f1f5ec;
+  border-radius: 12px;
+}
