@@ -369,3 +369,46 @@ form,
   }
 }
 
+/* Исправление вылезающих полей формы на мобильных */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+form,
+form label,
+form input,
+form select,
+form textarea {
+  box-sizing: border-box;
+}
+
+.directions {
+  width: 100%;
+  min-width: 0;
+}
+
+.direction {
+  max-width: 100%;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+  .screen,
+  form {
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+
