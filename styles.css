@@ -37,8 +37,39 @@ footer{text-align:center;color:#A39C90;font-size:10px;margin-top:17px}
 .list{display:flex;flex-direction:column;gap:9px}.list button,.choice{width:100%;border:1px solid var(--line);background:var(--cream);border-radius:17px;padding:15px;text-align:left;display:flex;align-items:center;gap:12px;color:var(--text);font-size:21px}.list button span{flex:1}.list button b{display:block;font-size:15px}.list button small{display:block;font-size:11px;color:var(--muted);margin-top:3px}
 .empty{margin-top:18px;min-height:190px;border:1px dashed #D8D0C2;border-radius:22px;background:rgba(255,253,248,.6);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:25px;gap:8px}.empty span{font-size:31px}.empty b{font-size:17px}.empty small{font-size:13px;color:var(--muted);line-height:1.45;max-width:300px}
 .info,.payment{display:flex;flex-direction:column;gap:6px;padding:20px;margin:15px 0;border-radius:22px;background:var(--green-light);border:1px solid rgba(95,118,88,.08)}.info b,.payment b{font-size:18px}.info span,.payment span{font-size:14px;line-height:1.5}.payment strong{color:var(--green-dark);font-size:25px}
-form{display:flex;flex-direction:column;gap:8px}form label{display:block;color:var(--text);font-size:14px;font-weight:700;margin-top:7px;margin-bottom:2px}form input,form textarea,form select{width:100%;min-height:52px;padding:14px 16px;border:1px solid var(--line);border-radius:15px;background:var(--cream);color:var(--text);outline:none;font-size:16px}form textarea{min-height:110px;resize:none}form input:focus,form textarea:focus,form select:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(95,118,88,.1)}
-.directions{display:grid;gap:8px}.direction,.choice{font-size:14px;justify-content:flex-start}.direction.active,.choice.active{border-color:var(--green);background:var(--green-light);font-weight:800}.two{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+form{display:flex;flex-direction:column;gap:8px}form label{display:block;color:var(--text);font-size:14px;font-weight:700;margin-top:7px;margin-bottom:2px}
+form input,
+form textarea,
+form select {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 52px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: var(--cream);
+  color: var(--text);
+  outline: none;
+  font-size: 16px;
+}
+
+form textarea{min-height:110px;resize:none}form input:focus,form textarea:focus,form select:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(95,118,88,.1)}
+.directions{display:grid;gap:8px}.direction,.choice{font-size:14px;justify-content:flex-start}.direction.active,.choice.active{border-color:var(--green);background:var(--green-light);font-weight:800}
+.two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  width: 100%;
+  min-width: 0;
+}
+
+.two > * {
+  min-width: 0;
+  max-width: 100%;
+}
 .submit{width:100%;border:0;border-radius:16px;padding:15px 18px;background:var(--green);color:white;font-weight:800;font-size:16px;margin-top:12px;box-shadow:0 7px 16px rgba(95,118,88,.18)}.confirmation{padding:20px;margin-top:16px;border-radius:21px;background:var(--cream);border:1px solid var(--line);font-size:14px;line-height:1.6}.confirmation h3{margin:0 0 12px;font-size:22px}.confirmation button{width:100%;border:0;border-radius:14px;padding:12px 15px;background:var(--green);color:white;font-weight:700}
 .contact-button{display:block;text-decoration:none;text-align:center;border-radius:16px;padding:15px;margin-top:10px;background:var(--green);color:#fff;font-weight:800}.contact-button.secondary{background:var(--cream);color:var(--green);border:1px solid var(--line)}
 .orders-list{display:flex;flex-direction:column;gap:10px}.order-card{position:relative;background:var(--cream);border:1px solid var(--line);border-radius:18px;padding:16px 70px 16px 16px;min-height:90px}.order-card b{display:block;font-size:15px}.order-card span{display:block;color:var(--muted);font-size:11px;margin-top:4px}.order-card small{display:inline-block;margin-top:9px;background:var(--green-light);color:var(--green-dark);padding:4px 8px;border-radius:9px}.order-card em{position:absolute;right:14px;top:16px;font-style:normal;color:var(--muted);font-size:11px}.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--green-dark);color:#fff;padding:12px 16px;border-radius:14px;z-index:20}
