@@ -680,30 +680,77 @@ function renderOrders(){
   }
   ensureShowsCategoryButton();
 
-  function renderCategory(category) {
-    loadCatalog(() => {
-      const all = window.TIENMEE_EXCURSIONS || [];
-      const items = category === 'private'
+  
+function renderCategory(category) {
+  loadCatalog(() => {
+    const all = window.TIENMEE_EXCURSIONS || [];
+    const catalog = document.getElementById('excursionCatalog');
+    if (!catalog) return;
+
+    const items = category === 'all'
+      ? all
+      : category === 'private'
         ? all.filter(x => x.id === 'private-phuket-tour')
         : all.filter(x => x.category === category);
-      const section = document.getElementById('category');
-      if (!section) return;
-      const meta = categoryMeta[category] || { title: 'Экскурсии' };
-      section.innerHTML = `<button data-back class="back" type="button">‹ К экскурсиям</button><h2 id="catTitle">${escapeHtml(meta.title)}</h2><div class="excursion-grid">${items.map(x => {
-        const firstOption = Array.isArray(x.price?.options) ? x.price.options[0] : null;
-        const optionPrice = firstOption?.perHour != null ? `от ${money(firstOption.perHour)} / час`
-          : firstOption?.adult != null ? `от ${money(firstOption.adult)}`
-          : firstOption?.amount != null ? `от ${money(firstOption.amount)}`
-          : firstOption ? 'Стоимость указана в вариантах' : 'Уточнить стоимость';
-        const cardPrice = x.price?.adult != null ? money(x.price.adult) : optionPrice;
-        const imageMarkup = x.image ? `<img class="${x.category === 'shows' ? 'show-poster' : ''}" src="${escapeHtml(x.image)}" alt="${escapeHtml(x.title)}" loading="lazy" onerror="this.hidden=true">` : '';
-        return `<button class="excursion-card" type="button" data-excursion-id="${escapeHtml(x.id)}">${imageMarkup}<span class="excursion-card-body"><b>${escapeHtml(x.title)}</b><small>${escapeHtml(x.description || '')}</small><strong>${escapeHtml(cardPrice)}</strong></span><span class="excursion-arrow">›</span></button>`;
-      }).join('') || '<p class="excursion-empty">В этой категории пока нет программ.</p>'}</div>`;
-      section.querySelector('[data-back]')?.addEventListener('click', () => show('excursions'));
-      section.querySelectorAll('[data-excursion-id]').forEach(btn => btn.addEventListener('click', () => renderDetail(btn.dataset.excursionId)));
-      show('category');
+
+    catalog.innerHTML = items.map(x => {
+      const firstOption = Array.isArray(x.price?.options)
+        ? x.price.options[0]
+        : null;
+
+      const optionPrice = firstOption?.perHour != null
+        ? `от ${money(firstOption.perHour)} / час`
+        : firstOption?.adult != null
+          ? `от ${money(firstOption.adult)}`
+          : firstOption?.amount != null
+            ? `от ${money(firstOption.amount)}`
+            : firstOption
+              ? 'Стоимость указана в вариантах'
+              : 'Уточнить стоимость';
+
+      const cardPrice = x.price?.adult != null
+        ? money(x.price.adult)
+        : optionPrice;
+
+      const imageMarkup = x.image
+        ? `<img src="${escapeHtml(x.image)}"
+             alt="${escapeHtml(x.title)}"
+             loading="lazy"
+             onerror="this.hidden=true">`
+        : '';
+
+      return `
+        <button class="excursion-card" type="button"
+          data-excursion-id="${escapeHtml(x.id)}">
+          ${imageMarkup}
+          <span class="excursion-card-body">
+            <b>${escapeHtml(x.title)}</b>
+            <small>${escapeHtml(x.description || '')}</small>
+            <strong>${escapeHtml(cardPrice)}</strong>
+          </span>
+          <span class="excursion-arrow">›</span>
+        </button>
+      `;
+    }).join('') ||
+      '<p class="excursion-empty">В этой категории пока нет программ.</p>';
+
+    document.querySelectorAll('.excursion-tab').forEach(btn => {
+      btn.classList.toggle(
+        'active',
+        btn.dataset.filter === category || btn.dataset.cat === category
+      );
     });
-  }
+
+    catalog.querySelectorAll('[data-excursion-id]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        renderDetail(btn.dataset.excursionId);
+      });
+    });
+
+    show('excursions');
+  });
+}
+
   function renderDetail(id) {
     loadCatalog(() => {
       const x = (window.TIENMEE_EXCURSIONS || []).find(item => item.id === id);
@@ -956,11 +1003,14 @@ if (galleryTrack) {
     .excursion-empty{padding:18px;color:#687b7b;background:#fff;border-radius:18px}
     @media(min-width:600px){.excursion-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.excursion-card img{height:205px}}
   `
-  document.head.appendChild(style);
-  document.querySelectorAll('[data-cat]').forEach(btn => {
-    btn.addEventListener('click', () => renderCategory(btn.dataset.cat));
-  });
-})();
 
+document.querySelectorAll('.excursion-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const category = btn.dataset.filter || btn.dataset.cat;
+    if (category) renderCategory(category);
+  });
+});
+
+renderCategory('all');
 // Старт
 show('home');
