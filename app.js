@@ -89,11 +89,20 @@ function feedback() {
     tg.HapticFeedback.notificationOccurred('success');
   }
 }
-
-// Навигация
+ // Навигация
 function openSection(section) {
+  if (section === 'excursions') {
+    if (typeof window.openExcursionCategory === 'function') {
+      window.openExcursionCategory('sea');
+    } else {
+      show(section);
+    }
+    return;
+  }
+
   show(section);
 }
+
 
 document.querySelectorAll('[data-open]').forEach(btn =>
   btn.addEventListener('click', () => openSection(btn.dataset.open))
@@ -781,11 +790,11 @@ const imageMarkup = imagePath
       });
     });
 
-    show('category');
+       show('category');
   });
 }
-renderCategory('sea');
-  function renderDetail(id) {
+window.openExcursionCategory = renderCategory;
+function renderDetail(id) {
     loadCatalog(() => {
       const x = (window.TIENMEE_EXCURSIONS || []).find(item => item.id === id);
       if (!x) return;
@@ -1042,13 +1051,6 @@ if (galleryTrack) {
   btn.addEventListener('click', () => {
     const category = btn.dataset.filter || btn.dataset.cat;
     if (category) renderCategory(category);
-  });
-});
-
-// Загружаем морские экскурсии при открытии каталога
-document.querySelectorAll('[data-open="category"]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    renderCategory('sea');
   });
 });
 
