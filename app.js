@@ -92,11 +92,7 @@ function feedback() {
  // Навигация
 function openSection(section) {
   if (section === 'excursions') {
-    if (typeof window.openExcursionCategory === 'function') {
-      window.openExcursionCategory('sea');
-    } else {
-      show(section);
-    }
+    window.openExcursionCategory('sea');
     return;
   }
 
