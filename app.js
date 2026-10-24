@@ -1,32 +1,13 @@
 const tg = window.Telegram?.WebApp;
 const API_URL = "https://worker-production-07b7a.up.railway.app/api/order";
 
+
 async function sendOrder(order) {
   try {
     const response = await fetch(API_URL, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"// Экскурсии
-const names = {
-  sea: 'Морские',
-  land: 'Сухопутные',
-  boats: 'Аренда лодок',
-  private: 'Приватные экскурсии',
-  activities: 'Активности',
-  shows: 'Вечерние шоу'
-};
-
-document.querySelectorAll('[data-cat], [data-filter]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const category = btn.dataset.filter || btn.dataset.cat;
-    if (!category) return;
-
-    const title = document.getElementById('catTitle');
-    if (title) title.textContent = names[category] || 'Экскурсии';
-
-    renderCategory(category);
-  });
-});
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
         ...order,
@@ -36,20 +17,20 @@ document.querySelectorAll('[data-cat], [data-filter]').forEach(btn => {
 
     const result = await response.json();
 
-   if (!response.ok || !result.ok) {
-  throw new Error(
-    `Ошибка ${response.status}: ${result.error || "Ошибка отправки"}`
-  );
-}
+    if (!response.ok || !result.ok) {
+      throw new Error(
+        `Ошибка ${response.status}: ${result.error || "Ошибка отправки"}`
+      );
+    }
 
     return true;
-
   } catch (error) {
     console.error("Ошибка отправки заявки:", error);
     alert(error.message || "Не удалось отправить заявку.");
     return false;
   }
 }
+
 if (tg) {
   tg.ready();
   tg.expand();
@@ -57,64 +38,82 @@ if (tg) {
 
 const home = document.getElementById('home');
 const ordersList = document.getElementById('ordersList');
+
 const titles = {
-  excursions:'Экскурсии', fasttrack:'Fast Track', transfer:'Трансфер', cars:'Аренда авто',license: 'Водительское удостоверение',
-  exchange:'Обмен валюты', realestate:'Недвижимость', business:'Консультация', orders:'Мои заказы', manager:'Связь с менеджером'
+  excursions: 'Экскурсии',
+  fasttrack: 'Fast Track',
+  transfer: 'Трансфер',
+  cars: 'Аренда авто',
+  license: 'Водительское удостоверение',
+  exchange: 'Обмен валюты',
+  realestate: 'Недвижимость',
+  business: 'Консультация',
+  orders: 'Мои заказы',
+  manager: 'Связь с менеджером'
 };
 
 function show(id) {
   if (home) home.style.display = id === 'home' ? 'block' : 'none';
-  document.querySelectorAll('.screen').forEach(s => s.classList.toggle('active', s.id === id));
+  document.querySelectorAll('.screen').forEach(s =>
+    s.classList.toggle('active', s.id === id)
+  );
   if (id === 'orders') renderOrders();
-  window.scrollTo(0,0);
+  window.scrollTo(0, 0);
 }
 
-function getTelegramUser() { return tg?.initDataUnsafe?.user || {}; }
+function getTelegramUser() {
+  return tg?.initDataUnsafe?.user || {};
+}
+
 function saveOrder(order) {
   const orders = JSON.parse(localStorage.getItem('tienMeeOrders') || '[]');
-  orders.unshift(order); localStorage.setItem('tienMeeOrders', JSON.stringify(orders));
+  orders.unshift(order);
+  localStorage.setItem('tienMeeOrders', JSON.stringify(orders));
 }
-function makeId(prefix) { return prefix + '-' + Date.now().toString().slice(-8); }
+
+function makeId(prefix) {
+  return prefix + '-' + Date.now().toString().slice(-8);
+}
+
 function telegramData() {
   const u = getTelegramUser();
   return {
-    telegramUsername: u.username ? '@'+u.username : '',
-    telegramName: [u.first_name,u.last_name].filter(Boolean).join(' '),
+    telegramUsername: u.username ? '@' + u.username : '',
+    telegramName: [u.first_name, u.last_name].filter(Boolean).join(' '),
     telegramId: u.id || ''
   };
 }
-function feedback() { if (tg?.HapticFeedback) tg.HapticFeedback.notificationOccurred('success'); }
+
+function feedback() {
+  if (tg?.HapticFeedback) {
+    tg.HapticFeedback.notificationOccurred('success');
+  }
+}
 
 // Навигация
-function openSection(section) { show(section); }
-document.querySelectorAll('[data-open]').forEach(btn => btn.addEventListener('click', () => openSection(btn.dataset.open)));
-document.querySelectorAll('[data-home]').forEach(btn => btn.addEventListener('click', () => show('home')));
+function openSection(section) {
+  show(section);
+}
+
+document.querySelectorAll('[data-open]').forEach(btn =>
+  btn.addEventListener('click', () => openSection(btn.dataset.open))
+);
+
+document.querySelectorAll('[data-home]').forEach(btn =>
+  btn.addEventListener('click', () => show('home'))
+);
+
 const backButton = document.querySelector('[data-back]');
-if (backButton) backButton.addEventListener('click', () => show('excursions'));
+if (backButton) {
+  backButton.addEventListener('click', () => show('excursions'));
+}
+
 const langButton = document.getElementById('lang');
-if (langButton) langButton.addEventListener('click', () => alert('English version подключим после утверждения структуры.'));
-
-// Экскурсии
-const names = {
-  sea: 'Морские',
-  land: 'Сухопутные',
-  boats: 'Аренда лодок',
-  private: 'Приватные экскурсии',
-  activities: 'Активности',
-  shows: 'Вечерние шоу'
-};
-
-document.querySelectorAll('[data-cat], [data-filter]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const category = btn.dataset.filter || btn.dataset.cat;
-    if (!category) return;
-
-    const title = document.getElementById('catTitle');
-    if (title) title.textContent = names[category] || 'Экскурсии';
-
-    renderCategory(category);
-  });
-});
+if (langButton) {
+  langButton.addEventListener('click', () =>
+    alert('English version подключим после утверждения структуры.')
+  );
+}
 
 // Трансфер
 let transferDirection = 'Аэропорт → Отель';
