@@ -76,10 +76,6 @@ if (langButton) langButton.addEventListener('click', () => alert('English versio
 
 // Экскурсии
 const names = {sea:'Морские',land:'Сухопутные',boats:'Аренда лодок',private:'Приватные экскурсии'};
-document.querySelectorAll('[data-cat]').forEach(btn => btn.addEventListener('click', () => {
-  document.getElementById('catTitle').textContent = names[btn.dataset.cat] || 'Экскурсии';
-  show('category');
-}));
 
 // Трансфер
 let transferDirection = 'Аэропорт → Отель';
@@ -712,12 +708,7 @@ function renderCategory(category) {
         ? money(x.price.adult)
         : optionPrice;
 
-      const imageMarkup = x.image
-        ? `<img src="${escapeHtml(x.image)}"
-             alt="${escapeHtml(x.title)}"
-             loading="lazy"
-             onerror="this.hidden=true">`
-        : '';
+      const imagePath = x.image || '';
 
       return `
         <button class="excursion-card" type="button"
