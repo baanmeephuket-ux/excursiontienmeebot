@@ -89,55 +89,32 @@ function feedback() {
     tg.HapticFeedback.notificationOccurred('success');
   }
 }
- // Навигация
+// Навигация
 function openSection(section) {
   if (section === 'excursions') {
-    show('category');
-
-    if (typeof window.openExcursionCategory === 'function') {
-      window.openExcursionCategory('sea');
-    } else {
-      console.error('Каталог экскурсий не инициализирован.');
-    }
-
+    renderCategory('sea');
     return;
   }
 
   show(section);
 }
 
-document.querySelectorAll('[data-open]').forEach(btn =>
-  btn.addEventListener('click', () => openSection(btn.dataset.open))
-);
+document.querySelectorAll('[data-open]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    openSection(btn.dataset.open);
+  });
+});
 
-document.querySelectorAll('[data-home]').forEach(btn =>
-  btn.addEventListener('click', () => show('home'))
-);
+document.querySelectorAll('[data-home]').forEach(btn => {
+  btn.addEventListener('click', () => show('home'));
+});
 
 const backButton = document.querySelector('[data-back]');
+
 if (backButton) {
   backButton.addEventListener('click', () => show('excursions'));
 }
-document.querySelectorAll('[data-open]').forEach(btn =>
-  btn.addEventListener('click', () => openSection(btn.dataset.open))
-);
-
-document.querySelectorAll('[data-home]').forEach(btn =>
-  btn.addEventListener('click', () => show('home'))
-);
-
-const backButton = document.querySelector('[data-back]');
-if (backButton) {
-  backButton.addEventListener('click', () => show('excursions'));
-}
-
-const langButton = document.getElementById('lang');
-if (langButton) {
-  langButton.addEventListener('click', () =>
-    alert('English version подключим после утверждения структуры.')
-  );
-}
-
+    
 // Трансфер
 let transferDirection = 'Аэропорт → Отель';
 document.querySelectorAll('.direction').forEach(btn => btn.addEventListener('click', () => {
@@ -742,60 +719,70 @@ function renderCategory(category) {
   loadCatalog(() => {
     const all = window.TIENMEE_EXCURSIONS || [];
     const catalog = document.getElementById('excursionCatalog');
+
     if (!catalog) return;
+
+    const categoryMap = {
+      boats: 'activities',
+      private: 'activities'
+    };
+
+    const key = categoryMap[category] || category;
 
     const items = category === 'all'
       ? all
-      : category === 'private'
-        ? all.filter(x => x.id === 'private-phuket-tour')
-        : all.filter(x => x.category === category);
+      : all.filter(x => x.category === key);
+
+    const meta = categoryMeta[category] || categoryMeta[key] || categoryMeta.sea;
+
+    const moneyLabel = price =>
+      price == null ? 'Уточнить стоимость' : money(price);
 
     catalog.innerHTML = items.map(x => {
-      const firstOption = Array.isArray(x.price?.options)
+      const option = Array.isArray(x.price?.options)
         ? x.price.options[0]
         : null;
 
-      const optionPrice = firstOption?.perHour != null
-        ? `от ${money(firstOption.perHour)} / час`
-        : firstOption?.adult != null
-          ? `от ${money(firstOption.adult)}`
-          : firstOption?.amount != null
-            ? `от ${money(firstOption.amount)}`
-            : firstOption
-              ? 'Стоимость указана в вариантах'
+      const price = x.price?.adult != null
+        ? moneyLabel(x.price.adult)
+        : option?.perHour != null
+          ? `от ${moneyLabel(option.perHour)} / час`
+          : option?.adult != null
+            ? `от ${moneyLabel(option.adult)}`
+            : option?.amount != null
+              ? `от ${moneyLabel(option.amount)}`
               : 'Уточнить стоимость';
 
-      const cardPrice = x.price?.adult != null
-        ? money(x.price.adult)
-        : optionPrice;
-
-const imagePath = x.image || x.photo || '';
-
-const imageMarkup = imagePath
-  ? `<img src="${escapeHtml(imagePath)}"
-       alt="${escapeHtml(x.title)}"
-       loading="lazy"
-       onerror="this.style.display='none'">`
-  : '';
+      const image = x.image || x.images?.[0] || meta.image || '';
 
       return `
-        <button class="excursion-card" type="button"
-          data-excursion-id="${escapeHtml(x.id)}">
-          ${imageMarkup}
+        <button
+          class="excursion-card"
+          type="button"
+          data-excursion-id="${escapeHtml(x.id)}"
+        >
+          <img
+            src="${escapeHtml(image)}"
+            alt="${escapeHtml(x.title)}"
+            loading="lazy"
+            onerror="this.style.display='none'"
+          >
           <span class="excursion-card-body">
             <b>${escapeHtml(x.title)}</b>
-            <strong>${escapeHtml(cardPrice)}</strong>
+            <small>${escapeHtml(x.description || '')}</small>
+            <strong>${escapeHtml(price)}</strong>
           </span>
+          <span class="excursion-arrow">›</span>
         </button>
       `;
     }).join('') ||
       '<p class="excursion-empty">В этой категории пока нет программ.</p>';
 
+    const title = document.getElementById('catTitle');
+    if (title) title.textContent = meta.title;
+
     document.querySelectorAll('.excursion-tab').forEach(btn => {
-      btn.classList.toggle(
-        'active',
-        btn.dataset.filter === category || btn.dataset.cat === category
-      );
+      btn.classList.toggle('active', btn.dataset.cat === category);
     });
 
     catalog.querySelectorAll('[data-excursion-id]').forEach(btn => {
@@ -804,7 +791,7 @@ const imageMarkup = imagePath
       });
     });
 
-       show('category');
+    show('category');
   });
 }
 window.openExcursionCategory = renderCategory;
