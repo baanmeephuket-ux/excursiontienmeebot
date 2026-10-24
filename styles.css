@@ -509,4 +509,35 @@ input[type="time"] {
   -webkit-appearance: none;
   appearance: none;
 }
+/* Возвращаем фотографии экскурсий */
+.excursion-card img {
+  display: block !important;
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
 
+#excursionDetailContent img {
+  display: block !important;
+}
+
+/* Убираем заглушки */
+.excursion-card::before,
+.excursion-card::after,
+.section-cover::before,
+.popular-photo::after {
+  content: none !important;
+}
+
+/* Возвращаем фоны разделов */
+.section-cover {
+  background-color: #e6e1d0 !important;
+  background-size: cover !important;
+}
+
+/* Возвращаем изображение баннера */
+.feature-banner {
+  background-image: url("excursions-banner.png") !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
