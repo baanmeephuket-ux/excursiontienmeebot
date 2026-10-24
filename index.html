@@ -74,19 +74,68 @@
 <!-- ЭКСКУРСИИ -->
 <section id="excursions" class="screen">
   <button data-home class="back" type="button">‹ Назад</button>
-  <div class="section-cover cover-excursions"><div><b>Экскурсии</b><span>Откройте Пхукет и его окрестности</span></div></div>
-  <p class="sub">Морские и сухопутные поездки, аренда лодок и приватные маршруты.</p>
-<div class="excursion-tabs">
-  <button type="button" class="excursion-tab active" data-cat="sea">Морские</button>
-  <button type="button" class="excursion-tab" data-cat="land">Сухопутные</button>
-  <button type="button" class="excursion-tab" data-cat="shows">Вечерние шоу</button>
-  <button type="button" class="excursion-tab" data-cat="activities">Активности</button>
-  <button type="button" class="excursion-tab" data-cat="boats">Аренда лодок</button>
-  <button type="button" class="excursion-tab" data-cat="private">Приватные</button>
-</div>
 
+  <div class="section-cover cover-excursions">
+    <div>
+      <b>Экскурсии</b>
+      <span>Откройте Пхукет и его окрестности</span>
+    </div>
+  </div>
+
+  <p class="sub">
+    Морские и сухопутные поездки, аренда лодок,
+    приватные маршруты и вечерние шоу.
+  </p>
+
+  <div class="excursion-tabs">
+    <button
+      type="button"
+      class="excursion-tab active"
+      data-cat="sea"
+    >Морские</button>
+
+    <button
+      type="button"
+      class="excursion-tab"
+      data-cat="land"
+    >Сухопутные</button>
+
+    <button
+      type="button"
+      class="excursion-tab"
+      data-cat="shows"
+    >Вечерние шоу</button>
+
+    <button
+      type="button"
+      class="excursion-tab"
+      data-cat="activities"
+    >Активности</button>
+
+    <button
+      type="button"
+      class="excursion-tab"
+      data-cat="boats"
+    >Аренда лодок</button>
+
+    <button
+      type="button"
+      class="excursion-tab"
+      data-cat="private"
+    >Приватные</button>
+  </div>
 </section>
 
+<!-- СПИСОК ЭКСКУРСИЙ -->
+<section id="category" class="screen">
+  <button data-back class="back" type="button">
+    ‹ К экскурсиям
+  </button>
+
+  <h2 id="catTitle">Морские экскурсии</h2>
+
+  <div id="excursionCatalog" class="excursion-grid"></div>
+</section>
 <section id="category" class="screen">
   <button data-back class="back" type="button">‹ К экскурсиям</button>
   <h2 id="catTitle">Экскурсии</h2>
