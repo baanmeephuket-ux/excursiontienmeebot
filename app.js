@@ -1045,12 +1045,5 @@ if (galleryTrack) {
   });
 });
 
-// Загружаем морские экскурсии при открытии каталога
-document.querySelectorAll('[data-open="category"]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    renderCategory('sea');
-  });
-});
-
 // Старт приложения
 show('home');
