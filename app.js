@@ -738,7 +738,7 @@ function renderCategory(category) {
       });
     });
 
-    show('excursions');
+    show('category');
   });
 }
 
