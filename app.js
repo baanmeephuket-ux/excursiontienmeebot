@@ -663,8 +663,8 @@ function renderOrders(){
 // Tien Mee excursions catalogue integration (app.js patch)
 (function initTienMeeExcursions() {
   const categoryMeta = {
-    sea: { title: 'Морские экскурсии', image: 'images/islands-route.jpg', label: 'Морские' },
-    land: { title: 'Сухопутные программы', image: 'images/hong-phangnga.jpg', label: 'Сухопутные' },
+    sea: { title: 'Морские экскурсии', image: 'islands-route.jpg', label: 'Морские' },
+    land: { title: 'Сухопутные программы', image: 'hong-phangnga.jpg', label: 'Сухопутные' },
     activities: { title: 'Активности', label: 'Активности' },
     shows: { title: 'Вечерние шоу', label: 'Вечерние шоу' },
     boats: { title: 'Аренда лодок', label: 'Аренда лодок' },
@@ -761,10 +761,8 @@ const imageMarkup = imagePath
           ${imageMarkup}
           <span class="excursion-card-body">
             <b>${escapeHtml(x.title)}</b>
-            <small>${escapeHtml(x.description || '')}</small>
             <strong>${escapeHtml(cardPrice)}</strong>
           </span>
-          <span class="excursion-arrow">›</span>
         </button>
       `;
     }).join('') ||
@@ -786,7 +784,7 @@ const imageMarkup = imagePath
     show('category');
   });
 }
-
+renderCategory('sea');
   function renderDetail(id) {
     loadCatalog(() => {
       const x = (window.TIENMEE_EXCURSIONS || []).find(item => item.id === id);
@@ -952,11 +950,10 @@ if (galleryTrack) {
     .excursion-card{display:grid;grid-template-columns:112px minmax(0,1fr) 24px;align-items:center;gap:12px;width:100%;padding:10px;border:1px solid #eadfc9;border-radius:18px;background:#fffaf0;color:#193b2d;text-align:left;overflow:hidden;position:relative}
     .excursion-card:active{transform:scale(.99)}
     .excursion-card img{display:block!important;width:112px;height:112px;object-fit:cover;border-radius:13px}
-    .excursion-card-body{display:flex;flex-direction:column;align-items:flex-start;gap:9px;padding:15px 17px 17px}
-    .excursion-card-body b{font-size:19px;line-height:1.25;font-weight:800;color:#173a3d;padding-right:5px}
+    .excursion-card-body{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:12px;padding:10px 8px}
+    .excursion-card-body b{font-size:17px;line-height:1.3;font-weight:800;color:#173a3d} 
     .excursion-card-body small{font-size:14px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;color:#5e7273}
     .excursion-card-body strong{font-size:17px;color:#087c8a;background:#e5f8f7;border-radius:999px;padding:7px 12px;margin-top:2px}
-    .excursion-arrow{position:absolute;right:15px;bottom:20px;font-size:24px;color:var(--tm-coral);font-weight:800}
     .excursion-hero-image{display:block;width:100%;height:245px;object-fit:cover;border-radius:24px;margin:10px 0 20px;background:#d6f1f1;box-shadow:0 10px 24px rgba(8,94,105,.12)}
     .excursion-card img.show-poster,
     .excursion-hero-image.show-poster {
