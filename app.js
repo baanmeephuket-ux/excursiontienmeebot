@@ -92,14 +92,32 @@ function feedback() {
  // Навигация
 function openSection(section) {
   if (section === 'excursions') {
-    window.openExcursionCategory('sea');
+    show('category');
+
+    if (typeof window.openExcursionCategory === 'function') {
+      window.openExcursionCategory('sea');
+    } else {
+      console.error('Каталог экскурсий не инициализирован.');
+    }
+
     return;
   }
 
   show(section);
 }
 
+document.querySelectorAll('[data-open]').forEach(btn =>
+  btn.addEventListener('click', () => openSection(btn.dataset.open))
+);
 
+document.querySelectorAll('[data-home]').forEach(btn =>
+  btn.addEventListener('click', () => show('home'))
+);
+
+const backButton = document.querySelector('[data-back]');
+if (backButton) {
+  backButton.addEventListener('click', () => show('excursions'));
+}
 document.querySelectorAll('[data-open]').forEach(btn =>
   btn.addEventListener('click', () => openSection(btn.dataset.open))
 );
