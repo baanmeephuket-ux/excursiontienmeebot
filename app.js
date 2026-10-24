@@ -637,7 +637,7 @@ function renderOrders(){
   function loadCatalog(callback) {
     if (Array.isArray(window.TIENMEE_EXCURSIONS)) return callback();
     const s = document.createElement('script');
-    s.src = './excursions.js';
+    s.src = '/excursions.js';
     s.onload = callback;
     s.onerror = () => {
       const box = document.getElementById('category');
