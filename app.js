@@ -75,7 +75,26 @@ const langButton = document.getElementById('lang');
 if (langButton) langButton.addEventListener('click', () => alert('English version подключим после утверждения структуры.'));
 
 // Экскурсии
-const names = {sea:'Морские',land:'Сухопутные',boats:'Аренда лодок',private:'Приватные экскурсии'};
+const names = {
+  sea: 'Морские',
+  land: 'Сухопутные',
+  boats: 'Аренда лодок',
+  private: 'Приватные экскурсии',
+  activities: 'Активности',
+  shows: 'Вечерние шоу'
+};
+
+document.querySelectorAll('[data-cat], [data-filter]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const category = btn.dataset.filter || btn.dataset.cat;
+    if (!category) return;
+
+    const title = document.getElementById('catTitle');
+    if (title) title.textContent = names[category] || 'Экскурсии';
+
+    renderCategory(category);
+  });
+});
 
 // Трансфер
 let transferDirection = 'Аэропорт → Отель';
