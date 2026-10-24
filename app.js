@@ -948,10 +948,10 @@ if (galleryTrack) {
     :root{--tm-sea:#10a9b8;--tm-deep:#087c8a;--tm-coral:#ff805f;--tm-sand:#fff7e9;--tm-ink:#19363a}
     #category,#excursionDetail{color:var(--tm-ink)}
     #category h2,#excursionDetail h2{font-size:clamp(26px,6vw,34px);line-height:1.12;letter-spacing:-.6px;margin:12px 0 18px;color:#173a3d}
-    .excursion-grid{display:grid;grid-template-columns:1fr;gap:18px;margin:16px 0 28px}
-    .excursion-card{display:flex;flex-direction:column;align-items:stretch;width:100%;padding:0;border:1px solid rgba(8,124,138,.15);border-radius:23px;background:#fff;color:var(--tm-ink);text-align:left;overflow:hidden;position:relative;box-shadow:0 8px 22px rgba(8,94,105,.10);transition:transform .18s ease,box-shadow .18s ease}
+    .excursion-grid{display:grid;grid-template-columns:1fr;gap:12px;margin:16px 0 28px}
+    .excursion-card{display:grid;grid-template-columns:112px minmax(0,1fr) 24px;align-items:center;gap:12px;width:100%;padding:10px;border:1px solid #eadfc9;border-radius:18px;background:#fffaf0;color:#193b2d;text-align:left;overflow:hidden;position:relative}
     .excursion-card:active{transform:scale(.99)}
-    .excursion-card img{display:block;width:100%;height:190px;min-height:0;object-fit:cover;background:#d6f1f1}
+    .excursion-card img{display:block!important;width:112px;height:112px;object-fit:cover;border-radius:13px}
     .excursion-card-body{display:flex;flex-direction:column;align-items:flex-start;gap:9px;padding:15px 17px 17px}
     .excursion-card-body b{font-size:19px;line-height:1.25;font-weight:800;color:#173a3d;padding-right:5px}
     .excursion-card-body small{font-size:14px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;color:#5e7273}
