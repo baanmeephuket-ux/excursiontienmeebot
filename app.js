@@ -92,7 +92,11 @@ function feedback() {
 // Навигация
 function openSection(section) {
   if (section === 'excursions') {
-    renderCategory('sea');
+    if (typeof window.openExcursionCategory === 'function') {
+      window.openExcursionCategory('sea');
+    } else {
+      show('excursions');
+    }
     return;
   }
 
@@ -794,7 +798,15 @@ function renderCategory(category) {
     show('category');
   });
 }
+
 window.openExcursionCategory = renderCategory;
+
+document.querySelectorAll('.excursion-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    window.openExcursionCategory(btn.dataset.cat);
+  });
+});
+
 function renderDetail(id) {
     loadCatalog(() => {
       const x = (window.TIENMEE_EXCURSIONS || []).find(item => item.id === id);
