@@ -1039,12 +1039,18 @@ if (galleryTrack) {
   document.head.appendChild(style);
 
   document.querySelectorAll('.excursion-tab').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const category = btn.dataset.filter || btn.dataset.cat;
-      if (category) renderCategory(category);
-    });
+  btn.addEventListener('click', () => {
+    const category = btn.dataset.filter || btn.dataset.cat;
+    if (category) renderCategory(category);
   });
+});
 
-  // Старт приложения
-  show('home');
-})();
+// Загружаем морские экскурсии при открытии каталога
+document.querySelectorAll('[data-open="category"]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    renderCategory('sea');
+  });
+});
+
+// Старт приложения
+show('home');
