@@ -1002,15 +1002,16 @@ if (galleryTrack) {
     .excursion-form button:disabled{opacity:.65}.excursion-form-status{font-size:12px;color:#a33}
     .excursion-empty{padding:18px;color:#687b7b;background:#fff;border-radius:18px}
     @media(min-width:600px){.excursion-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.excursion-card img{height:205px}}
-  `
+  `;
+  document.head.appendChild(style);
 
-document.querySelectorAll('.excursion-tab').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const category = btn.dataset.filter || btn.dataset.cat;
-    if (category) renderCategory(category);
+  document.querySelectorAll('.excursion-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const category = btn.dataset.filter || btn.dataset.cat;
+      if (category) renderCategory(category);
+    });
   });
-});
 
-renderCategory('all');
-// Старт
-show('home');
+  // Старт приложения
+  show('home');
+})();
