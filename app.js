@@ -746,10 +746,13 @@ function renderCategory(category) {
         ? money(x.price.adult)
         : optionPrice;
 
-      const imageMarkup = x.image
-  ? `<img src="${escapeHtml(x.image)}"
+const imagePath = x.image || x.photo || '';
+
+const imageMarkup = imagePath
+  ? `<img src="${escapeHtml(imagePath)}"
        alt="${escapeHtml(x.title)}"
-       loading="lazy">`
+       loading="lazy"
+       onerror="this.style.display='none'">`
   : '';
 
       return `
