@@ -6,7 +6,27 @@ async function sendOrder(order) {
     const response = await fetch(API_URL, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json"// Экскурсии
+const names = {
+  sea: 'Морские',
+  land: 'Сухопутные',
+  boats: 'Аренда лодок',
+  private: 'Приватные экскурсии',
+  activities: 'Активности',
+  shows: 'Вечерние шоу'
+};
+
+document.querySelectorAll('[data-cat], [data-filter]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const category = btn.dataset.filter || btn.dataset.cat;
+    if (!category) return;
+
+    const title = document.getElementById('catTitle');
+    if (title) title.textContent = names[category] || 'Экскурсии';
+
+    renderCategory(category);
+  });
+});
       },
       body: JSON.stringify({
         ...order,
@@ -656,7 +676,7 @@ function renderOrders(){
   function loadCatalog(callback) {
     if (Array.isArray(window.TIENMEE_EXCURSIONS)) return callback();
     const s = document.createElement('script');
-    s.src = '/excursions.js';
+    s.src = './excursions.js';
     s.onload = callback;
     s.onerror = () => {
       const box = document.getElementById('category');
@@ -727,7 +747,11 @@ function renderCategory(category) {
         ? money(x.price.adult)
         : optionPrice;
 
-      const imagePath = x.image || '';
+      const imageMarkup = x.image
+  ? `<img src="${escapeHtml(x.image)}"
+       alt="${escapeHtml(x.title)}"
+       loading="lazy">`
+  : '';
 
       return `
         <button class="excursion-card" type="button"
