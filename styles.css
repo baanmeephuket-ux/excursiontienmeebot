@@ -337,8 +337,7 @@ form{background:#fffaf0;border-color:#eadfc9}form label{color:#253529}form input
     height: 105px;
   }
 }
-
-/* Исправление ширины форм на мобильных устройствах */
+/* Общая ширина элементов на мобильных устройствах */
 *,
 *::before,
 *::after {
@@ -347,141 +346,64 @@ form{background:#fffaf0;border-color:#eadfc9}form label{color:#253529}form input
 
 html,
 body {
+  width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+}
+
+.app,
+.screen,
+form,
+.info,
+.payment,
+.booking-form,
+.excursion-notes,
+.confirmation,
+.two,
+.form-row,
+.form-group {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 input,
 select,
 textarea,
 button {
-  max-width: 100%;
-}
-
-input,
-select,
-textarea {
-  width: 100%;
-  min-width: 0;
-}
-
-form,
-.form-group,
-.form-row {
-  min-width: 0;
-  max-width: 100%;
-}
-
-.form-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.form-row > * {
-  min-width: 0;
-  max-width: 100%;
-  flex: 1 1 200px;
-}
-
-@media (max-width: 600px) {
-  form {
-    width: 100%;
-  }
-
-  input,
-  select,
-  textarea {
-    font-size: 16px;
-  }
-
-  .form-row {
-    gap: 12px;
-  }
-}
-
-/* Исправление вылезающих полей формы на мобильных */
-*,
-*::before,
-*::after {
   box-sizing: border-box;
-}
-
-input,
-select,
-textarea {
-  width: 100%;
   max-width: 100%;
-  min-width: 0;
 }
 
-form,
-form label,
 form input,
 form select,
 form textarea {
-  box-sizing: border-box;
-}
-
-.directions {
   width: 100%;
   min-width: 0;
 }
 
-.direction {
-  max-width: 100%;
+.two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.two > *,
+.form-row > * {
   min-width: 0;
-  white-space: normal;
-  overflow-wrap: anywhere;
+  max-width: 100%;
 }
 
 @media (max-width: 600px) {
+  .app {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
   .screen,
   form {
-    max-width: 100%;
-    min-width: 0;
+    overflow-wrap: anywhere;
   }
-}
-
-/* Фикс ширины формы трансфера */
-#transfer {
-  width: 100%;
-  min-width: 0;
-  overflow-x: clip;
-}
-
-#transfer form,
-#transfer .payment,
-#transfer .info {
-  width: 100%;
-  min-width: 0;
-  max-width: 100%;
-}
-
-#transfer form input,
-#transfer form select,
-#transfer form textarea,
-#transfer form button {
-  box-sizing: border-box;
-  min-width: 0;
-  max-width: 100%;
-}
-
-#transfer .two {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 9px;
-  width: 100%;
-  min-width: 0;
-}
-
-#transfer .two > div {
-  min-width: 0;
-  width: 100%;
-}
-
-#transfer .two input {
-  width: 100%;
 }
 
 /* Горизонтальные категории экскурсий */
