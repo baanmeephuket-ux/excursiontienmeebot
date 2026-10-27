@@ -773,7 +773,6 @@ function renderCategory(category) {
           >
           <span class="excursion-card-body">
             <b>${escapeHtml(x.title)}</b>
-            <small>${escapeHtml(x.description || '')}</small>
             <strong>${escapeHtml(price)}</strong>
           </span>
         </button>
