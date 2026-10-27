@@ -274,13 +274,13 @@ form{background:#fffaf0;border-color:#eadfc9}form label{color:#253529}form input
 .hero-brand .hero-fairy {
   position: absolute;
   z-index: 2;
-  right: -8px;
-  bottom: -8px;
-  width: min(54%, 390px);
-  height: auto;
-  max-height: 108%;
+  right: -18px;
+  bottom: -12px;
+  width: min(68%, 520px);
+  height: 120%;
+  max-height: none;
   object-fit: contain;
-  object-position: bottom right;
+  object-position: right bottom;
   pointer-events: none;
 }
 
@@ -325,11 +325,12 @@ form{background:#fffaf0;border-color:#eadfc9}form label{color:#253529}form input
   }
 
   .hero-brand .hero-fairy {
-    width: 66%;
-    right: -12px;
-    bottom: 0;
-    max-height: 65%;
-  }
+  width: 78%;
+  right: -18px;
+  bottom: -2px;
+  height: auto;
+  max-height: 78%;
+}
 
   .hero-brand::before,
   .hero-brand::after {
