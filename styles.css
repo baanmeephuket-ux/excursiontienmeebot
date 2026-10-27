@@ -541,3 +541,6 @@ input[type="time"] {
   background-size: cover !important;
   background-position: center !important;
 }
+.excursion-arrow {
+  display: none !important;
+}
