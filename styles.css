@@ -154,7 +154,7 @@ form textarea{min-height:110px;resize:none}form input:focus,form textarea:focus,
 .excursion-card-photo.show-cover{background-image:linear-gradient(120deg,#463c53,#b77c60)}
 .excursion-card-photo.activity-cover{background-image:linear-gradient(120deg,#c9d8d0,#789b9b)}
 .excursion-card-body{padding:15px}.excursion-card h3{font-family:Georgia,serif;font-size:21px;font-weight:500;line-height:1.15;margin:0 0 8px}.excursion-card p{font-size:13px;line-height:1.5;color:var(--muted);margin:0 0 12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.excursion-price{font-weight:750;color:var(--green-dark);font-size:14px;line-height:1.5;margin:8px 0 12px}.excursion-open{margin-top:4px}.detail-photo{height:190px;border-radius:21px;background:linear-gradient(135deg,#c5d4c1,#738b78);background-position:center;background-size:cover;display:flex;align-items:flex-end;padding:17px;margin-bottom:17px;color:#fff;font-weight:700;text-shadow:0 1px 4px #34463a}.detail-description{line-height:1.6;color:var(--text)}.detail-price{font-size:16px;padding:12px 14px;background:var(--green-light);border-radius:14px}.availability-note{background:#f0eee4;border-radius:12px;padding:12px;font-size:13px}.program-list{padding-left:23px;display:flex;flex-direction:column;gap:10px}.program-list li{padding-left:2px;line-height:1.45}.program-list li b{display:block;color:var(--green-dark);font-size:13px}.program-list li span{display:block;font-size:14px}.excursion-notes{border:1px solid var(--line);border-radius:15px;padding:14px;margin:12px 0;background:var(--cream);font-size:13px;line-height:1.5}.excursion-notes ul{padding-left:19px;margin-bottom:0}.booking-form{margin-top:20px;padding:17px;border:1px solid var(--line);border-radius:20px;background:#fbf9f3}.booking-form h3{font-family:Georgia,serif;font-size:22px;font-weight:500;margin:0 0 7px}.whatsapp-link{display:block;text-align:center;background:#e8efe3;color:#34463a;border-radius:14px;padding:13px;font-weight:750;text-decoration:none;margin:12px 0}.excursion-card .submit{margin-top:7px}
+.excursion-price{font-weight:750;color:var(--green-dark);font-size:14px;line-height:1.5;margin:8px 0 12px}.excursion-open{margin-top:4px}.detail-photo{height:190px;border-radius:21px;background:linear-gradient(135deg,#c5d4c1,#738b78);background-position:center;background-size:cover;display:flex;align-items:flex-end;padding:17px;margin-bottom:17px;color:#fff;font-weight:700;text-shadow:0 1px 4px #34463a}.detail-description{line-height:1.6;color:var(--text)}.detail-price{font-size:16px;padding:12px 14px;background:var(--green-light);border-radius:14px}.availability-note{background:#f0eee4;border-radius:12px;padding:12px;font-size:13px}.program-list{padding-left:23px;display:flex;flex-direction:column;gap:10px}.program-list li{padding-left:2px;line-height:1.45}.program-list li b{display:block;color:var(--green-dark);font-size:13px}.program-list li span{display:block;font-size:14px}.excursion-notes{border:1px solid var(--line);border-radius:15px;padding:14px;margin:12px 0;background:var(--cream);font-size:13px;line-height:1.5}.excursion-notes ul{padding-left:28px;margin-left:0;margin-bottom:0;list-style-position:outside}booking-form{margin-top:20px;padding:17px;border:1px solid var(--line);border-radius:20px;background:#fbf9f3}.booking-form h3{font-family:Georgia,serif;font-size:22px;font-weight:500;margin:0 0 7px}.whatsapp-link{display:block;text-align:center;background:#e8efe3;color:#34463a;border-radius:14px;padding:13px;font-weight:750;text-decoration:none;margin:12px 0}.excursion-card .submit{margin-top:7px}
 
 /* =========================================================
    TIEN MEE TROPICAL BOUTIQUE — visual refresh
@@ -543,4 +543,66 @@ input[type="time"] {
 }
 .excursion-arrow {
   display: none !important;
+}
+/* Карточки экскурсий: компактная горизонтальная компоновка */
+#excursionCatalog .excursion-card {
+  display: grid;
+  grid-template-columns: 145px minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  min-height: 0;
+  height: auto;
+  text-align: left;
+}
+
+/* Фотография крупнее */
+#excursionCatalog .excursion-card > img {
+  display: block;
+  width: 145px;
+  height: 145px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* Название и цена без описания */
+#excursionCatalog .excursion-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+#excursionCatalog .excursion-card-body b {
+  font-size: 19px;
+  line-height: 1.25;
+}
+
+#excursionCatalog .excursion-card-body strong {
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+/* На узких экранах */
+@media (max-width: 400px) {
+  #excursionCatalog .excursion-card {
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 12px;
+    padding: 10px;
+  }
+
+  #excursionCatalog .excursion-card > img {
+    width: 120px;
+    height: 120px;
+  }
+
+  #excursionCatalog .excursion-card-body b {
+    font-size: 17px;
+  }
+
+  #excursionCatalog .excursion-card-body strong {
+    font-size: 16px;
+  }
 }
