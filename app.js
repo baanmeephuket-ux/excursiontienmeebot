@@ -989,10 +989,19 @@ if (galleryTrack) {
   width: 100%;
   overflow: hidden;
 }
+.excursion-gallery {
+  width: 100%;
+  margin: 10px 0 20px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #e9e2d2;
+}
 
 .excursion-gallery-track {
   display: flex;
+  width: 100%;
   overflow-x: auto;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
@@ -1003,26 +1012,30 @@ if (galleryTrack) {
   display: none;
 }
 
-
 .excursion-gallery-track .excursion-hero-image {
   display: block;
   flex: 0 0 100%;
   width: 100%;
+  height: 245px;
+  min-width: 0;
   max-width: 100%;
-  height: auto;
-  min-height: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0;
+  background: #e9e2d2;
+  box-shadow: none;
   scroll-snap-align: start;
-  background: transparent;
 }
 
 .excursion-gallery-dots {
   display: flex;
   justify-content: center;
   gap: 8px;
-  padding: 10px 0;
+  padding: 12px 0;
+  background: #fffaf0;
 }
 
 .excursion-gallery-dot {
@@ -1031,11 +1044,17 @@ if (galleryTrack) {
   padding: 0;
   border: 0;
   border-radius: 50%;
-  background: #c8d3d5;
+  background: #c8c1b2;
 }
 
 .excursion-gallery-dot.is-active {
-  background: #087f8c;
+  background: #174b35;
+}
+
+@media (min-width: 600px) {
+  .excursion-gallery-track .excursion-hero-image {
+    height: 360px;
+  }
 }
     .excursion-description{font-size:15px;line-height:1.75;white-space:pre-line;color:#4d6465;margin:12px 0 20px}
     #excursionDetailContent h3{font-size:22px;line-height:1.25;color:#173a3d;margin:24px 0 12px}
