@@ -776,7 +776,6 @@ function renderCategory(category) {
             <small>${escapeHtml(x.description || '')}</small>
             <strong>${escapeHtml(price)}</strong>
           </span>
-          <span class="excursion-arrow">›</span>
         </button>
       `;
     }).join('') ||
