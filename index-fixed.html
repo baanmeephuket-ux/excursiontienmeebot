@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#5F7658">
+<title>Tien Mee Phuket</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+<div class="app">
+
+<header class="topbar topbar-minimal brand-header">
+  <a class="brand-lockup" href="#home" data-home aria-label="Tien Mee Phuket — на главную">
+    <span class="brand-palm" aria-hidden="true">♧</span><span><b>TIEN MEE</b><small>PHUKET</small></span>
+  </a>
+  <nav class="desktop-nav" aria-label="Основная навигация">
+    <button data-open="excursions" type="button">Услуги</button>
+    <button data-open="orders" type="button">Мои заказы</button>
+    <button data-open="manager" type="button">О нас</button>
+  </nav>
+  <button id="menuToggle" class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+
+<main id="home">
+  <section class="hero hero-brand">
+    <img class="hero-fairy" src="Tropical Fairy Woman with Plumeria Foliage.png" alt="" aria-hidden="true">
+    <div class="hero-copy">
+      <h1>Больше, чем<br><em>экскурсии</em></h1>
+      <p>Ваш надёжный помощник на Пхукете — экскурсии, трансферы, недвижимость, документы и многое другое.</p>
+    </div>
+    <div class="hero-botanical" aria-hidden="true">✿</div>
+  </section>
+
+  <section class="home-services" aria-label="Услуги Tien Mee">
+    <button data-open="excursions" class="service-tile" type="button"><span class="service-icon icon-green"><img src="01_excursions.png" alt="" /></span><b>Экскурсии</b></button>
+    <button data-open="fasttrack" class="service-tile" type="button"><span class="service-icon icon-sand"><img src="02_fast_track.png" alt="" /></span><b>Fast Track</b></button>
+    <button data-open="transfer" class="service-tile" type="button"><span class="service-icon icon-coral"><img src="03_transfer.png" alt="" /></span><b>Трансфер</b></button>
+    <button data-open="cars" class="service-tile" type="button"><span class="service-icon icon-gold"><img src="04_car_rental.png" alt="" /></span><b>Аренда авто</b></button>
+    <button data-open="exchange" class="service-tile" type="button"><span class="service-icon icon-gold"><img src="05_currency_exchange.png" alt="" /></span><b>Обмен валюты</b></button>
+    <button data-open="realestate" class="service-tile" type="button"><span class="service-icon icon-sage"><img src="06_real_estate.png" alt="" /></span><b>Недвижимость</b></button>
+    <button data-open="license" class="service-tile" type="button"><span class="service-icon icon-cream"><img src="07_drivers_license.png" alt="" /></span><b>Водительские права</b></button>
+    <button data-open="business" class="service-tile" type="button"><span class="service-icon icon-coral"><img src="08_consultations.png" alt="" /></span><b>Консультации</b></button>
+  </section>
+
+    <button class="feature-banner" type="button" data-open="excursions"
+        style="background-image: url('excursions-banner.png');">
+      <strong>Экскурсии<br>по райским местам</strong>
+      <small>Острова, лагуны, снорклинг и закаты</small>
+      <span class="feature-cta">Смотреть туры →</span>
+  </button>
+
+
+  <section class="popular-section">
+    <div class="section-heading"><h2>Популярные направления</h2><button data-open="excursions" type="button">Все экскурсии →</button></div>
+    <div class="popular-grid">
+      <button class="popular-card popular-phi" data-open="excursions" type="button"><span class="popular-photo"></span><b>Пхи-Пхи</b><small>Легендарные острова</small><strong>от 2000 ฿ <i>→</i></strong></button>
+      <button class="popular-card popular-similan" data-open="excursions" type="button"><span class="popular-photo"></span><b>Симиланские острова</b><small>Белоснежные пляжи</small><strong>от 2300 ฿ <i>→</i></strong></button>
+      <button class="popular-card popular-phangnga" data-open="excursions" type="button"><span class="popular-photo"></span><b>Залив Пханг Нга</b><small>Скалы и лагуны</small><strong>от 1800 ฿ <i>→</i></strong></button>
+    </div>
+  </section>
+
+  <button class="manager-banner" data-open="manager" type="button">
+    <span class="manager-avatar"><img src="Tropical Fairy Hostess with Clipboard.png" alt="" /></span><span class="manager-copy"><b>Алина — ваш менеджер</b><small>Помогу с выбором и отвечу на вопросы</small></span><span class="manager-action">Написать в Telegram ↗</span>
+  </button>
+
+  <div class="home-utility-links">
+    <button data-open="orders" type="button"><span></span><b>Мои заказы</b><small>Все ваши заявки в одном месте</small></button>
+  </div>
+  <footer>Made in Phuket🌴</footer>
+</main>
+
+<!-- ЭКСКУРСИИ -->
+<section id="excursions" class="screen">
+  <button data-home class="back" type="button">‹ Назад</button>
+
+  <div class="section-cover cover-excursions">
+    <div>
+      <b>Экскурсии</b>
+      <span>Откройте Пхукет и его окрестности</span>
+    </div>
+  </div>
+
+  <p class="sub">
+    Морские и сухопутные поездки, аренда лодок,
+    приватные маршруты и вечерние шоу.
+  </p>
+
+  <div class="excursion-tabs">
+    <button
+      type="button"
+      class="excursion-tab active"
+      data-cat="sea"
+    >Морские</button>
+
+    <button
+      type="button"
+      class="excursion-tab"
+      data-cat="land"
+    >Сухопутные</button>
+
+    <button
+      type="button"
+      class="excursion-tab"
+      data-cat="shows"
+    >Вечерние шоу</button>
+
+    <button
+      type="button"
+      class="excursion-tab"
+      data-cat="activities"
+    >Активности</button>
+
+    <button
+      type="button"
+      class="excursion-tab"
+      data-cat="boats"
+    >Аренда лодок</button>
+
+    <button
+      type="button"
+      class="excursion-tab"
+      data-cat="private"
+    >Приватные</button>
+  </div>
+
+  <!-- Список экскурсий отображается на этом же экране под категориями -->
+  <div id="excursionCatalog" class="excursion-grid"></div>
+</section>
+
+<!-- FAST TRACK -->
+<section id="fasttrack" class="screen">
+  <button data-home class="back" type="button">‹ Назад</button>
+
+ 
+<div class="section-cover cover-fasttrack">
+  <div>
+    <b>Fast Track</b>
+    <span>Быстрее пройти аэропорт</span>
+  </div>
+</div>
+  <p class="sub">
+    Встреча в аэропорту и сопровождение через Fast Track
+  </p>
+
+  <div class="info">
+    <b>Как оформить</b>
+    <span>
+      Стоимость — от 1 500 THB<br>
+      Сложные случаи рассматриваются отдельно.<br><br>
+      Оставьте заявку, указав день,время прилёта и количество человек.
+      Подготовьте паспорта всех пассажиров — они понадобятся менеджеру для проверки возможности оформления.
+      После получения заявки менеджер свяжется с вами и подтвердит стоимость.
+    </span>
+  </div>
+
+  <div class="payment">
+    <b>Оплата</b>
+    <span>Возможна в батах, рублях или USDT</span>
+  </div>
+
+  <form id="fastTrackForm">
+
+    <label for="fastTrackDate">📅 День прилёта</label>
+    <input
+      id="fastTrackDate"
+      name="date"
+      type="date"
+      required
+    >
+
+    <label for="fastTrackTime">🕐 Время прилёта</label>
+    <input
+      id="fastTrackTime"
+      name="time"
+      type="time"
+      required
+    >
+
+    <label for="fastTrackPeople">👥 Количество человек</label>
+    <input
+      id="fastTrackPeople"
+      name="people"
+      type="number"
+      min="1"
+      max="50"
+      value="1"
+      required
+    >
+
+    <button class="submit" type="submit">
+      📋 Оставить заявку
+    </button>
+
+  </form>
+
+  <div id="fastTrackConfirmation" class="confirmation" hidden></div>
+</section>
+
+<!-- ТРАНСФЕР -->
+<section id="transfer" class="screen">
+  <button data-home class="back" type="button">‹ Назад</button>
+  <div class="section-cover cover-transfer"><div><b>Трансфер</b><span>Аэропорт ↔ отель</span></div></div>
+  <p class="sub">Укажите детали поездки, а мы подберём подходящий автомобиль и сообщим стоимость.</p>
+
+  <div class="info"><b>Как это работает</b><span>После отправки заявки мы проверим доступность автомобиля и свяжемся с вами для подтверждения деталей и стоимости</span></div>
+
+  <form id="transferForm">
+    <label>Направление</label>
+    <div class="directions">
+      <button type="button" class="direction active" data-direction="Аэропорт → Отель">✈️ Аэропорт → Отель</button>
+      <button type="button" class="direction" data-direction="Отель → Аэропорт">🏨 Отель → Аэропорт</button>
+    </div>
+    <label for="transferDate">Дата поездки</label><input id="transferDate" name="date" type="date" required>
+    <label for="flightNumber">Номер рейса</label><input id="flightNumber" name="flightNumber" type="text" placeholder="Например, SU123" required>
+    <label for="arrivalTime">Время прилёта / выезда</label><input id="arrivalTime" name="arrivalTime" type="time" required>
+    <div class="two">
+      <div><label for="people">Количество человек</label><input id="people" name="people" type="number" min="1" max="50" value="1" required></div>
+      <div><label for="suitcases">Чемоданы</label><input id="suitcases" name="suitcases" type="number" min="0" max="50" value="0" required></div>
+    </div>
+    <label for="hotel">Название отеля</label><input id="hotel" name="hotel" type="text" placeholder="Название отеля" required>
+    <label for="phone">Номер для связи</label><input id="phone" name="phone" type="tel" placeholder="+66..." required>
+    <div class="payment"><b>💳 Оплата</b><span>Способ оплаты будет подтверждён менеджером после обработки заявки.</span></div>
+    <button class="submit" type="submit">Отправить заявку</button>
+  </form>
+  <div id="transferConfirmation" class="confirmation" hidden></div>
+</section>
+
+<!-- АРЕНДА АВТО -->
+<section id="cars" class="screen">
+  <button data-home class="back" type="button">‹ Назад</button>
+  <div class="section-cover cover-cars"><div><b>Аренда авто</b><span>Автомобиль для ваших поездок</span></div></div>
+  <p class="sub">Оставьте заявку с датами и пожеланиями — мы проверим наличие и пришлём подходящие варианты.</p>
+  <form id="carForm">
+    <label for="carStart">Дата начала аренды</label><input id="carStart" name="startDate" type="date" required>
+    <label for="carEnd">Дата окончания аренды</label><input id="carEnd" name="endDate" type="date" required>
+    <label>Куда доставить автомобиль</label>
+    <div class="directions">
+      <button type="button" class="choice active" data-delivery="Аэропорт">✈️ Аэропорт</button>
+      <button type="button" class="choice" data-delivery="Отель">🏨 Отель</button>
+      <button type="button" class="choice" data-delivery="Другое место">📍 Другое место</button>
+    </div>
+    <label for="carLocation">Название / адрес места</label><input id="carLocation" name="location" type="text" placeholder="Например, отель на Пхукете" required>
+    <label for="carType">Желаемый класс автомобиля</label><input id="carType" name="carType" type="text" placeholder="Эконом, SUV, премиум и т.д." required>
+    <label for="carPeople">Количество человек</label><input id="carPeople" name="people" type="number" min="1" max="20" value="1" required>
+    <label for="carPhone">Номер для связи</label><input id="carPhone" name="phone" type="tel" placeholder="+66..." required>
+    <label for="carComment">Комментарий</label><textarea id="carComment" name="comment" rows="3" placeholder="Детское кресло, коробка автомат и т.д."></textarea>
+    <button class="submit" type="submit">Отправить заявку</button>
+  </form>
+  <div id="carConfirmation" class="confirmation" hidden></div>
+</section>
+
+<!-- ОБМЕН -->
+<section id="exchange" class="screen">
+  <button data-home class="back" type="button">‹ Назад</button>
+  <div class="section-cover cover-exchange"><div><b>Обмен валюты</b><span>Удобно и безопасно</span></div></div>
+  <p class="sub">Оставьте заявку — менеджер свяжется с вами и уточнит доступный курс и детали обмена.</p>
+  <button class="submit" type="button" data-contact-request="exchange">Оставить заявку</button>
+</section>
+
+<!-- НЕДВИЖИМОСТЬ -->
+<section id="realestate" class="screen">
+  <button data-home class="back" type="button">‹ Назад</button>
+  <div class="section-cover cover-realestate"><div><b>Покупка недвижимости</b><span>Подберём варианты на Пхукете</span></div></div>
+  <p class="sub">Расскажите о бюджете и задаче — менеджер свяжется с вами и подберёт подходящие варианты.</p>
+  <form id="realEstateForm">
+    <label for="reBudget">Бюджет</label><input id="reBudget" name="budget" type="text" placeholder="Например, до 10 млн ฿" required>
+    <label for="reType">Что хотите купить?</label><select id="reType" name="propertyType" required><option value="">Выберите</option><option>Апартаменты</option><option>Вилла</option><option>Дом</option><option>Не определился(ась)</option></select>
+    <label for="reBedrooms">Количество спален</label><select id="reBedrooms" name="bedrooms"><option value="Не важно">Не важно</option><option>Студия</option><option>1</option><option>2</option><option>3+</option></select>
+    <label for="rePurpose">Цель покупки</label><select id="rePurpose" name="purpose" required><option value="">Выберите</option><option>Для себя</option><option>Для инвестиций</option><option>Для отдыха</option><option>Пока не определился(ась)</option></select>
+    <label for="reStatus">Ваш статус</label><select id="reStatus" name="status" required><option value="">Выберите</option><option>Я уже на Пхукете</option><option>Прилетаю в ближайшее время</option><option>Планирую поездку</option><option>Пока только изучаю варианты</option></select>
+    <label for="reArrival">Если прилетаете — дата</label><input id="reArrival" name="arrivalDate" type="date">
+    <label for="rePhone">Номер для связи</label><input id="rePhone" name="phone" type="tel" placeholder="+66..." required>
+    <button class="submit" type="submit">Отправить заявку</button>
+  </form>
+  <div id="realEstateConfirmation" class="confirmation" hidden></div>
+</section>
+
+<!-- БИЗНЕС -->
+<section id="business" class="screen">
+  <button data-home class="back" type="button">‹ Назад</button>
+
+  <div class="section-cover cover-business">
+    <div>
+      <b>Консультация</b>
+      <span>Бизнес и жизнь в Таиланде</span>
+    </div>
+  </div>
+
+  <div class="info">
+    <b>Что обсудим</b>
+    <span>
+      Компания, способы ведения бизнеса, документы, банки,
+      жильё, переезд и другие практические вопросы жизни в Таиланде.
+    </span>
+  </div>
+
+  <form id="businessForm">
+
+    <label for="businessDate">📅 Дата консультации</label>
+    <input
+      id="businessDate"
+      name="date"
+      type="date"
+      required
+    >
+
+    <label for="businessTime">🕐 Удобное время</label>
+    <input
+      id="businessTime"
+      name="time"
+      type="time"
+      required
+    >
+
+    <label for="businessPhone">📱 Номер для связи</label>
+    <input
+      id="businessPhone"
+      name="phone"
+      type="tel"
+      placeholder="+66..."
+      required
+    >
+
+    <label for="businessQuestion">💬 Что хотите обсудить?</label>
+    <textarea
+      id="businessQuestion"
+      name="question"
+      rows="4"
+      placeholder="Кратко опишите ваш вопрос"
+    ></textarea>
+
+    <div class="payment">
+      <b>💳 Оплата консультации</b>
+      <strong>10 000 ₽</strong>
+      <span>Сбербанк · перевод по номеру телефона</span>
+      <span><b>+7 910 090-46-35</b></span>
+      <span>Получатель: <b>Елена Валерьевна Ф.</b></span>
+    </div>
+
+    <label for="businessReceipt">📎 Прикрепите чек об оплате</label>
+    <input
+      id="businessReceipt"
+      name="receipt"
+      type="file"
+      accept="image/*"
+      required
+    >
+
+    <small class="sub">
+      После перевода прикрепите скриншот или фото чека.
+    </small>
+
+    <button class="submit" type="submit">
+      Отправить заявку · 10 000 ₽
+    </button>
+
+  </form>
+
+  <div id="businessConfirmation" class="confirmation" hidden></div>
+</section>
+
+<!-- ВОДИТЕЛЬСКОЕ УДОСТОВЕРЕНИЕ -->
+<section id="license" class="screen">
+  <button data-home class="back" type="button">‹ На главную</button>
+  <div class="section-cover cover-license"><div><b>Водительское удостоверение</b><span>Помощь с оформлением на Пхукете</span></div></div>
+  <p class="sub">Поможем разобраться с оформлением водительского удостоверения на автомобиль, мотоцикл или обе категории.</p>
+  <div class="license-prices">
+    <h3>Категории</h3>
+    <div class="license-price-row"><span>Автомобиль</span><b>13 000 ฿</b></div>
+    <div class="license-price-row"><span>Мотоцикл</span><b>9 500 ฿</b></div>
+    <div class="license-price-row"><span>Автомобиль и мотоцикл</span><b>21 000 ฿</b></div>
+    <h3>Дополнительные услуги</h3>
+    <div class="license-price-row"><span>Сертификат резидента</span><b>2 500 ฿</b></div>
+    <div class="license-price-row"><span>Медицинская справка</span><b>300 ฿</b></div>
+    <div class="license-price-row"><span>Транспортное средство для экзамена</span><b>1 000 ฿</b></div>
+    <div class="license-price-row"><span>Услуги сопровождающего</span><b>1 000 ฿</b></div>
+    <p class="license-note">Сертификат резидента и медицинскую справку можно оформить самостоятельно.</p>
+  </div>
+  <div class="form-intro"><h2>Оставить заявку</h2><p>Оставьте имя и контакты — мы свяжемся с вами и расскажем подробности.</p></div>
+  <form id="licenseForm" class="simple-license-form">
+    <label for="licenseName">Ваше имя</label><input id="licenseName" name="clientName" type="text" placeholder="Как к вам обращаться" required>
+    <label for="licenseContact">Телефон или Telegram</label><input id="licenseContact" name="contact" type="text" placeholder="Номер телефона или @username" required>
+    <button class="submit" type="submit">Отправить заявку</button>
+  </form>
+  <div id="licenseConfirmation" class="confirmation" hidden></div>
+</section>
+
+<!-- ЗАКАЗЫ -->
+<section id="orders" class="screen">
+  <button data-home class="back" type="button">‹ Назад</button>
+  <div class="section-cover cover-orders"><div><b>📋 Мои заказы</b><span>Все ваши заявки в одном месте</span></div></div>
+  <div id="ordersList" class="orders-list"></div>
+</section>
+
+<!-- МЕНЕДЖЕР -->
+<section id="manager" class="screen">
+  <button data-home class="back" type="button">‹ Назад</button>
+  <div class="section-cover cover-manager"><div><b>👩‍💼 Алина — ваш менеджер</b><span>Помогу с вопросами и заказами</span></div></div>
+  <div class="info"><b>Свяжитесь со мной</b><span>Если не нашли нужную услугу или хотите уточнить детали — напишите менеджеру.</span></div>
+  <a class="contact-button" href="https://t.me/tienmeePH" target="_blank">💬 Написать в Telegram</a>
+  <a class="contact-button secondary" href="https://wa.me/66911640931" target="_blank">WhatsApp</a>
+</section>
+
+<div id="toast" class="toast" hidden></div>
+</div>
+<script src="app.js"></script>
+<script>
+(() => { const toggle=document.getElementById("menuToggle"); const nav=document.querySelector(".desktop-nav"); if(!toggle||!nav)return; toggle.addEventListener("click",()=>{const open=nav.classList.toggle("nav-open");toggle.setAttribute("aria-expanded",String(open));}); nav.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{nav.classList.remove("nav-open");toggle.setAttribute("aria-expanded","false");})); })();
+</script>
+</body>
+</html>
