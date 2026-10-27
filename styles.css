@@ -218,20 +218,20 @@ body{background:radial-gradient(ellipse at 12% 0%,#fffdf5 0,#f7f0df 58%,#f4ead4 
 .brand-lockup{gap:10px}.brand-palm{font-size:31px;color:#9b681f;transform:rotate(-12deg)}.brand-lockup b{font-size:22px;letter-spacing:1.8px;color:#191d18}.brand-lockup small{font-size:8px;letter-spacing:4px;color:#a66e20;margin-top:4px}
 .desktop-nav{display:flex;align-items:center;gap:4px;margin-left:auto}.desktop-nav button{border:0;background:transparent;padding:10px 12px;border-radius:999px;color:#20261f;font-size:12px;font-weight:650}.desktop-nav button:hover{background:#f0e6d2}
 .menu-toggle{display:flex;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;border:0;border-radius:12px;background:transparent;padding:8px;margin-left:4px}.menu-toggle span{display:block;height:2px;width:20px;border-radius:2px;background:#182b20}
-.hero.hero-brand{height:auto;min-height:350px;margin-bottom:14px;padding:40px 34px;display:flex;align-items:flex-start;justify-content:center;text-align:left;border:1px solid #eadfc9;border-radius:26px;background:linear-gradient(115deg,#fffaf0 0%,#f5e8c9 100%) !important;box-shadow:0 9px 25px rgba(76,62,36,.07);isolation:isolate}
+.hero.hero-brand{height:auto;min-height:350px;margin-bottom:14px;padding:40px 34px;display:flex;align-items:flex-start;justify-content:center;text-align:left;border:1px solid #eadfc9;border-radius:26px;box-shadow:0 9px 25px rgba(76,62,36,.07);isolation:isolate}
 .hero.hero-brand:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 86% 50%,rgba(211,177,107,.24),transparent 38%),linear-gradient(90deg,rgba(255,250,240,.35),rgba(255,250,240,0))}
 .hero-copy{width:min(55%,520px)}.brand-eyebrow{font-size:10px;letter-spacing:2.5px;color:#93621d;margin-bottom:13px}.hero-brand h1{font:500 clamp(38px,5vw,62px)/.98 Georgia,'Times New Roman',serif;letter-spacing:-1.2px;color:#173b2a;margin:0}.hero-brand h1 em{font-style:normal;color:#a66c20}.hero-brand p{max-width:390px;font-size:15px;line-height:1.55;color:#4d5b4d;margin:14px 0 19px}.hero-cta{display:inline-flex;align-items:center;gap:12px;border:0;border-radius:999px;background:#174b35;color:#fff9ed;padding:13px 20px;font-weight:700;font-size:13px;box-shadow:0 6px 16px rgba(23,75,53,.16)}.hero-botanical{position:absolute;right:8%;bottom:8%;font-size:88px;color:#c8a45f;opacity:.75;pointer-events:none}
 .home-services{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:0;margin:0 0 16px;background:transparent}.service-tile{min-height:122px;gap:9px;padding:14px 8px;border:1px solid #eadfc9;border-radius:18px;background:linear-gradient(145deg,#fffdf7,#f8f0df);box-shadow:0 5px 16px rgba(74,62,39,.055)}.service-icon{width:52px;height:52px;font-size:24px}.service-tile b{font-size:12px}.service-tile small{font-size:10px}
 .feature-banner{min-height:210px;margin-bottom:20px;padding:26px 28px;border-radius:22px;background:linear-gradient(120deg,#174b42,#0d3a32) !important;border:1px solid rgba(231,213,174,.5);box-shadow:0 9px 23px rgba(23,75,53,.13)}.feature-banner:before{background:radial-gradient(ellipse at 90% 20%,rgba(213,177,98,.24),transparent 34%),linear-gradient(90deg,rgba(10,55,48,.12),rgba(10,55,48,.02))}.feature-label{font-size:9px;letter-spacing:2.5px;color:#e7c47c}.feature-banner strong{font:500 clamp(28px,3vw,38px)/1.05 Georgia,serif}.feature-cta{border-radius:999px;background:#bd8427;padding:11px 17px}
-.popular-section{margin-bottom:20px}.section-heading h2{font:500 25px/1.15 Georgia,serif;color:#1a3525}.section-heading button{color:#95651f}.popular-grid{gap:12px}.popular-card{background:#fffaf0;border-color:#eadfc9;border-radius:17px;box-shadow:0 5px 15px rgba(74,62,42,.05)}.popular-photo{height:145px;background:#e6e1d0 !important;position:relative}.popular-photo:after{content:"ФОТО ЭКСКУРСИИ";position:absolute;inset:0;display:grid;place-items:center;font-size:10px;letter-spacing:1.5px;color:#9a987e;background:linear-gradient(135deg,#f4ecd9,#e4e7d5)}.popular-card>b{font:500 16px Georgia,serif}.popular-card>strong{color:#a66c20}.popular-card i{background:#bd8427}
+.popular-section{margin-bottom:20px}.section-heading h2{font:500 25px/1.15 Georgia,serif;color:#1a3525}.section-heading button{color:#95651f}.popular-grid{gap:12px}.popular-card{background:#fffaf0;border-color:#eadfc9;border-radius:17px;box-shadow:0 5px 15px rgba(74,62,42,.05)}position:absolute;inset:0;display:grid;place-items:center;font-size:10px;letter-spacing:1.5px;color:#9a987e;background:linear-gradient(135deg,#f4ecd9,#e4e7d5)}.popular-card>b{font:500 16px Georgia,serif}.popular-card>strong{color:#a66c20}.popular-card i{background:#bd8427}
 .manager-banner{background:linear-gradient(100deg,#fff8e7,#f5e5c2);border-color:#eadfc9;border-radius:20px}.manager-avatar{background:#174b35}.manager-action{background:#174b35}.home-utility-links button{background:#fffaf0;border-color:#eadfc9}
-.screen{padding:4px 0 28px}.back{color:#174b35;font-weight:650}.section-cover{height:235px;border-radius:22px;background:#e6e1d0 !important;box-shadow:none;border:1px solid #eadfc9;position:relative;overflow:hidden}.section-cover:before{content:"ФОТО БУДЕТ ДОБАВЛЕНО";position:absolute;inset:0;display:grid;place-items:center;color:#9a987e;font-size:10px;letter-spacing:2px;background:linear-gradient(135deg,#f4ecd9,#dfe6d4)}.section-cover:after{background:linear-gradient(0deg,rgba(12,47,34,.82),rgba(12,47,34,.02) 85%)}.section-cover>div{z-index:2}.section-cover b{font:500 clamp(27px,4vw,36px)/1.1 Georgia,serif}.sub{font-size:14px;line-height:1.6;color:#657064}
+.screen{padding:4px 0 28px}.back{color:#174b35;font-weight:650}.section-cover{height:235px;border-radius:22px;box-shadow:none;border:1px solid #eadfc9;position:relative;overflow:hidden}position:absolute;inset:0;display:grid;place-items:center;color:#9a987e;font-size:10px;letter-spacing:2px;background:linear-gradient(135deg,#f4ecd9,#dfe6d4)}.section-cover:after{background:linear-gradient(0deg,rgba(12,47,34,.82),rgba(12,47,34,.02) 85%)}.section-cover>div{z-index:2}.section-cover b{font:500 clamp(27px,4vw,36px)/1.1 Georgia,serif}.sub{font-size:14px;line-height:1.6;color:#657064}
 .list{gap:10px}.list button{background:#fffaf0;border-color:#eadfc9;border-radius:17px;padding:16px;box-shadow:0 4px 13px rgba(70,62,44,.04)}.list button b{font-size:15px}.list button small{font-size:12px}
 .info,.payment{background:#fff7e7;border-color:#eadfc9;border-radius:18px}.info b,.payment b{font:500 19px Georgia,serif}.info span,.payment span{font-size:13px;line-height:1.6}
 form{background:#fffaf0;border-color:#eadfc9}form label{color:#253529}form input,form textarea,form select{background:#fffdf8;border-color:#e8dcc4;border-radius:13px}form input:focus,form textarea:focus,form select:focus{border-color:#68896b;box-shadow:0 0 0 3px rgba(23,75,53,.1)}.submit{background:#174b35;border-radius:999px;box-shadow:0 7px 17px rgba(23,75,53,.15)}.confirmation{background:#fffaf0;border-color:#eadfc9}
 /* Catalog cards and details generated by app.js */
-.excursion-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}.excursion-card{position:relative;display:flex;flex-direction:column;text-align:left;padding:0;overflow:hidden;border:1px solid #eadfc9;border-radius:18px;background:#fffaf0;box-shadow:0 5px 15px rgba(74,62,42,.05);color:#192b20}.excursion-card img{display:none !important}.excursion-card:before{content:"";display:block;flex:0 0 145px;width:100%;background:linear-gradient(135deg,#f4ecd9,#e1e7d5);border-bottom:1px solid #e8dcc4}.excursion-card:after{content:"ФОТО ЭКСКУРСИИ";position:absolute;top:66px;left:0;right:0;text-align:center;color:#9a987e;font-size:10px;letter-spacing:1.5px;pointer-events:none}.excursion-card-body{display:flex;flex-direction:column;gap:7px;padding:13px 14px 15px}.excursion-card-body>b{font:500 17px/1.2 Georgia,serif;color:#1b2c20}.excursion-card-body small{font-size:11px;line-height:1.45;color:#727468;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.excursion-card-body strong{font-size:14px;color:#a66c20;margin-top:3px}.excursion-arrow{position:absolute;right:11px;bottom:12px;width:27px;height:27px;display:grid;place-items:center;border-radius:50%;background:#bd8427;color:white;font-size:20px}.excursion-empty{padding:18px;background:#fffaf0;border:1px dashed #e2d4b8;border-radius:16px;color:#727468}
-#excursionDetailContent{padding:0 0 20px}#excursionDetailContent h2,#category h2{font:500 clamp(27px,4vw,36px)/1.15 Georgia,serif;color:#1b2c20}#excursionDetailContent h3{font:500 21px Georgia,serif;color:#1b2c20}#excursionDetailContent img{display:none !important}#excursionDetailContent .excursion-description{color:#5f685c;font-size:14px;line-height:1.7}#excursionDetailContent .excursion-prices>div{background:#fff5df;border-color:#ead7ad;border-radius:15px}#excursionDetailContent .excursion-prices b{color:#a66c20}#excursionDetailContent .excursion-program li{background:#fffaf0;border-color:#eadfc9;color:#4d5b4d}#excursionDetailContent .excursion-program li b{color:#174b35}#excursionDetailContent .excursion-notes{background:#fff4e6;border-color:#eadfc9;color:#775b42}#excursionDetailContent .excursion-form{background:#fffaf0;border-color:#eadfc9;box-shadow:0 6px 18px rgba(74,62,42,.05)}#excursionDetailContent .excursion-form label{color:#344638}#excursionDetailContent .excursion-form input,#excursionDetailContent .excursion-form textarea{border-color:#e8dcc4;background:#fffdf8;color:#192b20}#excursionDetailContent .excursion-form input:focus,#excursionDetailContent .excursion-form textarea:focus{border-color:#68896b;box-shadow:0 0 0 3px rgba(23,75,53,.1)}#excursionDetailContent .excursion-form button{background:#174b35;border-radius:999px;box-shadow:none}
+.excursion-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}.excursion-card{position:relative;display:flex;flex-direction:column;text-align:left;padding:0;overflow:hidden;border:1px solid #eadfc9;border-radius:18px;background:#fffaf0;box-shadow:0 5px 15px rgba(74,62,42,.05);color:#192b20}flex:0 0 145px;width:100%;background:linear-gradient(135deg,#f4ecd9,#e1e7d5);border-bottom:1px solid #e8dcc4}position:absolute;top:66px;left:0;right:0;text-align:center;color:#9a987e;font-size:10px;letter-spacing:1.5px;pointer-events:none}.excursion-card-body{display:flex;flex-direction:column;gap:7px;padding:13px 14px 15px}.excursion-card-body>b{font:500 17px/1.2 Georgia,serif;color:#1b2c20}.excursion-card-body small{font-size:11px;line-height:1.45;color:#727468;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.excursion-card-body strong{font-size:14px;color:#a66c20;margin-top:3px}.excursion-arrow{position:absolute;right:11px;bottom:12px;width:27px;height:27px;display:grid;place-items:center;border-radius:50%;background:#bd8427;color:white;font-size:20px}.excursion-empty{padding:18px;background:#fffaf0;border:1px dashed #e2d4b8;border-radius:16px;color:#727468}
+#excursionDetailContent{padding:0 0 20px}#excursionDetailContent h2,#category h2{font:500 clamp(27px,4vw,36px)/1.15 Georgia,serif;color:#1b2c20}#excursionDetailContent h3{font:500 21px Georgia,serif;color:#1b2c20}#excursionDetailContent .excursion-description{color:#5f685c;font-size:14px;line-height:1.7}#excursionDetailContent .excursion-prices>div{background:#fff5df;border-color:#ead7ad;border-radius:15px}#excursionDetailContent .excursion-prices b{color:#a66c20}#excursionDetailContent .excursion-program li{background:#fffaf0;border-color:#eadfc9;color:#4d5b4d}#excursionDetailContent .excursion-program li b{color:#174b35}#excursionDetailContent .excursion-notes{background:#fff4e6;border-color:#eadfc9;color:#775b42}#excursionDetailContent .excursion-form{background:#fffaf0;border-color:#eadfc9;box-shadow:0 6px 18px rgba(74,62,42,.05)}#excursionDetailContent .excursion-form label{color:#344638}#excursionDetailContent .excursion-form input,#excursionDetailContent .excursion-form textarea{border-color:#e8dcc4;background:#fffdf8;color:#192b20}#excursionDetailContent .excursion-form input:focus,#excursionDetailContent .excursion-form textarea:focus{border-color:#68896b;box-shadow:0 0 0 3px rgba(23,75,53,.1)}#excursionDetailContent .excursion-form button{background:#174b35;border-radius:999px;box-shadow:none}
 .contact-button{background:#174b35;border-radius:999px}.contact-button.secondary{background:#fffaf0;color:#174b35;border-color:#eadfc9}.license-prices,.simple-license-form{background:#fffaf0;border-color:#eadfc9}.license-price-row b{color:#a66c20}
 @media(min-width:700px){.hero.hero-brand{min-height:360px}.home-services{grid-template-columns:repeat(4,minmax(0,1fr))}.excursion-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:699px){.app{padding:8px 12px 25px}.topbar.brand-header{top:5px;padding:8px 11px;min-height:56px;gap:8px}.brand-lockup b{font-size:18px;letter-spacing:1.4px}.brand-lockup small{font-size:8px;letter-spacing:3px}.brand-palm{font-size:26px}.desktop-nav{display:none;position:absolute;top:calc(100% + 7px);left:0;right:0;padding:8px;flex-direction:column;align-items:stretch;background:#fffaf0;border:1px solid #eadfc9;border-radius:16px;box-shadow:0 10px 25px rgba(65,55,34,.12)}.desktop-nav.nav-open{display:flex}.desktop-nav button{text-align:left;padding:12px}.hero.hero-brand{min-height:320px;padding:28px 21px;background-position:center}.hero-copy{width:76%}.hero-brand h1{font-size:clamp(36px,9vw,50px)}.hero-brand p{font-size:13px;max-width:285px}.hero-botanical{right:5%;bottom:5%;font-size:43px}.home-services{grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;padding:0}.service-tile{min-height:112px;padding:10px 4px;gap:6px;border-radius:14px}.service-icon{width:38px;height:38px;font-size:20px}.service-tile b{font-size:10px}.service-tile small{font-size:9px;line-height:1.2}.feature-banner{min-height:190px;padding:22px 20px;border-radius:20px}.feature-banner strong{font-size:28px}.feature-banner>small{font-size:11px}.section-heading h2{font-size:21px}.popular-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.popular-photo{height:92px}.popular-card{border-radius:13px;padding-bottom:10px}.popular-card>b{font-size:12px;line-height:1.2;margin:8px 7px 3px}.popular-card>small{font-size:9px;line-height:1.25;margin:0 7px 7px}.popular-card>strong{width:calc(100% - 14px);margin:auto 7px 0;font-size:10px}.popular-card i{width:21px;height:21px;font-size:13px}.manager-banner{gap:9px;padding:13px 11px;border-radius:17px}.manager-avatar{flex-basis:40px;width:40px;height:40px;font-size:13px}.manager-copy b{font-size:15px}.manager-copy small{font-size:10px}.manager-action{padding:9px 10px;font-size:9px;max-width:120px;white-space:normal;text-align:center}.home-utility-links{gap:8px}.home-utility-links button{padding:12px 9px;grid-template-columns:28px 1fr auto;gap:4px 7px}.home-utility-links button>span{width:27px;height:27px;font-size:10px}.home-utility-links b{font-size:14px}.home-utility-links small{font-size:9px}.section-cover{height:190px;border-radius:20px}.section-cover>div{left:18px;bottom:18px}.section-cover b{font-size:25px}.license-price-row{font-size:12px}.excursion-grid{grid-template-columns:1fr}}
@@ -529,12 +529,6 @@ input[type="time"] {
   content: none !important;
 }
 
-/* Возвращаем фоны разделов */
-.section-cover {
-  background-color: #e6e1d0 !important;
-  background-size: cover !important;
-}
-
 /* Возвращаем изображение баннера */
 .feature-banner {
   background-image: url("excursions-banner.png") !important;
@@ -605,4 +599,124 @@ input[type="time"] {
   #excursionCatalog .excursion-card-body strong {
     font-size: 16px;
   }
+}
+/* Единый размер фотографий внутри программы экскурсии */
+#excursionDetailContent .excursion-gallery {
+  width: 100%;
+  margin: 10px 0 20px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #e9e2d2;
+}
+
+#excursionDetailContent .excursion-gallery-track {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+#excursionDetailContent .excursion-gallery-track::-webkit-scrollbar {
+  display: none;
+}
+
+#excursionDetailContent .excursion-gallery-track img.excursion-hero-image {
+  display: block !important;
+  flex: 0 0 100%;
+  width: 100%;
+  height: 245px;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0;
+  background: #e9e2d2;
+  box-shadow: none;
+  scroll-snap-align: start;
+}
+
+#excursionDetailContent .excursion-gallery-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 0;
+  background: #fffaf0;
+}
+
+#excursionDetailContent .excursion-gallery-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #c8c1b2;
+}
+
+#excursionDetailContent .excursion-gallery-dot.is-active {
+  background: #174b35;
+}
+
+@media (min-width: 600px) {
+  #excursionDetailContent .excursion-gallery-track img.excursion-hero-image {
+    height: 360px;
+  }
+}
+/* Восстановление фотографий разделов */
+.popular-phi .popular-photo {
+  background: url("excursions.jpg") center / cover no-repeat;
+}
+
+.popular-similan .popular-photo {
+  background: url("islands-route.jpg") center / cover no-repeat;
+}
+
+.popular-phangnga .popular-photo {
+  background: url("hong-phangnga.jpg") center / cover no-repeat;
+}
+
+.cover-excursions {
+  background: url("excursions.jpg") center / cover no-repeat;
+}
+
+.cover-fasttrack {
+  background: url("fasttrack.jpg") center / cover no-repeat;
+}
+
+.cover-transfer {
+  background: url("transfer.jpg") center / cover no-repeat;
+}
+
+.cover-cars {
+  background: url("cars.jpg") center / cover no-repeat;
+}
+
+.cover-exchange {
+  background: url("exchange.jpg") center / cover no-repeat;
+}
+
+.cover-realestate {
+  background: url("realestate.jpg") center / cover no-repeat;
+}
+
+.cover-business {
+  background: url("business.jpg") center / cover no-repeat;
+}
+
+/* Реальные фотографии экскурсий */
+.excursion-card img {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+#excursionDetailContent img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
