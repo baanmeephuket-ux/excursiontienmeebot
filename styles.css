@@ -685,15 +685,15 @@ input[type="time"] {
 }
 /* Восстановление фотографий разделов */
 .popular-phi .popular-photo {
-  background: url("excursions.jpg") center / cover no-repeat;
+  background: url("13.jpg") center / cover no-repeat;
 }
 
 .popular-similan .popular-photo {
-  background: url("islands-route.jpg") center / cover no-repeat;
+  background: url("similan_3.jpg") center / cover no-repeat;
 }
 
 .popular-phangnga .popular-photo {
-  background: url("hong-phangnga.jpg") center / cover no-repeat;
+  background: url("hk1.jpg") center / cover no-repeat;
 }
 
 .cover-excursions {
