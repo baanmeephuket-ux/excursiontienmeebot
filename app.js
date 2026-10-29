@@ -105,6 +105,13 @@ function openSection(section) {
 
 document.querySelectorAll('[data-open]').forEach(btn => {
   btn.addEventListener('click', () => {
+    const excursionId = btn.dataset.excursionId;
+
+    if (excursionId && typeof window.openExcursionDetail === 'function') {
+      window.openExcursionDetail(excursionId);
+      return;
+    }
+
     openSection(btn.dataset.open);
   });
 });
@@ -798,7 +805,7 @@ function renderCategory(category) {
 }
 
 window.openExcursionCategory = renderCategory;
-
+window.openExcursionDetail = renderDetail;
 document.querySelectorAll('.excursion-tab').forEach(btn => {
   btn.addEventListener('click', () => {
     window.openExcursionCategory(btn.dataset.cat);
