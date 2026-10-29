@@ -737,3 +737,15 @@ input[type="time"] {
   max-width: 100%;
   height: auto;
 }
+.feature-banner {
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(10, 35, 30, 0.88),
+      rgba(10, 35, 30, 0.55) 45%,
+      rgba(10, 35, 30, 0) 100%
+    ),
+    url("excursions-banner.png") !important;
+  background-size: cover, cover !important;
+  background-position: center, 58% center !important;
+}
