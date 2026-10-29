@@ -247,7 +247,20 @@ form{background:#fffaf0;border-color:#eadfc9}form label{color:#253529}form input
 .service-icon img{display:block;width:100%;height:100%;object-fit:contain;padding:0;border-radius:50%}
 .manager-avatar{overflow:hidden;background:#f4e8ce;border:0}
 .manager-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-.feature-banner{background:linear-gradient(120deg,#0e493f,#0b3b32) !important}
+.feature-banner {
+  background-color: #0b3b32 !important;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(0, 15, 10, 0.78) 0%,
+      rgba(0, 15, 10, 0.45) 45%,
+      transparent 75%
+    ),
+    url("excursions-banner.png");
+  background-size: cover, cover;
+  background-position: center, 58% center;
+  background-repeat: no-repeat;
+}
 .feature-banner:after{content:"";position:absolute;inset:auto -4% -35% auto;width:48%;height:125%;background:url("images/a_clean_high_resolution_realistic_tropical_flora.png") center/contain no-repeat;opacity:.36;z-index:-1;pointer-events:none}
 @media(max-width:699px){.hero.hero-brand{min-height:320px;padding:28px 18px}.hero-copy{width:68%}.hero-fairy{right:-7%;width:59%;height:95%;bottom:-1%}.hero-brand h1{font-size:clamp(34px,8.5vw,48px)}.hero-brand p{max-width:235px;font-size:12px;line-height:1.45}.service-icon img{padding:0}.manager-avatar img{object-position:center top}}
 @media(max-width:370px){.hero-copy{width:72%}.hero-fairy{right:-13%;width:62%;opacity:.96}.hero-brand p{max-width:205px}}
@@ -272,18 +285,14 @@ form{background:#fffaf0;border-color:#eadfc9}form label{color:#253529}form input
 }
 
 .hero-brand .hero-fairy {
-  position: absolute;
-  z-index: 2;
+  width: 88%;
+  height: auto;
+  max-height: 88%;
   right: -18px;
-  bottom: -12px;
-  width: min(68%, 520px);
-  height: 120%;
-  max-height: none;
+  bottom: -2px;
   object-fit: contain;
   object-position: right bottom;
-  pointer-events: none;
 }
-
 .hero-brand .hero-botanical {
   display: none;
 }
@@ -340,9 +349,9 @@ form{background:#fffaf0;border-color:#eadfc9}form label{color:#253529}form input
 }
 
   .hero.hero-brand::before,
-.hero.hero-brand::after {
-  width: 105px;
-  height: 105px;
+  .hero.hero-brand::after {
+  width: 145px;
+  height: 145px;
 }
 }
 /* Общая ширина элементов на мобильных устройствах */
