@@ -328,31 +328,8 @@ form{background:#fffaf0;border-color:#eadfc9}form label{color:#253529}form input
 
 .service-tile small {
   display: none;
-}.feature-banner{min-height:190px;padding:22px 20px;border-radius:20px}.feature-banner strong{font-size:28px}.feature-banner>small{font-size:11px}.section-heading h2{font-size:21px}.popular-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.popular-photo{height:92px}.popular-card{border-radius:13px;padding-bottom:10px}.popular-card>b{font-size:14px;line-height:1.2;margin:8px 7px 3px}.popular-card>small{font-size:9px;line-height:1.25;margin:0 7px 7px}.popular-card>strong{width:calc(100% - 14px);margin:auto 7px 0;font-size:10px}.popular-card i{width:21px;height:21px;font-size:13px}.manager-banner {
-  gap: 12px;
-  padding: 18px 14px;
-  border-radius: 20px;
 }
-
-.manager-avatar {
-  flex-basis: 56px;
-  width: 56px;
-  height: 56px;
-}
-
-.manager-copy b {
-  font-size: 18px;
-}
-
-.manager-copy small {
-  font-size: 12px;
-}
-
-.manager-action {
-  padding: 11px 12px;
-  font-size: 11px;
-  max-width: 130px;
-}
+.feature-banner{min-height:190px;padding:22px 20px;border-radius:20px}.feature-banner strong{font-size:28px}.feature-banner>small{font-size:11px}.section-heading h2{font-size:21px}.popular-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.popular-photo{height:92px}.popular-card{border-radius:13px;padding-bottom:10px}.popular-card>b{font-size:14px;line-height:1.2;margin:8px 7px 3px}.popular-card>small{font-size:9px;line-height:1.25;margin:0 7px 7px}.popular-card>strong{width:calc(100% - 14px);margin:auto 7px 0;font-size:10px}.popular-card i{width:21px;height:21px;font-size:13px}                      
 .home-utility-links{gap:8px}.home-utility-links button{padding:12px 9px;grid-template-columns:28px 1fr auto;gap:4px 7px}.home-utility-links button>span{width:27px;height:27px;font-size:10px}.home-utility-links b{font-size:14px}.home-utility-links small{font-size:9px}.section-cover{height:190px;border-radius:20px}.section-cover>div{left:18px;bottom:18px}.section-cover b{font-size:25px}.license-price-row{font-size:12px}.excursion-grid{grid-template-columns:1fr}}
 @media(max-width:370px){.home-services{grid-template-columns:repeat(2,minmax(0,1fr))}.service-tile{min-height:100px}.popular-grid{grid-template-columns:1fr}.popular-photo{height:145px}.popular-card>b,.popular-card>small,.popular-card>strong{margin-left:12px;margin-right:12px}.popular-card>strong{width:calc(100% - 24px)}}
 
@@ -381,8 +358,8 @@ form{background:#fffaf0;border-color:#eadfc9}form label{color:#253529}form input
   background-repeat: no-repeat;
 }
 .feature-banner:after{content:"";position:absolute;inset:auto -4% -35% auto;width:48%;height:125%;background:url("images/a_clean_high_resolution_realistic_tropical_flora.png") center/contain no-repeat;opacity:.36;z-index:-1;pointer-events:none}
-@media(max-width:699px){.hero.hero-brand{min-height:320px;padding:28px 18px}.hero-copy{width:68%}.hero-fairy{right:-7%;width:59%;height:95%;bottom:-1%}.hero-brand h1{font-size:clamp(34px,8.5vw,48px)}.hero-brand p{max-width:255px;font-size:15px;line-height:1.5}.service-icon img{padding:0}.manager-avatar img{object-position:center top}}
-@media(max-width:370px){.hero-copy{width:72%}.hero-fairy{right:-13%;width:62%;opacity:.96}.hero-brand p{max-width:205px}}
+@media(max-width:699px){.hero.hero-brand{min-height:320px;padding:28px 18px}.hero-copy{width:72%}.hero-fairy{right:-7%;width:59%;height:95%;bottom:-1%}.hero-brand h1{font-size:clamp(34px,8.5vw,48px)}.hero-brand p{max-width:320px;font-size:17px;line-height:1.5}.service-icon img{padding:0}.manager-avatar img{object-position:center top}}
+@media(max-width:370px){.hero-copy{width:72%}.hero-fairy{right:-13%;width:62%;opacity:.96}.hero-brand p{max-width:280px}}
 
 /* TIEN MEE — tropical hero decoration */
 .hero-brand {
