@@ -197,7 +197,58 @@ html,body{background:linear-gradient(180deg,#f8f1e2 0%,#f6efdf 100%);color:var(-
 .feature-label{font-size:9px;letter-spacing:3px;font-weight:800;color:#f1cc7d}.feature-banner strong{font:500 clamp(28px,3vw,40px)/1.02 Georgia,'Times New Roman',serif}.feature-banner>small{font-size:13px;color:#f3eee0}.feature-cta{background:#c58a2b;color:#fff9ec;padding:10px 16px;margin-top:5px;font-size:12px;box-shadow:none}.feature-cta b{font-size:17px}
 .popular-section{margin:0 0 20px}.section-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 2px 11px}.section-heading h2{font:500 25px/1.1 Georgia,'Times New Roman',serif;margin:0;color:#1c3929}.section-heading button{border:0;background:transparent;color:#98641e;font-size:12px;font-weight:750;white-space:nowrap}
 .popular-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.popular-card{display:flex;flex-direction:column;align-items:flex-start;text-align:left;min-width:0;overflow:hidden;padding:0 0 13px;border:1px solid #eadfc9;border-radius:18px;background:#fffaf0;color:var(--text);box-shadow:0 5px 16px rgba(74,62,42,.05)}.popular-photo{display:block;width:100%;height:145px;background-size:cover;background-position:center}.popular-phi .popular-photo{background-image:url('excursions.jpg')}.popular-similan .popular-photo{background-image:url('islands-route.jpg')}.popular-phangnga .popular-photo{background-image:url('hong-phangnga.jpg')}.popular-card>b{font:500 17px Georgia,'Times New Roman',serif;margin:11px 12px 3px}.popular-card>small{font-size:11px;color:var(--muted);margin:0 12px 9px}.popular-card>strong{width:calc(100% - 24px);margin:auto 12px 0;font-size:13px;color:#a56d1c;display:flex;align-items:center;justify-content:space-between}.popular-card i{font-style:normal;display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:#c58a2b;color:white;font-size:17px}
-.manager-banner{width:100%;display:flex;align-items:center;gap:14px;text-align:left;padding:17px 20px;margin:4px 0 15px;border:1px solid #eadfc8;border-radius:22px;background:linear-gradient(100deg,#fff8e7,#f5e5c2);color:var(--text)}.manager-avatar{flex:0 0 54px;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#214d35;color:#f8e5b7;font:500 17px Georgia,serif;border:3px solid #e5c88c}.manager-copy{display:flex;flex:1;flex-direction:column;gap:5px}.manager-copy b{font:500 19px Georgia,'Times New Roman',serif}.manager-copy small{font-size:12px;color:var(--muted)}.manager-action{background:#214d35;color:#fff9ec;border-radius:999px;padding:11px 14px;font-size:11px;font-weight:750;white-space:nowrap}
+.manager-banner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  text-align: left;
+  padding: 24px;
+  margin: 8px 0 16px;
+  border: 1px solid #eadfc8;
+  border-radius: 24px;
+  background: linear-gradient(100deg, #fff8e7, #f5e5c2);
+  color: var(--text);
+}
+
+.manager-avatar {
+  flex: 0 0 72px;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #f4e8ce;
+  font: 500 20px Georgia, serif;
+}
+
+.manager-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.manager-copy b {
+  font: 500 23px Georgia, serif;
+}
+
+.manager-copy small {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.manager-action {
+  background: #174b35;
+  color: #fff9ec;
+  border-radius: 999px;
+  padding: 14px 18px;
+  font-size: 12px;
+  font-weight: 750;
+  white-space: nowrap;
+}
 .home-utility-links{display:grid;grid-template-columns:1fr 1fr;gap:12px}.home-utility-links button{display:grid;grid-template-columns:36px 1fr auto;grid-template-rows:auto auto;gap:4px 10px;align-items:center;text-align:left;padding:16px;border:1px solid #e9dfcb;border-radius:17px;background:rgba(255,250,240,.82);color:var(--text)}.home-utility-links button>span{grid-row:1/3;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#f0ead8;color:#956d27}.home-utility-links b{font:500 17px Georgia,serif}.home-utility-links small{grid-column:2;color:var(--muted);font-size:11px}.home-utility-links button> :last-child{grid-column:3;grid-row:1/3;color:#a06b20}
 footer{text-align:center;color:#a79b83;font-size:10px;margin-top:20px}
 /* Inner pages share the same boutique visual system. */
@@ -262,7 +313,7 @@ form{background:#fffaf0;border-color:#eadfc9}form label{color:#253529}form input
 
 .service-tile small {
   display: none;
-}.feature-banner{min-height:190px;padding:22px 20px;border-radius:20px}.feature-banner strong{font-size:28px}.feature-banner>small{font-size:11px}.section-heading h2{font-size:21px}.popular-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.popular-photo{height:92px}.popular-card{border-radius:13px;padding-bottom:10px}.popular-card>b{font-size:12px;line-height:1.2;margin:8px 7px 3px}.popular-card>small{font-size:9px;line-height:1.25;margin:0 7px 7px}.popular-card>strong{width:calc(100% - 14px);margin:auto 7px 0;font-size:10px}.popular-card i{width:21px;height:21px;font-size:13px}.manager-banner{gap:9px;padding:13px 11px;border-radius:17px}.manager-avatar{flex-basis:40px;width:40px;height:40px;font-size:13px}.manager-copy b{font-size:15px}.manager-copy small{font-size:10px}.manager-action{padding:9px 10px;font-size:9px;max-width:120px;white-space:normal;text-align:center}.home-utility-links{gap:8px}.home-utility-links button{padding:12px 9px;grid-template-columns:28px 1fr auto;gap:4px 7px}.home-utility-links button>span{width:27px;height:27px;font-size:10px}.home-utility-links b{font-size:14px}.home-utility-links small{font-size:9px}.section-cover{height:190px;border-radius:20px}.section-cover>div{left:18px;bottom:18px}.section-cover b{font-size:25px}.license-price-row{font-size:12px}.excursion-grid{grid-template-columns:1fr}}
+}.feature-banner{min-height:190px;padding:22px 20px;border-radius:20px}.feature-banner strong{font-size:28px}.feature-banner>small{font-size:11px}.section-heading h2{font-size:21px}.popular-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.popular-photo{height:92px}.popular-card{border-radius:13px;padding-bottom:10px}.popular-card>b{font-size:14px;line-height:1.2;margin:8px 7px 3px}.popular-card>small{font-size:9px;line-height:1.25;margin:0 7px 7px}.popular-card>strong{width:calc(100% - 14px);margin:auto 7px 0;font-size:10px}.popular-card i{width:21px;height:21px;font-size:13px}.manager-banner{gap:9px;padding:13px 11px;border-radius:17px}.manager-avatar{flex-basis:40px;width:40px;height:40px;font-size:13px}.manager-copy b{font-size:15px}.manager-copy small{font-size:10px}.manager-action{padding:9px 10px;font-size:9px;max-width:120px;white-space:normal;text-align:center}.home-utility-links{gap:8px}.home-utility-links button{padding:12px 9px;grid-template-columns:28px 1fr auto;gap:4px 7px}.home-utility-links button>span{width:27px;height:27px;font-size:10px}.home-utility-links b{font-size:14px}.home-utility-links small{font-size:9px}.section-cover{height:190px;border-radius:20px}.section-cover>div{left:18px;bottom:18px}.section-cover b{font-size:25px}.license-price-row{font-size:12px}.excursion-grid{grid-template-columns:1fr}}
 @media(max-width:370px){.home-services{grid-template-columns:repeat(2,minmax(0,1fr))}.service-tile{min-height:100px}.popular-grid{grid-template-columns:1fr}.popular-photo{height:145px}.popular-card>b,.popular-card>small,.popular-card>strong{margin-left:12px;margin-right:12px}.popular-card>strong{width:calc(100% - 24px)}}
 
 
@@ -290,7 +341,7 @@ form{background:#fffaf0;border-color:#eadfc9}form label{color:#253529}form input
   background-repeat: no-repeat;
 }
 .feature-banner:after{content:"";position:absolute;inset:auto -4% -35% auto;width:48%;height:125%;background:url("images/a_clean_high_resolution_realistic_tropical_flora.png") center/contain no-repeat;opacity:.36;z-index:-1;pointer-events:none}
-@media(max-width:699px){.hero.hero-brand{min-height:320px;padding:28px 18px}.hero-copy{width:68%}.hero-fairy{right:-7%;width:59%;height:95%;bottom:-1%}.hero-brand h1{font-size:clamp(34px,8.5vw,48px)}.hero-brand p{max-width:235px;font-size:12px;line-height:1.45}.service-icon img{padding:0}.manager-avatar img{object-position:center top}}
+@media(max-width:699px){.hero.hero-brand{min-height:320px;padding:28px 18px}.hero-copy{width:68%}.hero-fairy{right:-7%;width:59%;height:95%;bottom:-1%}.hero-brand h1{font-size:clamp(34px,8.5vw,48px)}.hero-brand p{max-width:255px;font-size:15px;line-height:1.5}.service-icon img{padding:0}.manager-avatar img{object-position:center top}}
 @media(max-width:370px){.hero-copy{width:72%}.hero-fairy{right:-13%;width:62%;opacity:.96}.hero-brand p{max-width:205px}}
 
 /* TIEN MEE — tropical hero decoration */
