@@ -339,11 +339,11 @@ form{background:#fffaf0;border-color:#eadfc9}form label{color:#253529}form input
   max-height: 78%;
 }
 
-  .hero-brand::before,
-  .hero-brand::after {
-    width: 105px;
-    height: 105px;
-  }
+  .hero.hero-brand::before,
+.hero.hero-brand::after {
+  width: 105px;
+  height: 105px;
+}
 }
 /* Общая ширина элементов на мобильных устройствах */
 *,
